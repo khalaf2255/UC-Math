@@ -1420,6 +1420,8 @@
             this.handleKeyInput(e.key);
           } else if (e.key === 'Backspace' || e.key === 'Delete') {
             this.handleKeyInput('del');
+          } else if (e.key === 'r' || e.key === 'R') {
+            this.handleKeyInput('reset');
           } else if (e.key === 'Enter') {
             if (this.btnNext.style.display === 'flex') {
               this.btnNext.click();
@@ -1547,13 +1549,14 @@
       }
 
       handleKeyInput(key) {
-        if (this.isAnswerLocked) return;
-        this.sound.playTap();
-
         if (key === 'reset') {
+          this.sound.playTap();
           this.retryQuestion();
           return;
         }
+
+        if (this.isAnswerLocked) return;
+        this.sound.playTap();
 
         if (key === 'del') {
           if (this.question.isSingleDigit) {
