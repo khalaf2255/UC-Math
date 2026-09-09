@@ -948,9 +948,9 @@
           <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
         </div>
 
-        <!-- Units Box -->
+        <!-- Units / Ones Box -->
         <div class="digit-box" id="box-units">
-          <div class="digit-label" id="label-units">Units</div>
+          <div class="digit-label" id="label-units">Ones</div>
           <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
         </div>
       </div>
@@ -1771,7 +1771,7 @@
           // Two fields: Tens on Left, Units on Right
           this.boxTens.style.display = 'flex';
           this.labelTens.textContent = 'Tens';
-          this.labelUnits.textContent = 'Units';
+          this.labelUnits.textContent = 'Ones';
           this.setActiveField('tens');
         }
       }
