@@ -542,6 +542,28 @@
       animation: pulse 1.4s infinite;
     }
 
+    .btn-reset {
+      background: #f1f2f6;
+      color: #57606f;
+      border: 2px dashed #ced6e0;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      padding: 11px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s;
+    }
+
+    .btn-reset:hover {
+      background: #e4e7eb;
+      color: #2f3542;
+      border-color: #a4b0be;
+      transform: translateY(-2px);
+    }
+
+    .btn-reset:active {
+      transform: translateY(1px);
+    }
+
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
@@ -845,6 +867,11 @@
       <button class="btn-action btn-retry" id="btn-retry">
         <span>إعادة المسألة مرة ثانية</span>
         <span style="font-size: 1.5rem;">🔄</span>
+      </button>
+
+      <button class="btn-action btn-reset" id="btn-reset" title="تصفير الحقول وإعادة الاستماع للمسألة">
+        <span>إعادة ضبط المسألة</span>
+        <span style="font-size: 1.3rem;">🔄</span>
       </button>
     </div>
 
@@ -1172,6 +1199,7 @@
         this.btnCheck = document.getElementById('btn-check');
         this.btnNext = document.getElementById('btn-next');
         this.btnRetry = document.getElementById('btn-retry');
+        this.btnReset = document.getElementById('btn-reset');
         this.feedbackBanner = document.getElementById('feedback-banner');
         this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
         this.btnPeek = document.getElementById('btn-peek');
@@ -1297,6 +1325,14 @@
           this.sound.playTap();
           this.retryQuestion();
         });
+
+        // Reset Question Button
+        if (this.btnReset) {
+          this.btnReset.addEventListener('click', () => {
+            this.sound.playTap();
+            this.retryQuestion();
+          });
+        }
 
         // Peek Question (Toggle for parents)
         this.btnPeek.addEventListener('click', () => {
@@ -1501,7 +1537,7 @@
         return `${useOnes[unit]} و${useTens[ten]}`;
       }
 
-      // Best Female Voice Selector (strictly Arabic voices for Arabic)
+      // Best Female Voice Selector
       getBestFemaleVoice(lang) {
         if (!this.voices || this.voices.length === 0) {
           this.voices = window.speechSynthesis.getVoices();
@@ -1517,7 +1553,7 @@
           });
 
           if (arabicVoices.length > 0) {
-            // 1. Salma (Egyptian Arabic Natural female - most popular close dialect)
+            // 1. Salma (Egyptian Arabic Natural female)
             let match = arabicVoices.find(v => v.name.toLowerCase().includes('salma'));
             if (match) return match;
 
@@ -1546,7 +1582,8 @@
             return arabicVoices[0];
           }
 
-          // NEVER fallback to English voice for Arabic!
+          // If no specific Arabic voice pack is installed on Windows/Chrome,
+          // return null so the browser synthesizes using its default system voice with ar-SA tag
           return null;
         }
 
@@ -1717,18 +1754,22 @@
           return;
         }
 
+        // Unpause Chrome if in paused state
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
         window.speechSynthesis.cancel(); // Stop any pending speech
 
         let textToSpeak = '';
         if (this.lang === 'ar') {
-          // Direct numbers in natural Arabic words!
+          // Direct numbers in natural Arabic words with natural pause punctuation
           this.question.steps.forEach((step, idx) => {
             const word = this.arabicNumberToWords(step.val, this.arabicDialect);
             if (idx === 0) {
-              textToSpeak += `${word} ... `;
+              textToSpeak += `${word} ، `;
             } else {
               const opWord = step.op === '+' ? 'زائد' : 'ناقص';
-              textToSpeak += `${opWord} ${word} ... `;
+              textToSpeak += `${opWord} ${word} ، `;
             }
           });
         } else {
@@ -1746,13 +1787,20 @@
         const utter = new SpeechSynthesisUtterance(textToSpeak.trim());
         utter.rate = this.speechRate; // Very slow and calm for child
         utter.pitch = 1.25; // Sweet, youthful friendly female pitch
-        utter.lang = this.lang === 'ar' ? (this.arabicDialect === 'egyptian' ? 'ar-EG' : 'ar-SA') : 'en-US';
+        // Use standard ar-SA or ar-EG fallback
+        utter.lang = this.lang === 'ar' ? 'ar-SA' : 'en-US';
 
         // Select best female voice
         const femaleVoice = this.getBestFemaleVoice(this.lang);
         if (femaleVoice) {
           utter.voice = femaleVoice;
+          if (femaleVoice.lang) {
+            utter.lang = femaleVoice.lang;
+          }
         }
+
+        // Prevent premature Chrome garbage collection
+        window._activeUtterance = utter;
 
         utter.onstart = () => {
           this.isSpeaking = true;
@@ -1766,16 +1814,22 @@
           this.mascotAvatar.classList.remove('speaking');
           this.btnReplay.classList.remove('speaking');
           this.statusText.textContent = this.lang === 'ar' ? 'ما هي إجابتك؟ اكتبها بالأسفل 👇' : 'What is your answer? Enter below 👇';
+          window._activeUtterance = null;
         };
 
-        utter.onerror = () => {
+        utter.onerror = (e) => {
+          console.warn('SpeechSynthesis error:', e);
           this.isSpeaking = false;
           this.mascotAvatar.classList.remove('speaking');
           this.btnReplay.classList.remove('speaking');
           this.statusText.textContent = 'اضغط على زر الاستماع لإعادة المسألة 🔊';
+          window._activeUtterance = null;
         };
 
-        window.speechSynthesis.speak(utter);
+        // Small timeout after cancel() prevents Chromium cancel race condition
+        setTimeout(() => {
+          window.speechSynthesis.speak(utter);
+        }, 50);
       }
 
       checkAnswer() {
