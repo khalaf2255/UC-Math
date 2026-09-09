@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عبقري يو سي ماث الصغير 🌟 UC Math Kids</title>
+  <link rel="shortcut icon" href="" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
@@ -1129,6 +1130,7 @@
         this.showParentPeek = false; // Default: hidden on screen unless enabled in settings
         this.isAnswerLocked = false; // Prevents modifying answers after correct solution!
         this.arabicDialect = 'egyptian'; // 'egyptian' (close dialect) or 'fusha' (simplified standard)
+        this.currentAudio = null; // Active HTML5 Audio instance for fallback speech
 
         // Current Question Model
         this.question = {
@@ -1747,22 +1749,33 @@
         }
       }
 
+      // Stop any currently playing speech (both Web Speech and HTML5 Audio)
+      stopAllSpeech() {
+        if (this.currentAudio) {
+          try {
+            this.currentAudio.pause();
+            this.currentAudio.currentTime = 0;
+          } catch (e) {}
+          this.currentAudio = null;
+        }
+        if ('speechSynthesis' in window) {
+          try {
+            window.speechSynthesis.cancel();
+          } catch (e) {}
+        }
+        this.isSpeaking = false;
+        this.mascotAvatar.classList.remove('speaking');
+        this.btnReplay.classList.remove('speaking');
+      }
+
       // Audio Speech without "Ready" / "جاهز", direct problem dictation in sweet female voice
       speakQuestion() {
-        if (!('speechSynthesis' in window)) {
-          this.statusText.textContent = "عذراً، المتصفح لا يدعم نطق الصوت.";
-          return;
-        }
+        this.stopAllSpeech();
 
-        // Unpause Chrome if in paused state
-        if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
-        }
-        window.speechSynthesis.cancel(); // Stop any pending speech
-
+        // 1. Prepare Text in Words
         let textToSpeak = '';
         if (this.lang === 'ar') {
-          // Direct numbers in natural Arabic words with natural pause punctuation
+          // Natural Arabic words with comma pause
           this.question.steps.forEach((step, idx) => {
             const word = this.arabicNumberToWords(step.val, this.arabicDialect);
             if (idx === 0) {
@@ -1773,7 +1786,6 @@
             }
           });
         } else {
-          // Direct numbers without "Ready"
           this.question.steps.forEach((step, idx) => {
             if (idx === 0) {
               textToSpeak += `${step.val} , `;
@@ -1784,52 +1796,134 @@
           });
         }
 
-        const utter = new SpeechSynthesisUtterance(textToSpeak.trim());
-        utter.rate = this.speechRate; // Very slow and calm for child
-        utter.pitch = 1.25; // Sweet, youthful friendly female pitch
-        // Use standard ar-SA or ar-EG fallback
-        utter.lang = this.lang === 'ar' ? 'ar-SA' : 'en-US';
+        const cleanText = textToSpeak.trim();
 
-        // Select best female voice
-        const femaleVoice = this.getBestFemaleVoice(this.lang);
-        if (femaleVoice) {
-          utter.voice = femaleVoice;
-          if (femaleVoice.lang) {
-            utter.lang = femaleVoice.lang;
-          }
-        }
+        // Update UI to speaking state
+        this.isSpeaking = true;
+        this.mascotAvatar.classList.add('speaking');
+        this.btnReplay.classList.add('speaking');
+        this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
 
-        // Prevent premature Chrome garbage collection
-        window._activeUtterance = utter;
-
-        utter.onstart = () => {
-          this.isSpeaking = true;
-          this.mascotAvatar.classList.add('speaking');
-          this.btnReplay.classList.add('speaking');
-          this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
-        };
-
-        utter.onend = () => {
+        const onFinished = () => {
           this.isSpeaking = false;
           this.mascotAvatar.classList.remove('speaking');
           this.btnReplay.classList.remove('speaking');
           this.statusText.textContent = this.lang === 'ar' ? 'ما هي إجابتك؟ اكتبها بالأسفل 👇' : 'What is your answer? Enter below 👇';
           window._activeUtterance = null;
+          this.currentAudio = null;
         };
 
-        utter.onerror = (e) => {
-          console.warn('SpeechSynthesis error:', e);
-          this.isSpeaking = false;
-          this.mascotAvatar.classList.remove('speaking');
-          this.btnReplay.classList.remove('speaking');
-          this.statusText.textContent = 'اضغط على زر الاستماع لإعادة المسألة 🔊';
-          window._activeUtterance = null;
+        const tryWebSpeech = () => {
+          if (!('speechSynthesis' in window)) {
+            fallbackOnlineTTS();
+            return;
+          }
+
+          try {
+            if (window.speechSynthesis.paused) {
+              window.speechSynthesis.resume();
+            }
+            window.speechSynthesis.cancel();
+          } catch (e) {}
+
+          const utter = new SpeechSynthesisUtterance(cleanText);
+          utter.rate = this.speechRate;
+          utter.pitch = 1.25;
+          utter.lang = this.lang === 'ar' ? 'ar-SA' : 'en-US';
+
+          const femaleVoice = this.getBestFemaleVoice(this.lang);
+          if (femaleVoice) {
+            utter.voice = femaleVoice;
+            if (femaleVoice.lang) utter.lang = femaleVoice.lang;
+          }
+
+          let speechStarted = false;
+          let fallbackTimer = null;
+
+          utter.onstart = () => {
+            speechStarted = true;
+            if (fallbackTimer) clearTimeout(fallbackTimer);
+          };
+
+          utter.onend = () => {
+            if (fallbackTimer) clearTimeout(fallbackTimer);
+            onFinished();
+          };
+
+          utter.onerror = (e) => {
+            if (fallbackTimer) clearTimeout(fallbackTimer);
+            console.warn('SpeechSynthesis error, switching to Audio fallback:', e);
+            fallbackOnlineTTS();
+          };
+
+          window._activeUtterance = utter;
+
+          // If browser speech engine doesn't fire onstart within 600ms (e.g. missing Arabic voice pack on Windows),
+          // fallback automatically to pristine natural Audio stream!
+          fallbackTimer = setTimeout(() => {
+            if (!speechStarted) {
+              console.log('SpeechSynthesis timed out. Using online TTS stream.');
+              try { window.speechSynthesis.cancel(); } catch (e) {}
+              fallbackOnlineTTS();
+            }
+          }, 600);
+
+          try {
+            window.speechSynthesis.speak(utter);
+          } catch (e) {
+            if (fallbackTimer) clearTimeout(fallbackTimer);
+            fallbackOnlineTTS();
+          }
         };
 
-        // Small timeout after cancel() prevents Chromium cancel race condition
-        setTimeout(() => {
-          window.speechSynthesis.speak(utter);
-        }, 50);
+        const fallbackOnlineTTS = () => {
+          try {
+            const langCode = this.lang === 'ar' ? 'ar' : 'en';
+            const encoded = encodeURIComponent(cleanText);
+            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${langCode}&client=tw-ob&q=${encoded}`;
+
+            const audio = new Audio(audioUrl);
+            audio.playbackRate = this.speechRate;
+            this.currentAudio = audio;
+
+            audio.onplay = () => {
+              this.isSpeaking = true;
+              this.mascotAvatar.classList.add('speaking');
+              this.btnReplay.classList.add('speaking');
+              this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
+            };
+
+            audio.onended = () => {
+              onFinished();
+            };
+
+            audio.onerror = (err) => {
+              console.warn('Audio fallback error:', err);
+              onFinished();
+              this.statusText.textContent = 'اضغط على زر الاستماع لإعادة المسألة 🔊';
+            };
+
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+              playPromise.catch((err) => {
+                console.warn('Audio play prevented:', err);
+                onFinished();
+                this.statusText.textContent = 'اضغط على زر الاستماع للبدء! 👂';
+              });
+            }
+          } catch (err) {
+            console.error('TTS Audio creation failed:', err);
+            onFinished();
+          }
+        };
+
+        // If on Windows and language is Arabic and no Arabic voice exists, use online natural TTS immediately!
+        const hasArabicVoice = this.lang === 'ar' && this.getBestFemaleVoice('ar') !== null;
+        if (this.lang === 'ar' && !hasArabicVoice) {
+          fallbackOnlineTTS();
+        } else {
+          tryWebSpeech();
+        }
       }
 
       checkAnswer() {
