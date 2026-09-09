@@ -1147,7 +1147,7 @@
         this.syncUIWithState();
         this.attachEventListeners();
         this.setupSpeechSynthesis();
-        this.generateNewQuestion();
+        this.generateNewQuestion(false); // First question loaded visually; audio waits for child to tap 'Listen' or answer
       }
 
       // Load progress from localStorage
@@ -1597,7 +1597,7 @@
       }
 
       // Generate New Question
-      generateNewQuestion() {
+      generateNewQuestion(shouldSpeak = true) {
         let numSteps = this.currentLevel === 4 ? 3 : 2;
         let isTwoDigits = (this.currentLevel === 3 || this.currentLevel === 4);
 
@@ -1726,10 +1726,14 @@
         // Adapt fields dynamically: 1 field if answer < 10, 2 fields if answer >= 10
         this.updateInputFieldsLayout();
 
-        // Speak immediately without "Ready"
-        setTimeout(() => {
-          this.speakQuestion();
-        }, 300);
+        // Speak immediately when requested (not on blocked initial page load)
+        if (shouldSpeak) {
+          setTimeout(() => {
+            this.speakQuestion();
+          }, 300);
+        } else {
+          this.statusText.textContent = this.lang === 'ar' ? 'اضغط على زر الاستماع للبدء! 👂' : 'Click listen to start! 👂';
+        }
       }
 
       updateInputFieldsLayout() {
