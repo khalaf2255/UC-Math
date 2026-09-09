@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عبقري يو سي ماث الصغير 🌟 UC Math Kids</title>
+  <title>UC Math Little Genius 🌟 Mental Math for Kids</title>
   <link rel="shortcut icon" href="" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
@@ -22,8 +22,8 @@
       --purple: #8854d0;
       --card-bg: rgba(255, 255, 255, 0.96);
       --shadow: 0 16px 40px rgba(74, 144, 226, 0.22);
-      --font-main: 'Cairo', system-ui, -apple-system, sans-serif;
-      --font-nums: 'Fredoka', 'Cairo', sans-serif;
+      --font-main: 'Fredoka', 'Quicksand', system-ui, -apple-system, sans-serif;
+      --font-nums: 'Fredoka', sans-serif;
     }
 
     * {
@@ -43,7 +43,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 14px;
+      padding: 16px;
       overflow-x: hidden;
       color: #2d3436;
       position: relative;
@@ -83,36 +83,41 @@
     /* Top Control Bar */
     .top-bar {
       width: 100%;
-      max-width: 580px;
+      max-width: 540px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       z-index: 10;
     }
 
     .stars-badge {
       background: white;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 50px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: #ff9f43;
       display: flex;
       align-items: center;
       gap: 8px;
-      border: 3px solid #ffeaa7;
+      color: #ff9f1a;
+      border: 2px solid #ffeaa7;
     }
 
     .stars-icon {
-      font-size: 1.6rem;
-      animation: pulse 1.8s infinite;
+      animation: spinStars 4s ease-in-out infinite;
       display: inline-block;
+    }
+
+    @keyframes spinStars {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(18deg) scale(1.15); }
     }
 
     .mode-settings {
       display: flex;
+      align-items: center;
       gap: 8px;
     }
 
@@ -120,213 +125,231 @@
       background: white;
       border: none;
       border-radius: 50px;
-      padding: 8px 14px;
-      font-size: 0.95rem;
+      padding: 9px 18px;
+      font-family: var(--font-main);
+      font-size: 1rem;
       font-weight: 700;
-      color: #57606f;
+      color: #2f3542;
       cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: all 0.2s ease;
-      font-family: var(--font-main);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .icon-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      background: #fdfdfd;
+    }
+
+    .icon-btn:active {
+      transform: translateY(1px);
     }
 
     /* Main Game Card */
     .game-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
-      width: 100%;
-      max-width: 580px;
       border-radius: 36px;
-      padding: 24px 22px;
       box-shadow: var(--shadow);
-      border: 6px solid rgba(255, 255, 255, 0.9);
-      position: relative;
-      z-index: 10;
-      text-align: center;
+      border: 5px solid rgba(255, 255, 255, 0.9);
+      width: 100%;
+      max-width: 480px;
+      padding: 24px 20px 28px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      position: relative;
+      z-index: 5;
     }
 
-    /* Mascot & Audio Section */
+    /* Mascot Avatar */
     .mascot-container {
       position: relative;
+      margin-top: -54px;
+      margin-bottom: 8px;
       cursor: pointer;
-      margin-top: 4px;
     }
 
     .mascot-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 105px;
+      height: 105px;
       background: linear-gradient(135deg, #ffd32a 0%, #ff9f1a 100%);
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 24px rgba(255, 159, 26, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 24px rgba(255, 159, 26, 0.35);
-      border: 6px solid #fff;
       position: relative;
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: mascotHover 3.5s ease-in-out infinite;
     }
 
-    .mascot-avatar:hover {
-      transform: scale(1.06);
+    @keyframes mascotHover {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
     }
 
     .mascot-avatar.speaking {
-      animation: speakBounce 0.6s infinite alternate ease-in-out;
-      border-color: #ff6b81;
+      animation: mascotSpeak 0.45s ease-in-out infinite alternate !important;
+      box-shadow: 0 0 0 10px rgba(255, 159, 26, 0.35), 0 12px 28px rgba(255, 159, 26, 0.45);
     }
 
-    @keyframes speakBounce {
-      0% { transform: scale(1) translateY(0); box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.6); }
-      100% { transform: scale(1.1) translateY(-6px); box-shadow: 0 0 0 16px rgba(255, 107, 129, 0); }
+    @keyframes mascotSpeak {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.08) translateY(-4px); }
     }
 
     .mascot-svg {
-      width: 80px;
-      height: 80px;
+      width: 82px;
+      height: 82px;
     }
 
     .headphones-badge {
       position: absolute;
-      bottom: -4px;
+      bottom: 0;
       right: -4px;
       background: #ff4757;
       color: white;
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
 
-    /* Audio Replay Big Button */
+    /* Audio Replay Button */
     .btn-audio-repeat {
-      background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
+      background: linear-gradient(135deg, #4a90e2 0%, #2f75d6 100%);
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 14px 28px;
-      font-size: 1.35rem;
-      font-weight: 800;
+      padding: 10px 24px;
+      font-family: var(--font-main);
+      font-size: 1.15rem;
+      font-weight: 700;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 10px 22px rgba(255, 71, 87, 0.35);
-      transition: all 0.2s ease;
-      font-family: var(--font-main);
-      border-bottom: 5px solid #c0392b;
-    }
-
-    .btn-audio-repeat:active {
-      transform: translateY(3px);
-      border-bottom-width: 2px;
-      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.35);
+      border-bottom: 4px solid #1a56a6;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 10px;
     }
 
     .btn-audio-repeat:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(74, 144, 226, 0.45);
+    }
+
+    .btn-audio-repeat:active {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+
+    .btn-audio-repeat.speaking {
+      background: linear-gradient(135deg, #2ed573 0%, #10ac84 100%);
+      border-bottom-color: #0e8062;
+      animation: pulseBtn 1s infinite alternate;
+    }
+
+    @keyframes pulseBtn {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.04); }
     }
 
     .soundwave {
       display: flex;
       align-items: center;
-      gap: 4px;
-      height: 24px;
+      gap: 3px;
+      height: 18px;
     }
 
     .soundwave span {
-      display: block;
-      width: 4px;
+      width: 3px;
+      height: 100%;
       background: white;
       border-radius: 3px;
-      height: 8px;
+      animation: wave 1s ease-in-out infinite;
     }
 
-    .speaking .soundwave span {
-      animation: wavePulse 0.5s infinite alternate ease-in-out;
+    .soundwave span:nth-child(1) { animation-delay: 0.1s; height: 40%; }
+    .soundwave span:nth-child(2) { animation-delay: 0.3s; height: 80%; }
+    .soundwave span:nth-child(3) { animation-delay: 0.2s; height: 100%; }
+    .soundwave span:nth-child(4) { animation-delay: 0.4s; height: 60%; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
     }
 
-    .speaking .soundwave span:nth-child(2) { animation-delay: 0.15s; }
-    .speaking .soundwave span:nth-child(3) { animation-delay: 0.3s; }
-    .speaking .soundwave span:nth-child(4) { animation-delay: 0.2s; }
-
-    @keyframes wavePulse {
-      0% { height: 6px; }
-      100% { height: 22px; }
-    }
-
+    /* Status Instruction Text */
     .status-text {
       font-size: 1.15rem;
       font-weight: 700;
       color: #57606f;
+      margin-bottom: 12px;
       min-height: 28px;
+      text-align: center;
+      transition: all 0.3s;
     }
 
-    /* Secret Parent Peek (Discreet) */
+    /* Parent Peek */
     .parent-peek {
+      background: #f1f2f6;
+      border: 1px dashed #ced6e0;
+      border-radius: 20px;
+      padding: 4px 12px;
       font-size: 0.85rem;
-      color: #a4b0be;
+      font-weight: 600;
+      color: #747d8c;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 4px;
-      background: none;
-      border: none;
-      font-family: var(--font-main);
-      padding: 4px 10px;
-      border-radius: 12px;
+      gap: 5px;
+      margin-bottom: 8px;
       transition: all 0.2s;
     }
 
     .parent-peek:hover {
-      color: #57606f;
-      background: rgba(0,0,0,0.04);
+      background: #e4e7eb;
+      color: #2f3542;
     }
 
     .peek-content {
+      font-family: var(--font-nums);
       font-size: 1.25rem;
-      font-weight: 800;
+      font-weight: 700;
       color: #2f3542;
-      letter-spacing: 2px;
-      direction: ltr;
-      display: none;
-      background: #f1f2f6;
-      padding: 6px 14px;
+      background: #fff;
+      padding: 2px 10px;
       border-radius: 12px;
+      border: 2px solid #747d8c;
+      display: none;
     }
 
-    /* Dynamic Answer Inputs Wrapper */
+    /* Answer Input Fields */
     .answer-inputs-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      margin-bottom: 16px;
       width: 100%;
     }
 
     .inputs-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 18px;
-      direction: ltr; /* Keeps Tens on left, Units on right for standard 2-digit representation */
-      transition: all 0.3s ease;
+      gap: 16px;
+      direction: ltr; /* Left-to-Right: Tens on Left, Units on Right */
     }
 
     .digit-box {
@@ -334,45 +357,37 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      transition: all 0.3s ease;
     }
 
     .digit-label {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 800;
       color: #747d8c;
     }
 
     .digit-input {
-      width: 95px;
-      height: 110px;
-      border-radius: 24px;
-      background: #f8faff;
-      border: 4px solid #dfe4ea;
-      font-family: var(--font-nums);
-      font-size: 4.2rem;
-      font-weight: 700;
-      text-align: center;
-      color: #2f3542;
+      width: 82px;
+      height: 94px;
+      background: white;
+      border: 4px solid #dcdde1;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: var(--font-nums);
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #2f3542;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.06);
       cursor: pointer;
-      box-shadow: inset 0 4px 10px rgba(0,0,0,0.05), 0 8px 18px rgba(0,0,0,0.06);
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
     }
 
-    .digit-input:hover {
-      border-color: #70a1ff;
-      transform: translateY(-2px);
-    }
-
     .digit-input.active {
-      border-color: #ff4757;
-      background: #fff;
-      box-shadow: 0 0 0 5px rgba(255, 71, 87, 0.22), 0 10px 24px rgba(255, 71, 87, 0.15);
-      transform: scale(1.05);
+      border-color: #4a90e2;
+      box-shadow: 0 0 0 5px rgba(74, 144, 226, 0.25), 0 8px 20px rgba(74, 144, 226, 0.18);
+      transform: translateY(-2px) scale(1.03);
     }
 
     .digit-input.active::after {
@@ -420,7 +435,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Custom Number Keypad (3 Rows from 1 to 9, plus 0 and backspace) */
+    /* Custom Number Keypad */
     .keypad-container {
       width: 100%;
       max-width: 380px;
@@ -465,40 +480,71 @@
       border-color: #c2d1e8;
     }
 
-    .key-btn.key-zero {
-      /* Standard 1-column button placed under 8 */
+    /* Reset button placed in bottom row under 7 */
+    .key-btn.key-reset {
+      background: #eff6ff;
+      border: 3px solid #bfdbfe;
+      color: #1d4ed8;
+      box-shadow: 0 5px 0 #93c5fd, 0 8px 16px rgba(59, 130, 246, 0.12);
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
 
+    .key-btn.key-reset:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+    }
+
+    .key-btn.key-reset:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #93c5fd, 0 3px 8px rgba(59, 130, 246, 0.05);
+    }
+
+    /* Delete button placed under 9 */
     .key-btn.key-del {
       background: #ffecf0;
-      border-color: #ffccd5;
+      border: 3px solid #ffccd5;
       color: #ff4757;
-      box-shadow: 0 5px 0 #fca5a5, 0 8px 16px rgba(255, 71, 87, 0.1);
-      font-size: 1.5rem;
+      box-shadow: 0 5px 0 #fca5a5, 0 8px 16px rgba(255, 71, 87, 0.12);
+      font-size: 1.35rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .key-btn.key-del:hover {
+      background: #ffe3e8;
+      border-color: #fca5a5;
     }
 
     .key-btn.key-del:active {
-      box-shadow: 0 1px 0 #fca5a5;
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #fca5a5, 0 3px 8px rgba(255, 71, 87, 0.05);
     }
 
-    /* Action Buttons */
+    /* Action Buttons Area */
     .actions-area {
       width: 100%;
+      max-width: 380px;
+      margin-top: 18px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 12px;
-      margin-top: 6px;
     }
 
     .btn-action {
       width: 100%;
-      max-width: 380px;
-      padding: 16px 24px;
+      padding: 15px 24px;
       border-radius: 50px;
       border: none;
       font-family: var(--font-main);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
@@ -531,7 +577,12 @@
       box-shadow: 0 10px 24px rgba(46, 213, 115, 0.4);
       border-bottom: 5px solid #0e8062;
       display: none;
-      animation: pulse 1.5s infinite;
+      animation: pulseNext 1.5s infinite;
+    }
+
+    @keyframes pulseNext {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
 
     .btn-retry {
@@ -540,72 +591,97 @@
       box-shadow: 0 10px 24px rgba(238, 82, 83, 0.38);
       border-bottom: 5px solid #b33939;
       display: none;
-      animation: pulse 1.4s infinite;
+      animation: pulseNext 1.4s infinite;
     }
 
-    .btn-reset {
-      background: #f1f2f6;
-      color: #57606f;
-      border: 2px dashed #ced6e0;
-      border-radius: 50px;
-      font-size: 1.15rem;
-      padding: 11px 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      transition: all 0.2s;
-    }
-
-    .btn-reset:hover {
-      background: #e4e7eb;
-      color: #2f3542;
-      border-color: #a4b0be;
-      transform: translateY(-2px);
-    }
-
-    .btn-reset:active {
-      transform: translateY(1px);
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-
-    /* Feedback Banner */
-    .feedback-banner {
-      width: 100%;
-      max-width: 380px;
-      padding: 12px 18px;
-      border-radius: 20px;
-      font-size: 1.25rem;
-      font-weight: 800;
+    /* Auto-Dismissing Feedback Popup Modal */
+    .feedback-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
       display: none;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      animation: slideDown 0.3s ease-out;
+      z-index: 99999;
+      cursor: pointer;
     }
 
-    @keyframes slideDown {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .feedback-popup-overlay.show {
+      display: flex;
     }
 
-    .feedback-banner.success {
-      background: #e8f8f0;
-      color: #10ac84;
-      border: 3px solid #2ed573;
+    .feedback-popup-card {
+      background: white;
+      border-radius: 30px;
+      padding: 30px 24px;
+      width: 90%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transform: scale(0.6);
+      animation: popInBounce 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    .feedback-banner.error {
-      background: #ffebee;
-      color: #ff4757;
-      border: 3px solid #ff4757;
+    @keyframes popInBounce {
+      0% { opacity: 0; transform: scale(0.6); }
+      70% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
-    .feedback-banner.warning {
-      background: #fff8e1;
-      color: #f57c00;
-      border: 3px solid #ffb300;
+    .feedback-popup-icon {
+      font-size: 3.6rem;
+      animation: bounceMascot 1s infinite alternate ease-in-out;
+    }
+
+    @keyframes bounceMascot {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-8px) scale(1.1); }
+    }
+
+    .feedback-popup-text {
+      font-family: var(--font-main);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #2f3542;
+      line-height: 1.35;
+    }
+
+    .feedback-popup-card.success {
+      border: 4px solid #2ed573;
+      background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+    }
+    .feedback-popup-card.success .feedback-popup-text {
+      color: #15803d;
+    }
+
+    .feedback-popup-card.error {
+      border: 4px solid #ff4757;
+      background: linear-gradient(to bottom, #ffffff, #fff1f2);
+    }
+    .feedback-popup-card.error .feedback-popup-text {
+      color: #b91c1c;
+    }
+
+    .feedback-popup-card.warning {
+      border: 4px solid #f59e0b;
+      background: linear-gradient(to bottom, #ffffff, #fffbeb);
+    }
+    .feedback-popup-card.warning .feedback-popup-text {
+      color: #b45309;
+    }
+
+    .feedback-popup-hint {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      font-weight: 600;
     }
 
     /* Settings Modal */
@@ -628,13 +704,13 @@
       border-radius: 28px;
       padding: 24px;
       width: 90%;
-      max-width: 420px;
+      max-width: 440px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      text-align: right;
+      text-align: left;
     }
 
     .modal-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 16px;
       color: #2f3542;
@@ -648,11 +724,11 @@
     }
 
     .setting-label {
-      font-weight: 700;
+      font-size: 1rem;
+      font-weight: 800;
       color: #57606f;
       margin-bottom: 8px;
       display: block;
-      font-size: 1rem;
     }
 
     .level-options {
@@ -662,60 +738,87 @@
     }
 
     .level-btn {
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 2px solid #e4e9f2;
-      background: #f8faff;
+      background: #f1f2f6;
+      border: 2px solid #e4e7eb;
+      border-radius: 16px;
+      padding: 10px 12px;
       font-family: var(--font-main);
+      font-size: 0.95rem;
       font-weight: 700;
+      color: #57606f;
       cursor: pointer;
+      text-align: center;
       transition: all 0.2s;
     }
 
+    .level-btn:hover {
+      background: #e4e7eb;
+    }
+
     .level-btn.active {
-      border-color: #3742fa;
-      background: #3742fa;
-      color: white;
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 800;
     }
 
     .btn-reset-storage {
-      width: 100%;
-      background: #fff0f3;
-      color: #ff4757;
-      border: 2px dashed #ffb8c6;
-      border-radius: 14px;
-      padding: 10px;
+      background: #fff1f2;
+      border: 2px dashed #fda4af;
+      border-radius: 16px;
+      padding: 10px 14px;
       font-family: var(--font-main);
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #e11d48;
       cursor: pointer;
-      margin-top: 6px;
+      width: 100%;
+      text-align: center;
       transition: all 0.2s;
     }
 
     .btn-reset-storage:hover {
-      background: #ffe3e8;
+      background: #ffe4e6;
     }
 
     .btn-close-modal {
-      width: 100%;
-      background: #2ed573;
+      background: linear-gradient(135deg, #4a90e2 0%, #2f75d6 100%);
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 12px;
+      padding: 13px;
+      width: 100%;
       font-family: var(--font-main);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       cursor: pointer;
-      margin-top: 14px;
+      box-shadow: 0 6px 18px rgba(74, 144, 226, 0.35);
+      margin-top: 10px;
     }
 
-    @media (max-height: 720px) {
-      .game-card { padding: 16px 14px; gap: 10px; }
-      .mascot-avatar { width: 90px; height: 90px; }
-      .mascot-svg { width: 60px; height: 60px; }
-      .digit-input { width: 75px; height: 85px; font-size: 3.2rem; }
-      .key-btn { height: 52px; font-size: 1.8rem; }
+    @media (max-width: 440px) {
+      .game-card {
+        padding: 20px 14px 24px 14px;
+        border-radius: 28px;
+      }
+      .digit-input {
+        width: 72px;
+        height: 86px;
+        font-size: 3rem;
+      }
+      .key-btn {
+        height: 58px;
+        font-size: 1.9rem;
+      }
+      .key-btn.key-reset {
+        font-size: 1rem;
+      }
+      .key-btn.key-del {
+        font-size: 1.2rem;
+      }
+      .level-options {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -735,16 +838,12 @@
     <div class="stars-badge">
       <span class="stars-icon">⭐</span>
       <span id="score-counter">0</span>
-      <span style="font-size: 0.95rem; font-weight: 700; color: #a4b0be; margin-right: 4px;">نجوم</span>
+      <span style="font-size: 0.95rem; font-weight: 700; color: #a4b0be; margin-left: 4px;">Stars</span>
     </div>
 
     <div class="mode-settings">
-      <button class="icon-btn" id="btn-lang" title="تبديل لغة الصوت">
-        <span id="lang-flag">🇸🇦</span>
-        <span id="lang-label">عربي</span>
-      </button>
-      <button class="icon-btn" id="btn-settings-open" title="إعدادات الصعوبة والتقدم">
-        ⚙️ إعدادات
+      <button class="icon-btn" id="btn-settings-open" title="Settings & Difficulty">
+        ⚙️ Settings
       </button>
     </div>
   </div>
@@ -753,9 +852,9 @@
   <div class="game-card">
 
     <!-- Mascot & Voice Speaker -->
-    <div class="mascot-container" id="mascot-box" title="اضغط لسماع المسألة">
+    <div class="mascot-container" id="mascot-box" title="Click to hear question">
       <div class="mascot-avatar" id="mascot-avatar">
-        <!-- Playful Cute Star/Bear Character SVG with friendly smile and girl bow -->
+        <!-- Cute Playful Character SVG -->
         <svg class="mascot-svg" viewBox="0 0 100 100">
           <circle cx="50" cy="52" r="38" fill="#ffffff"/>
           <circle cx="28" cy="24" r="14" fill="#ff9f1a"/>
@@ -789,40 +888,40 @@
     <!-- Audio Replay Button -->
     <button class="btn-audio-repeat" id="btn-replay-audio">
       <span style="font-size: 1.6rem;">🔊</span>
-      <span>استمع للمسألة</span>
+      <span>Listen to Problem</span>
       <div class="soundwave">
         <span></span><span></span><span></span><span></span>
       </div>
     </button>
 
-    <div class="status-text" id="status-text">اضغط على زر الاستماع للبدء! 👂</div>
+    <div class="status-text" id="status-text">Click listen to start! 👂</div>
 
     <!-- Discreet Parent Peek for verification -->
     <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
       <button class="parent-peek" id="btn-peek">
-        <span>👁️</span> <span>إظهار المسألة (للوالدين)</span>
+        <span>👁️</span> <span>Show Problem (Parents)</span>
       </button>
       <div class="peek-content" id="peek-content">24 + 13 = ?</div>
     </div>
 
-    <!-- Dynamic Answer Boxes (1 Box if answer < 10, 2 Boxes if answer >= 10) -->
+    <!-- Dynamic Answer Boxes (Tens on Left, Units on Right) -->
     <div class="answer-inputs-wrapper">
       <div class="inputs-container" id="inputs-container">
-        <!-- Tens Box (Left in LTR) -->
+        <!-- Tens Box -->
         <div class="digit-box" id="box-tens">
-          <div class="digit-label" id="label-tens">العشرات</div>
+          <div class="digit-label" id="label-tens">Tens</div>
           <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
         </div>
 
-        <!-- Units Box (Right in LTR) -->
+        <!-- Units Box -->
         <div class="digit-box" id="box-units">
-          <div class="digit-label" id="label-units">الآحاد</div>
+          <div class="digit-label" id="label-units">Units</div>
           <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
         </div>
       </div>
     </div>
 
-    <!-- Custom Number Keypad (3 rows of 1 to 9, plus 0 and backspace) -->
+    <!-- Custom Number Keypad -->
     <div class="keypad-container" id="keypad">
       <!-- Row 1: 1, 2, 3 -->
       <div class="keypad-row">
@@ -842,96 +941,102 @@
         <button class="key-btn" data-key="8">8</button>
         <button class="key-btn" data-key="9">9</button>
       </div>
-      <!-- Bottom Row: 0 under 8 and Clear -->
+      <!-- Bottom Row: Reset on Left under 7, 0 in Middle under 8, Del on Right under 9 -->
       <div class="keypad-row">
-        <div style="visibility: hidden;"></div>
+        <button class="key-btn key-reset" id="btn-key-reset" data-key="reset" title="Reset Problem">
+          <span>Reset</span>
+          <span style="font-size: 1.15rem;">🔄</span>
+        </button>
         <button class="key-btn" data-key="0">0</button>
-        <button class="key-btn key-del" data-key="del" title="مسح">مسح ⌫</button>
+        <button class="key-btn key-del" data-key="del" title="Delete">Del ⌫</button>
       </div>
     </div>
-
-    <!-- Feedback Banner -->
-    <div class="feedback-banner" id="feedback-banner"></div>
 
     <!-- Action Buttons -->
     <div class="actions-area">
       <button class="btn-action btn-check" id="btn-check">
-        <span>تحقق من الإجابة</span>
+        <span>Check Answer</span>
         <span style="font-size: 1.5rem;">✔️</span>
       </button>
 
       <button class="btn-action btn-next" id="btn-next">
-        <span>مسألة جديدة يا بطل!</span>
+        <span>Next Question!</span>
         <span style="font-size: 1.5rem;">🚀</span>
       </button>
 
       <button class="btn-action btn-retry" id="btn-retry">
-        <span>إعادة المسألة مرة ثانية</span>
+        <span>Try Again</span>
         <span style="font-size: 1.5rem;">🔄</span>
-      </button>
-
-      <button class="btn-action btn-reset" id="btn-reset" title="تصفير الحقول وإعادة الاستماع للمسألة">
-        <span>إعادة ضبط المسألة</span>
-        <span style="font-size: 1.3rem;">🔄</span>
       </button>
     </div>
 
   </div>
 
-  <!-- Settings Modal (Difficulty, Voice Speed, LocalStorage Reset) -->
+  <!-- Auto-Dismissing Feedback Popup Modal -->
+  <div class="feedback-popup-overlay" id="feedback-popup-overlay">
+    <div class="feedback-popup-card" id="feedback-popup-card">
+      <div class="feedback-popup-icon" id="feedback-popup-icon">🎉</div>
+      <div class="feedback-popup-text" id="feedback-popup-text"></div>
+      <div class="feedback-popup-hint" id="feedback-popup-hint">(Tap anywhere to close)</div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
   <div class="settings-modal" id="settings-modal">
     <div class="modal-card">
       <div class="modal-title">
-        <span>⚙️ إعدادات التدريب والتقدم</span>
+        <span>⚙️ Training & Settings</span>
         <span id="btn-close-modal-x" style="cursor: pointer; font-size: 1.5rem;">✖️</span>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">مستوى المسائل:</label>
+        <label class="setting-label">Problem Level:</label>
         <div class="level-options">
-          <button class="level-btn" data-level="1">آحاد فقط (1 إلى 9)</button>
-          <button class="level-btn" data-level="2">حتى 20 (بسيط)</button>
-          <button class="level-btn" data-level="3">رقمين حتى 99 (خطوتان)</button>
-          <button class="level-btn" data-level="4">رقمين حتى 99 (3 خطوات)</button>
+          <button class="level-btn" data-level="1">Single Digits (1 to 9)</button>
+          <button class="level-btn" data-level="2">Up to 20 (Simple)</button>
+          <button class="level-btn" data-level="3">2-Digits Up to 99 (2 Steps)</button>
+          <button class="level-btn" data-level="4">2-Digits Up to 99 (3 Steps)</button>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">سرعة نطق الصوت:</label>
+        <label class="setting-label">Voice Speech Speed:</label>
         <div class="level-options">
-          <button class="level-btn" id="speed-slow" data-speed="0.75">بطيء جداً 🐢 (موصى به)</button>
-          <button class="level-btn" id="speed-normal" data-speed="0.95">عادي 🐇</button>
+          <button class="level-btn" id="speed-slow" data-speed="0.75">Very Slow 🐢 (Recommended)</button>
+          <button class="level-btn" id="speed-normal" data-speed="0.95">Normal 🐇</button>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">لهجة نطق الأرقام (بالعربي):</label>
+        <label class="setting-label">Celebration Popup Duration:</label>
         <div class="level-options">
-          <button class="level-btn active" id="dialect-egyptian" data-dialect="egyptian">لهجة قريبة 🇪🇬 (اتناشر، تلاتة)</button>
-          <button class="level-btn" id="dialect-fusha" data-dialect="fusha">فصحى مبسطة 🇸🇦 (اثنا عشر)</button>
+          <button class="level-btn" data-popup="1.5">1.5s ⚡</button>
+          <button class="level-btn active" data-popup="2">2s 👍 (Default)</button>
+          <button class="level-btn" data-popup="3">3s ⏱️</button>
+          <button class="level-btn" data-popup="4">4s 🐢</button>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">زر إظهار المسألة (للوالدين):</label>
+        <label class="setting-label">Parent Peek Button:</label>
         <div class="level-options">
-          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">إظهار الزر 👁️</button>
-          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">إخفاء الزر 🙈</button>
+          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show Button 👁️</button>
+          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide Button 🙈</button>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">إدارة التقدم المحفوظ:</label>
-        <button class="btn-reset-storage" id="btn-reset-storage">🔄 إعادة ضبط النجوم والبدء من الصفر</button>
+        <label class="setting-label">Saved Progress:</label>
+        <button class="btn-reset-storage" id="btn-reset-storage">🔄 Reset Stars & Start Over</button>
       </div>
 
-      <button class="btn-close-modal" id="btn-modal-done">حفظ ومتابعة 👍</button>
+      <button class="btn-close-modal" id="btn-modal-done">Save & Continue 👍</button>
     </div>
   </div>
 
   <script>
     /* ==========================================================================
-       UC MATH KIDS APPLICATION LOGIC
+       UC MATH KIDS APPLICATION LOGIC (100% ENGLISH)
        ========================================================================== */
 
     // Sound Synthesizer via Web Audio API (100% Offline & Pure Sound)
@@ -945,98 +1050,85 @@
           const AudioContext = window.AudioContext || window.webkitAudioContext;
           this.ctx = new AudioContext();
         }
-        if (this.ctx.state === 'suspended') {
+        if (this.ctx && this.ctx.state === 'suspended') {
           this.ctx.resume();
         }
       }
 
-      // Cheerful Button Tap Sound (Pop)
+      // Friendly button tap click
       playTap() {
         this.init();
+        if (!this.ctx) return;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
+
         osc.type = 'sine';
-        const now = this.ctx.currentTime;
-        osc.frequency.setValueAtTime(450, now);
-        osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
-        gain.gain.setValueAtTime(0.3, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+        osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.08);
+
+        gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+
         osc.connect(gain);
         gain.connect(this.ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.08);
+
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
       }
 
-      // Celebratory Birthday / Fanfare Sound on Correct Answer
-      playCorrect() {
+      // Joyful Success Fanfare
+      playFanfare() {
         this.init();
-        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+        if (!this.ctx) return;
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
         notes.forEach((freq, idx) => {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
+
           osc.type = 'triangle';
-          const startTime = this.ctx.currentTime + (idx * 0.11);
-          osc.frequency.setValueAtTime(freq, startTime);
-          gain.gain.setValueAtTime(0, startTime);
-          gain.gain.linearRampToValueAtTime(0.35, startTime + 0.02);
-          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.1);
+
+          gain.gain.setValueAtTime(0.2, this.ctx.currentTime + idx * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + idx * 0.1 + 0.28);
+
           osc.connect(gain);
           gain.connect(this.ctx.destination);
-          osc.start(startTime);
-          osc.stop(startTime + 0.36);
+
+          osc.start(this.ctx.currentTime + idx * 0.1);
+          osc.stop(this.ctx.currentTime + idx * 0.1 + 0.28);
         });
       }
 
-      // Comical Cartoon Sound (Boing / Wah Wobble) on Wrong Answer
+      // Comical Gentle Wrong Boing
       playComicalWrong() {
         this.init();
+        if (!this.ctx) return;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
+
         osc.type = 'sawtooth';
-        const now = this.ctx.currentTime;
-        osc.frequency.setValueAtTime(320, now);
-        osc.frequency.exponentialRampToValueAtTime(110, now + 0.45);
-        gain.gain.setValueAtTime(0.25, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+        osc.frequency.setValueAtTime(280, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + 0.35);
 
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(800, now);
+        gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
 
-        osc.connect(filter);
-        filter.connect(gain);
+        osc.connect(gain);
         gain.connect(this.ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.46);
-      }
 
-      // Twinkle sound for stars
-      playStar() {
-        this.init();
-        const now = this.ctx.currentTime;
-        [880, 1320, 1760].forEach((freq, i) => {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = 'sine';
-          const start = now + (i * 0.08);
-          osc.frequency.setValueAtTime(freq, start);
-          gain.gain.setValueAtTime(0.2, start);
-          gain.gain.exponentialRampToValueAtTime(0.01, start + 0.2);
-          osc.connect(gain);
-          gain.connect(this.ctx.destination);
-          osc.start(start);
-          osc.stop(start + 0.21);
-        });
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.35);
       }
     }
 
-    // Birthday Party Confetti & Particle System
+    // Celebratory Confetti Cannon
     class ConfettiCannon {
       constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.particles = [];
-        this.animId = null;
+        this.animationId = null;
+
         this.resize();
         window.addEventListener('resize', () => this.resize());
       }
@@ -1046,28 +1138,26 @@
         this.canvas.height = window.innerHeight;
       }
 
-      blast() {
-        this.resize();
-        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#9b59b6', '#ffd32a', '#ff6b81', '#00d2d3'];
-        const numParticles = 140;
+      fire() {
+        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#9b59b6', '#ffd32a'];
+        const particleCount = 100;
 
-        for (let i = 0; i < numParticles; i++) {
+        for (let i = 0; i < particleCount; i++) {
           this.particles.push({
-            x: this.canvas.width * 0.5 + (Math.random() * 80 - 40),
-            y: this.canvas.height * 0.5 + (Math.random() * 60 - 30),
-            vx: (Math.random() - 0.5) * 22,
-            vy: (Math.random() - 0.75) * 25,
-            size: Math.random() * 14 + 8,
+            x: this.canvas.width / 2 + (Math.random() - 0.5) * 200,
+            y: this.canvas.height * 0.45,
+            vx: (Math.random() - 0.5) * 16,
+            vy: (Math.random() - 0.8) * 18,
+            size: Math.random() * 9 + 5,
             color: colors[Math.floor(Math.random() * colors.length)],
             rotation: Math.random() * 360,
-            rotSpeed: (Math.random() - 0.5) * 14,
-            shape: Math.random() > 0.4 ? 'rect' : 'circle',
-            alpha: 1,
-            gravity: 0.55
+            vRot: (Math.random() - 0.5) * 12,
+            opacity: 1,
+            gravity: 0.4
           });
         }
 
-        if (!this.animId) {
+        if (!this.animationId) {
           this.animate();
         }
       }
@@ -1080,35 +1170,27 @@
           p.x += p.vx;
           p.y += p.vy;
           p.vy += p.gravity;
-          p.vx *= 0.98;
-          p.rotation += p.rotSpeed;
-          p.alpha -= 0.007;
+          p.rotation += p.vRot;
+          p.opacity -= 0.012;
 
-          if (p.alpha <= 0 || p.y > this.canvas.height + 50) {
+          if (p.opacity <= 0 || p.y > this.canvas.height) {
             this.particles.splice(i, 1);
             continue;
           }
 
           this.ctx.save();
-          this.ctx.globalAlpha = p.alpha;
           this.ctx.translate(p.x, p.y);
           this.ctx.rotate((p.rotation * Math.PI) / 180);
+          this.ctx.globalAlpha = Math.max(0, p.opacity);
           this.ctx.fillStyle = p.color;
-
-          if (p.shape === 'rect') {
-            this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
-          } else {
-            this.ctx.beginPath();
-            this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
-            this.ctx.fill();
-          }
+          this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
           this.ctx.restore();
         }
 
         if (this.particles.length > 0) {
-          this.animId = requestAnimationFrame(() => this.animate());
+          this.animationId = requestAnimationFrame(() => this.animate());
         } else {
-          this.animId = null;
+          this.animationId = null;
           this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         }
       }
@@ -1124,13 +1206,12 @@
         this.score = 0;
         this.currentLevel = 3; // 1: single digits, 2: up to 20, 3: up to 99, 4: up to 99 with 3 steps
         this.speechRate = 0.75; // Slow & friendly
-        this.lang = 'ar'; // 'ar' or 'en'
+        this.popupDuration = 2; // Duration in seconds for feedback popup
         this.activeField = 'tens';
         this.isSpeaking = false;
-        this.showParentPeek = false; // Default: hidden on screen unless enabled in settings
+        this.showParentPeek = false;
         this.isAnswerLocked = false; // Prevents modifying answers after correct solution!
-        this.arabicDialect = 'egyptian'; // 'egyptian' (close dialect) or 'fusha' (simplified standard)
-        this.currentAudio = null; // Active HTML5 Audio instance for fallback speech
+        this._feedbackTimer = null;
 
         // Current Question Model
         this.question = {
@@ -1147,7 +1228,7 @@
         this.syncUIWithState();
         this.attachEventListeners();
         this.setupSpeechSynthesis();
-        this.generateNewQuestion(false); // First question loaded visually; audio waits for child to tap 'Listen' or answer
+        this.generateNewQuestion(false); // First question loaded visually; audio waits for child to tap 'Listen'
       }
 
       // Load progress from localStorage
@@ -1159,9 +1240,8 @@
             if (typeof data.score === 'number') this.score = data.score;
             if (data.currentLevel) this.currentLevel = parseInt(data.currentLevel, 10);
             if (data.speechRate) this.speechRate = parseFloat(data.speechRate);
-            if (data.lang) this.lang = data.lang;
+            if (typeof data.popupDuration === 'number') this.popupDuration = data.popupDuration;
             if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
-            if (data.arabicDialect) this.arabicDialect = data.arabicDialect;
           }
         } catch (e) {
           console.warn('Could not load localStorage:', e);
@@ -1175,9 +1255,8 @@
             score: this.score,
             currentLevel: this.currentLevel,
             speechRate: this.speechRate,
-            lang: this.lang,
-            showParentPeek: this.showParentPeek,
-            arabicDialect: this.arabicDialect
+            popupDuration: this.popupDuration,
+            showParentPeek: this.showParentPeek
           };
           localStorage.setItem('uc_math_kids_progress', JSON.stringify(data));
         } catch (e) {
@@ -1188,6 +1267,7 @@
       initDOMElements() {
         this.scoreCounter = document.getElementById('score-counter');
         this.mascotAvatar = document.getElementById('mascot-avatar');
+        this.mascotBox = document.getElementById('mascot-box');
         this.btnReplay = document.getElementById('btn-replay-audio');
         this.statusText = document.getElementById('status-text');
         this.inputsContainer = document.getElementById('inputs-container');
@@ -1198,34 +1278,32 @@
         this.inputTens = document.getElementById('input-tens');
         this.inputUnits = document.getElementById('input-units');
         this.keypad = document.getElementById('keypad');
+        this.btnKeyReset = document.getElementById('btn-key-reset');
         this.btnCheck = document.getElementById('btn-check');
         this.btnNext = document.getElementById('btn-next');
         this.btnRetry = document.getElementById('btn-retry');
-        this.btnReset = document.getElementById('btn-reset');
-        this.feedbackBanner = document.getElementById('feedback-banner');
+
+        // Feedback Popup Elements
+        this.feedbackOverlay = document.getElementById('feedback-popup-overlay');
+        this.feedbackCard = document.getElementById('feedback-popup-card');
+        this.feedbackIcon = document.getElementById('feedback-popup-icon');
+        this.feedbackText = document.getElementById('feedback-popup-text');
+
+        // Parent Peek
         this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
         this.btnPeek = document.getElementById('btn-peek');
         this.peekContent = document.getElementById('peek-content');
-        this.btnLang = document.getElementById('btn-lang');
-        this.langFlag = document.getElementById('lang-flag');
-        this.langLabel = document.getElementById('lang-label');
-        this.settingsModal = document.getElementById('settings-modal');
+
+        // Settings Modal
         this.btnSettingsOpen = document.getElementById('btn-settings-open');
-        this.btnModalDone = document.getElementById('btn-modal-done');
+        this.settingsModal = document.getElementById('settings-modal');
         this.btnModalCloseX = document.getElementById('btn-close-modal-x');
+        this.btnModalDone = document.getElementById('btn-modal-done');
         this.btnResetStorage = document.getElementById('btn-reset-storage');
       }
 
       syncUIWithState() {
         this.scoreCounter.textContent = this.score;
-
-        if (this.lang === 'ar') {
-          this.langFlag.textContent = '🇸🇦';
-          this.langLabel.textContent = 'عربي';
-        } else {
-          this.langFlag.textContent = '🇬🇧';
-          this.langLabel.textContent = 'English';
-        }
 
         // Active Level in Modal
         document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
@@ -1245,6 +1323,15 @@
           }
         });
 
+        // Active Popup Duration in Modal
+        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
+          if (parseFloat(btn.dataset.popup) === this.popupDuration) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
         // Parent Peek Toggle
         if (this.parentPeekWrapper) {
           this.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
@@ -1257,25 +1344,16 @@
             btn.classList.remove('active');
           }
         });
-
-        // Arabic Dialect Toggle in Modal
-        document.querySelectorAll('.level-btn[data-dialect]').forEach(btn => {
-          if (btn.dataset.dialect === this.arabicDialect) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
       }
 
       attachEventListeners() {
-        // Audio Replay Button & Mascot
+        // Replay Question Audio
         this.btnReplay.addEventListener('click', () => {
           this.sound.playTap();
           this.speakQuestion();
         });
 
-        this.mascotAvatar.addEventListener('click', () => {
+        this.mascotBox.addEventListener('click', () => {
           this.sound.playTap();
           this.speakQuestion();
         });
@@ -1328,28 +1406,11 @@
           this.retryQuestion();
         });
 
-        // Reset Question Button
-        if (this.btnReset) {
-          this.btnReset.addEventListener('click', () => {
-            this.sound.playTap();
-            this.retryQuestion();
-          });
-        }
-
         // Peek Question (Toggle for parents)
         this.btnPeek.addEventListener('click', () => {
           this.sound.playTap();
           const isVisible = this.peekContent.style.display === 'block';
           this.peekContent.style.display = isVisible ? 'none' : 'block';
-        });
-
-        // Language toggle
-        this.btnLang.addEventListener('click', () => {
-          this.sound.playTap();
-          this.lang = this.lang === 'ar' ? 'en' : 'ar';
-          this.saveProgress();
-          this.syncUIWithState();
-          this.speakQuestion();
         });
 
         // Settings Modal
@@ -1370,11 +1431,11 @@
         // Reset progress in LocalStorage
         this.btnResetStorage.addEventListener('click', () => {
           this.sound.playTap();
-          if (confirm('هل تريد تصفير عدد النجوم والبدء من الصفر؟')) {
+          if (confirm('Do you want to reset your stars to 0 and start over?')) {
             this.score = 0;
             this.saveProgress();
             this.syncUIWithState();
-            this.showFeedback('warning', 'تم إعادة تصفير النجوم بنجاح! 🌟');
+            this.showFeedback('warning', 'Stars have been reset to 0! ⭐');
           }
         });
 
@@ -1400,6 +1461,17 @@
           });
         });
 
+        // Popup Duration selection in modal
+        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-popup]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.popupDuration = parseFloat(btn.dataset.popup);
+            this.saveProgress();
+          });
+        });
+
         // Parent peek toggle in modal
         document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
           btn.addEventListener('click', () => {
@@ -1414,38 +1486,18 @@
           });
         });
 
-        // Dialect toggle in modal
-        document.querySelectorAll('.level-btn[data-dialect]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            this.sound.playTap();
-            document.querySelectorAll('.level-btn[data-dialect]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.arabicDialect = btn.dataset.dialect;
-            this.saveProgress();
-            this.speakQuestion();
-          });
+        // Feedback Popup click to dismiss immediately
+        this.feedbackOverlay.addEventListener('click', () => {
+          this.hideFeedback();
         });
       }
 
-      setActiveField(field, force = false) {
+      setActiveField(field, playSound = false) {
         if (this.isAnswerLocked) return;
-
-        // In 2-digit mode: cannot move to second field (units) unless first field (tens) has a digit!
-        if (field === 'units' && !this.question.isSingleDigit && !force) {
-          if (this.inputTens.textContent.trim() === '_') {
-            this.inputTens.classList.add('shake-error');
-            setTimeout(() => this.inputTens.classList.remove('shake-error'), 400);
-            this.showFeedback('warning', 'اكتب الرقم الأول أولاً يا بطل! ✍️');
-            this.activeField = 'tens';
-            this.inputTens.classList.add('active');
-            this.inputUnits.classList.remove('active');
-            return;
-          }
-        }
-
-        this.sound.playTap();
         this.activeField = field;
-        if (field === 'tens' && !this.question.isSingleDigit) {
+        if (playSound) this.sound.playTap();
+
+        if (field === 'tens') {
           this.inputTens.classList.add('active');
           this.inputUnits.classList.remove('active');
         } else {
@@ -1457,6 +1509,11 @@
       handleKeyInput(key) {
         if (this.isAnswerLocked) return;
         this.sound.playTap();
+
+        if (key === 'reset') {
+          this.retryQuestion();
+          return;
+        }
 
         if (key === 'del') {
           if (this.question.isSingleDigit) {
@@ -1487,7 +1544,7 @@
         // Two digits problem:
         if (this.activeField === 'tens') {
           this.inputTens.textContent = key;
-          // Automatically advance to second field!
+          // Automatically advance to units field!
           this.setActiveField('units', true);
         } else {
           this.inputUnits.textContent = key;
@@ -1496,107 +1553,30 @@
 
       setupSpeechSynthesis() {
         if ('speechSynthesis' in window) {
-          window.speechSynthesis.onvoiceschanged = () => {
+          const updateVoices = () => {
             this.voices = window.speechSynthesis.getVoices();
           };
-          this.voices = window.speechSynthesis.getVoices();
+          updateVoices();
+          if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = updateVoices;
+          }
         }
       }
 
-      // Convert numbers (0-99) to natural Arabic words
-      arabicNumberToWords(num, dialect = 'egyptian') {
-        const ones = [
-          'صفر', 'واحد', 'اتنين', 'تلاتة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'تمانية', 'تسعة'
-        ];
-        const teens = [
-          'عشرة', 'حداشر', 'اتناشر', 'تلاتاشر', 'أربعتاشر', 'خمستاشر', 'ستاشر', 'سبعتاشر', 'تمنتاشر', 'تسعتاشر'
-        ];
-        const tens = [
-          '', '', 'عشرين', 'تلاتين', 'أربعين', 'خمسين', 'ستين', 'سبعين', 'تمانين', 'تسعين'
-        ];
-
-        const onesFusha = [
-          'صفر', 'واحد', 'اثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'ثمانية', 'تسعة'
-        ];
-        const teensFusha = [
-          'عشرة', 'أحد عشر', 'اثنا عشر', 'ثلاثة عشر', 'أربعة عشر', 'خمسة عشر', 'ستة عشر', 'سبعة عشر', 'ثمانية عشر', 'تسعة عشر'
-        ];
-        const tensFusha = [
-          '', '', 'عشرون', 'ثلاثون', 'أربعون', 'خمسون', 'ستون', 'سبعون', 'ثمانون', 'تسعون'
-        ];
-
-        const useOnes = dialect === 'egyptian' ? ones : onesFusha;
-        const useTeens = dialect === 'egyptian' ? teens : teensFusha;
-        const useTens = dialect === 'egyptian' ? tens : tensFusha;
-
-        if (num < 10) return useOnes[num];
-        if (num >= 10 && num < 20) return useTeens[num - 10];
-
-        const unit = num % 10;
-        const ten = Math.floor(num / 10);
-
-        if (unit === 0) return useTens[ten];
-        return `${useOnes[unit]} و${useTens[ten]}`;
-      }
-
-      // Best Female Voice Selector
-      getBestFemaleVoice(lang) {
+      // Best Female English Voice Selector
+      getBestFemaleVoice() {
         if (!this.voices || this.voices.length === 0) {
-          this.voices = window.speechSynthesis.getVoices();
+          this.voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
         }
         if (!this.voices || this.voices.length === 0) return null;
 
-        if (lang === 'ar') {
-          // Strictly Arabic voices:
-          const arabicVoices = this.voices.filter(v => {
-            const l = (v.lang || '').toLowerCase();
-            const n = (v.name || '').toLowerCase();
-            return l.startsWith('ar') || l.includes('arabic') || n.includes('arabic') || n.includes('salma') || n.includes('zari') || n.includes('hoda') || n.includes('عربي');
-          });
-
-          if (arabicVoices.length > 0) {
-            // 1. Salma (Egyptian Arabic Natural female)
-            let match = arabicVoices.find(v => v.name.toLowerCase().includes('salma'));
-            if (match) return match;
-
-            // 2. Zari (Saudi Arabic Natural female)
-            match = arabicVoices.find(v => v.name.toLowerCase().includes('zari'));
-            if (match) return match;
-
-            // 3. Egyptian regional voice
-            match = arabicVoices.find(v => (v.lang || '').toLowerCase().includes('eg'));
-            if (match) return match;
-
-            // 4. Any female named voice
-            const femaleKeywords = ['hoda', 'mariam', 'fatima', 'sana', 'zeina', 'laila', 'layla', 'nour', 'yasmin', 'female'];
-            match = arabicVoices.find(v => femaleKeywords.some(k => v.name.toLowerCase().includes(k)));
-            if (match) return match;
-
-            // 5. Google Arabic
-            match = arabicVoices.find(v => v.name.includes('Google') || v.name.includes('العربية'));
-            if (match) return match;
-
-            // 6. Any non-male Arabic voice
-            const maleKeywords = ['shakir', 'naayf', 'hamed', 'tariq', 'male', 'maged', 'tarik'];
-            match = arabicVoices.find(v => !maleKeywords.some(k => v.name.toLowerCase().includes(k)));
-            if (match) return match;
-
-            return arabicVoices[0];
-          }
-
-          // If no specific Arabic voice pack is installed on Windows/Chrome,
-          // return null so the browser synthesizes using its default system voice with ar-SA tag
-          return null;
-        }
-
-        // English voice selection
-        const enVoices = this.voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
-        const femaleKeywords = ['zira', 'jenny', 'samantha', 'victoria', 'karen', 'female'];
+        const enVoices = this.voices.filter(v => (v.lang || '').toLowerCase().startsWith('en'));
+        const femaleKeywords = ['zira', 'jenny', 'samantha', 'victoria', 'karen', 'female', 'natural'];
         let match = enVoices.find(v => femaleKeywords.some(k => v.name.toLowerCase().includes(k)));
-        return match || enVoices[0] || this.voices[0];
+        return match || enVoices[0] || this.voices[0] || null;
       }
 
-      // Generate New Question
+      // Generate New Question (Strict UC Math rules)
       generateNewQuestion(shouldSpeak = true) {
         let numSteps = this.currentLevel === 4 ? 3 : 2;
         let isTwoDigits = (this.currentLevel === 3 || this.currentLevel === 4);
@@ -1726,13 +1706,13 @@
         // Adapt fields dynamically: 1 field if answer < 10, 2 fields if answer >= 10
         this.updateInputFieldsLayout();
 
-        // Speak immediately when requested (not on blocked initial page load)
+        // Speak immediately when requested
         if (shouldSpeak) {
           setTimeout(() => {
             this.speakQuestion();
-          }, 300);
+          }, 200);
         } else {
-          this.statusText.textContent = this.lang === 'ar' ? 'اضغط على زر الاستماع للبدء! 👂' : 'Click listen to start! 👂';
+          this.statusText.textContent = 'Click listen to start! 👂';
         }
       }
 
@@ -1742,26 +1722,19 @@
         if (this.question.isSingleDigit) {
           // Single field only!
           this.boxTens.style.display = 'none';
-          this.labelUnits.textContent = 'الإجابة';
+          this.labelUnits.textContent = 'Answer';
           this.setActiveField('units');
         } else {
-          // Two fields: Tens and Units
+          // Two fields: Tens on Left, Units on Right
           this.boxTens.style.display = 'flex';
-          this.labelUnits.textContent = 'الآحاد';
-          this.labelTens.textContent = 'العشرات';
+          this.labelTens.textContent = 'Tens';
+          this.labelUnits.textContent = 'Units';
           this.setActiveField('tens');
         }
       }
 
-      // Stop any currently playing speech (both Web Speech and HTML5 Audio)
+      // Stop any currently playing speech
       stopAllSpeech() {
-        if (this.currentAudio) {
-          try {
-            this.currentAudio.pause();
-            this.currentAudio.currentTime = 0;
-          } catch (e) {}
-          this.currentAudio = null;
-        }
         if ('speechSynthesis' in window) {
           try {
             window.speechSynthesis.cancel();
@@ -1772,33 +1745,20 @@
         this.btnReplay.classList.remove('speaking');
       }
 
-      // Audio Speech without "Ready" / "جاهز", direct problem dictation in sweet female voice
+      // Clear, friendly English Speech Synthesis
       speakQuestion() {
         this.stopAllSpeech();
 
-        // 1. Prepare Text in Words
+        // 1. Prepare English Text
         let textToSpeak = '';
-        if (this.lang === 'ar') {
-          // Natural Arabic words with comma pause
-          this.question.steps.forEach((step, idx) => {
-            const word = this.arabicNumberToWords(step.val, this.arabicDialect);
-            if (idx === 0) {
-              textToSpeak += `${word} ، `;
-            } else {
-              const opWord = step.op === '+' ? 'زائد' : 'ناقص';
-              textToSpeak += `${opWord} ${word} ، `;
-            }
-          });
-        } else {
-          this.question.steps.forEach((step, idx) => {
-            if (idx === 0) {
-              textToSpeak += `${step.val} , `;
-            } else {
-              const opWord = step.op === '+' ? 'plus' : 'minus';
-              textToSpeak += `${opWord} ${step.val} , `;
-            }
-          });
-        }
+        this.question.steps.forEach((step, idx) => {
+          if (idx === 0) {
+            textToSpeak += `${step.val} , `;
+          } else {
+            const opWord = step.op === '+' ? 'plus' : 'minus';
+            textToSpeak += `${opWord} ${step.val} , `;
+          }
+        });
 
         const cleanText = textToSpeak.trim();
 
@@ -1806,127 +1766,65 @@
         this.isSpeaking = true;
         this.mascotAvatar.classList.add('speaking');
         this.btnReplay.classList.add('speaking');
-        this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
+        this.statusText.textContent = 'Listen carefully... 🎧';
 
         const onFinished = () => {
           this.isSpeaking = false;
           this.mascotAvatar.classList.remove('speaking');
           this.btnReplay.classList.remove('speaking');
-          this.statusText.textContent = this.lang === 'ar' ? 'ما هي إجابتك؟ اكتبها بالأسفل 👇' : 'What is your answer? Enter below 👇';
+          this.statusText.textContent = 'What is your answer? Enter below 👇';
           window._activeUtterance = null;
-          this.currentAudio = null;
         };
 
-        const tryWebSpeech = () => {
-          if (!('speechSynthesis' in window)) {
-            fallbackOnlineTTS();
-            return;
+        if (!('speechSynthesis' in window)) {
+          console.warn('SpeechSynthesis is not supported in this browser.');
+          onFinished();
+          return;
+        }
+
+        try {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
           }
+          window.speechSynthesis.cancel();
+        } catch (e) {}
 
-          try {
-            if (window.speechSynthesis.paused) {
-              window.speechSynthesis.resume();
-            }
-            window.speechSynthesis.cancel();
-          } catch (e) {}
+        const utter = new SpeechSynthesisUtterance(cleanText);
+        utter.rate = this.speechRate || 0.75;
+        utter.pitch = 1.15;
+        utter.lang = 'en-US';
 
-          const utter = new SpeechSynthesisUtterance(cleanText);
-          utter.rate = this.speechRate;
-          utter.pitch = 1.25;
-          utter.lang = this.lang === 'ar' ? 'ar-SA' : 'en-US';
+        const voice = this.getBestFemaleVoice();
+        if (voice) {
+          utter.voice = voice;
+          if (voice.lang) utter.lang = voice.lang;
+        }
 
-          const femaleVoice = this.getBestFemaleVoice(this.lang);
-          if (femaleVoice) {
-            utter.voice = femaleVoice;
-            if (femaleVoice.lang) utter.lang = femaleVoice.lang;
-          }
+        utter.onstart = () => {
+          this.isSpeaking = true;
+          this.mascotAvatar.classList.add('speaking');
+          this.btnReplay.classList.add('speaking');
+        };
 
-          let speechStarted = false;
-          let fallbackTimer = null;
+        utter.onend = () => {
+          onFinished();
+        };
 
-          utter.onstart = () => {
-            speechStarted = true;
-            if (fallbackTimer) clearTimeout(fallbackTimer);
-          };
-
-          utter.onend = () => {
-            if (fallbackTimer) clearTimeout(fallbackTimer);
-            onFinished();
-          };
-
-          utter.onerror = (e) => {
-            if (fallbackTimer) clearTimeout(fallbackTimer);
-            console.warn('SpeechSynthesis error, switching to Audio fallback:', e);
-            fallbackOnlineTTS();
-          };
-
-          window._activeUtterance = utter;
-
-          // If browser speech engine doesn't fire onstart within 600ms (e.g. missing Arabic voice pack on Windows),
-          // fallback automatically to pristine natural Audio stream!
-          fallbackTimer = setTimeout(() => {
-            if (!speechStarted) {
-              console.log('SpeechSynthesis timed out. Using online TTS stream.');
-              try { window.speechSynthesis.cancel(); } catch (e) {}
-              fallbackOnlineTTS();
-            }
-          }, 600);
-
-          try {
-            window.speechSynthesis.speak(utter);
-          } catch (e) {
-            if (fallbackTimer) clearTimeout(fallbackTimer);
-            fallbackOnlineTTS();
+        utter.onerror = (e) => {
+          console.warn('Speech error:', e);
+          onFinished();
+          if (e.error === 'not-allowed') {
+            this.statusText.textContent = 'Click Listen 🔊 to start!';
           }
         };
 
-        const fallbackOnlineTTS = () => {
-          try {
-            const langCode = this.lang === 'ar' ? 'ar' : 'en';
-            const encoded = encodeURIComponent(cleanText);
-            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${langCode}&client=tw-ob&q=${encoded}`;
+        window._activeUtterance = utter;
 
-            const audio = new Audio(audioUrl);
-            audio.playbackRate = this.speechRate;
-            this.currentAudio = audio;
-
-            audio.onplay = () => {
-              this.isSpeaking = true;
-              this.mascotAvatar.classList.add('speaking');
-              this.btnReplay.classList.add('speaking');
-              this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
-            };
-
-            audio.onended = () => {
-              onFinished();
-            };
-
-            audio.onerror = (err) => {
-              console.warn('Audio fallback error:', err);
-              onFinished();
-              this.statusText.textContent = 'اضغط على زر الاستماع لإعادة المسألة 🔊';
-            };
-
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-              playPromise.catch((err) => {
-                console.warn('Audio play prevented:', err);
-                onFinished();
-                this.statusText.textContent = 'اضغط على زر الاستماع للبدء! 👂';
-              });
-            }
-          } catch (err) {
-            console.error('TTS Audio creation failed:', err);
-            onFinished();
-          }
-        };
-
-        // If on Windows and language is Arabic and no Arabic voice exists, use online natural TTS immediately!
-        const hasArabicVoice = this.lang === 'ar' && this.getBestFemaleVoice('ar') !== null;
-        if (this.lang === 'ar' && !hasArabicVoice) {
-          fallbackOnlineTTS();
-        } else {
-          tryWebSpeech();
+        try {
+          window.speechSynthesis.speak(utter);
+        } catch (e) {
+          console.error('Speech speak failed:', e);
+          onFinished();
         }
       }
 
@@ -1936,7 +1834,7 @@
         if (this.question.isSingleDigit) {
           const uVal = this.inputUnits.textContent.trim();
           if (uVal === '_') {
-            this.showFeedback('warning', 'اكتب إجابتك أولاً يا بطل! ✍️');
+            this.showFeedback('warning', 'Please enter your answer first! ✍️');
             return;
           }
           userVal = parseInt(uVal, 10);
@@ -1944,14 +1842,11 @@
           const tVal = this.inputTens.textContent.trim();
           const uVal = this.inputUnits.textContent.trim();
 
-          if (tVal === '_' && uVal === '_') {
-            this.showFeedback('warning', 'اكتب إجابتك أولاً يا بطل! ✍️');
+          if (tVal === '_' || uVal === '_') {
+            this.showFeedback('warning', 'Please enter both digits! ✍️');
             return;
           }
-
-          const tensDigit = tVal === '_' ? '0' : tVal;
-          const unitsDigit = uVal === '_' ? '0' : uVal;
-          userVal = parseInt(tensDigit + unitsDigit, 10);
+          userVal = parseInt(tVal, 10) * 10 + parseInt(uVal, 10);
         }
 
         if (userVal === this.question.correctAnswer) {
@@ -1962,28 +1857,25 @@
       }
 
       handleCorrect() {
-        this.sound.playCorrect();
-        this.sound.playStar();
-        this.confetti.blast();
-
-        this.score += 1;
-        this.scoreCounter.textContent = this.score;
-        this.saveProgress(); // Persist score in localStorage!
-        // Lock inputs so they cannot be modified after correct answer!
         this.isAnswerLocked = true;
-        this.inputTens.classList.remove('active');
-        this.inputUnits.classList.remove('active');
         if (this.inputsContainer) {
           this.inputsContainer.style.pointerEvents = 'none';
         }
+
+        this.sound.playFanfare();
+        this.confetti.fire();
+
+        this.score += 1;
+        this.scoreCounter.textContent = this.score;
+        this.saveProgress();
 
         this.inputUnits.classList.add('success-pop');
         if (!this.question.isSingleDigit) {
           this.inputTens.classList.add('success-pop');
         }
 
-        this.showFeedback('success', '🎉 عبقري! إجابة صحيحة وممتازة! 🌟');
-        this.statusText.textContent = 'ممتاز جداً! أنت بطل الحساب الذهني 🏆';
+        this.showFeedback('success', 'Genius! Correct & Excellent! 🌟');
+        this.statusText.textContent = 'Awesome! You are a Math Champion 🏆';
 
         this.btnCheck.style.display = 'none';
         this.btnRetry.style.display = 'none';
@@ -2003,8 +1895,8 @@
           this.inputTens.classList.remove('shake-error');
         }, 600);
 
-        this.showFeedback('error', '😉 أوبس! ليست صحيحة.. جرب مرة ثانية يا شاطر!');
-        this.statusText.textContent = 'لا بأس، اضغط زر إعادة المسألة وحاول ثانية 💪';
+        this.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+        this.statusText.textContent = 'No worries, tap Try Again and solve it 💪';
 
         this.btnCheck.style.display = 'none';
         this.btnRetry.style.display = 'flex';
@@ -2033,17 +1925,40 @@
         this.inputUnits.textContent = '_';
         this.inputTens.classList.remove('shake-error', 'success-pop');
         this.inputUnits.classList.remove('shake-error', 'success-pop');
-        this.feedbackBanner.style.display = 'none';
+        this.hideFeedback();
 
         this.btnCheck.style.display = 'flex';
         this.btnNext.style.display = 'none';
         this.btnRetry.style.display = 'none';
       }
 
+      // Auto-Dismissing Popup Modal
       showFeedback(type, message) {
-        this.feedbackBanner.className = `feedback-banner ${type}`;
-        this.feedbackBanner.textContent = message;
-        this.feedbackBanner.style.display = 'flex';
+        if (this._feedbackTimer) {
+          clearTimeout(this._feedbackTimer);
+          this._feedbackTimer = null;
+        }
+
+        this.feedbackCard.className = `feedback-popup-card ${type}`;
+        this.feedbackIcon.textContent = type === 'success' ? '🎉' : type === 'error' ? '💡' : '⭐';
+        this.feedbackText.textContent = message;
+        this.feedbackOverlay.classList.add('show');
+
+        // Auto-dismiss after user-configured duration
+        const durationMs = (this.popupDuration || 2) * 1000;
+        this._feedbackTimer = setTimeout(() => {
+          this.hideFeedback();
+        }, durationMs);
+      }
+
+      hideFeedback() {
+        if (this._feedbackTimer) {
+          clearTimeout(this._feedbackTimer);
+          this._feedbackTimer = null;
+        }
+        if (this.feedbackOverlay) {
+          this.feedbackOverlay.classList.remove('show');
+        }
       }
     }
 
