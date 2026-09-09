@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عبقري يو سي ماث الصغير 🌟 UC Math Kids</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      --primary: #4a90e2;
+      --primary-dark: #2c6cb0;
+      --accent: #ff6b81;
+      --accent-hover: #ff4757;
+      --yellow: #feca57;
+      --green: #2ed573;
+      --green-dark: #26af5f;
+      --red: #ff4757;
+      --purple: #8854d0;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --shadow: 0 16px 40px rgba(74, 144, 226, 0.22);
+      --font-main: 'Cairo', system-ui, -apple-system, sans-serif;
+      --font-nums: 'Fredoka', 'Cairo', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      overflow-x: hidden;
+      color: #2d3436;
+      position: relative;
+    }
+
+    /* Floating Canvas for Confetti & Celebrations */
+    #celebration-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Background Playful Bubbles */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      animation: floatBubble 12s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bubble:nth-child(1) { width: 110px; height: 110px; left: 8%; top: 12%; animation-duration: 14s; }
+    .bubble:nth-child(2) { width: 70px; height: 70px; right: 10%; top: 22%; animation-duration: 10s; }
+    .bubble:nth-child(3) { width: 90px; height: 90px; left: 18%; bottom: 15%; animation-duration: 16s; }
+    .bubble:nth-child(4) { width: 130px; height: 130px; right: 14%; bottom: 10%; animation-duration: 13s; }
+
+    @keyframes floatBubble {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-28px) scale(1.08); }
+    }
+
+    /* Top Control Bar */
+    .top-bar {
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      z-index: 10;
+    }
+
+    .stars-badge {
+      background: white;
+      padding: 8px 18px;
+      border-radius: 50px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ff9f43;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 3px solid #ffeaa7;
+    }
+
+    .stars-icon {
+      font-size: 1.6rem;
+      animation: pulse 1.8s infinite;
+      display: inline-block;
+    }
+
+    .mode-settings {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      background: white;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #57606f;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    /* Main Game Card */
+    .game-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 580px;
+      border-radius: 36px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow);
+      border: 6px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Mascot & Audio Section */
+    .mascot-container {
+      position: relative;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .mascot-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd32a 0%, #ff9f1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(255, 159, 26, 0.35);
+      border: 6px solid #fff;
+      position: relative;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .mascot-avatar:hover {
+      transform: scale(1.06);
+    }
+
+    .mascot-avatar.speaking {
+      animation: speakBounce 0.6s infinite alternate ease-in-out;
+      border-color: #ff6b81;
+    }
+
+    @keyframes speakBounce {
+      0% { transform: scale(1) translateY(0); box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.6); }
+      100% { transform: scale(1.1) translateY(-6px); box-shadow: 0 0 0 16px rgba(255, 107, 129, 0); }
+    }
+
+    .mascot-svg {
+      width: 80px;
+      height: 80px;
+    }
+
+    .headphones-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      background: #ff4757;
+      color: white;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Audio Replay Big Button */
+    .btn-audio-repeat {
+      background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 22px rgba(255, 71, 87, 0.35);
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+      border-bottom: 5px solid #c0392b;
+    }
+
+    .btn-audio-repeat:active {
+      transform: translateY(3px);
+      border-bottom-width: 2px;
+      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+    }
+
+    .btn-audio-repeat:hover {
+      transform: translateY(-2px);
+    }
+
+    .soundwave {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 24px;
+    }
+
+    .soundwave span {
+      display: block;
+      width: 4px;
+      background: white;
+      border-radius: 3px;
+      height: 8px;
+    }
+
+    .speaking .soundwave span {
+      animation: wavePulse 0.5s infinite alternate ease-in-out;
+    }
+
+    .speaking .soundwave span:nth-child(2) { animation-delay: 0.15s; }
+    .speaking .soundwave span:nth-child(3) { animation-delay: 0.3s; }
+    .speaking .soundwave span:nth-child(4) { animation-delay: 0.2s; }
+
+    @keyframes wavePulse {
+      0% { height: 6px; }
+      100% { height: 22px; }
+    }
+
+    .status-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #57606f;
+      min-height: 28px;
+    }
+
+    /* Secret Parent Peek (Discreet) */
+    .parent-peek {
+      font-size: 0.85rem;
+      color: #a4b0be;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      font-family: var(--font-main);
+      padding: 4px 10px;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .parent-peek:hover {
+      color: #57606f;
+      background: rgba(0,0,0,0.04);
+    }
+
+    .peek-content {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #2f3542;
+      letter-spacing: 2px;
+      direction: ltr;
+      display: none;
+      background: #f1f2f6;
+      padding: 6px 14px;
+      border-radius: 12px;
+    }
+
+    /* Dynamic Answer Inputs Wrapper */
+    .answer-inputs-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .inputs-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      direction: ltr; /* Keeps Tens on left, Units on right for standard 2-digit representation */
+      transition: all 0.3s ease;
+    }
+
+    .digit-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .digit-label {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #747d8c;
+    }
+
+    .digit-input {
+      width: 95px;
+      height: 110px;
+      border-radius: 24px;
+      background: #f8faff;
+      border: 4px solid #dfe4ea;
+      font-family: var(--font-nums);
+      font-size: 4.2rem;
+      font-weight: 700;
+      text-align: center;
+      color: #2f3542;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.05), 0 8px 18px rgba(0,0,0,0.06);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .digit-input:hover {
+      border-color: #70a1ff;
+      transform: translateY(-2px);
+    }
+
+    .digit-input.active {
+      border-color: #ff4757;
+      background: #fff;
+      box-shadow: 0 0 0 5px rgba(255, 71, 87, 0.22), 0 10px 24px rgba(255, 71, 87, 0.15);
+      transform: scale(1.05);
+    }
+
+    .digit-input.active::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      width: 32px;
+      height: 4px;
+      background: #ff4757;
+      border-radius: 2px;
+      animation: blinkCursor 0.8s infinite alternate;
+    }
+
+    @keyframes blinkCursor {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Wrong Shake Animation */
+    .shake-error {
+      animation: shakeAnim 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      border-color: #ff4757 !important;
+      background-color: #ffebee !important;
+      box-shadow: 0 0 0 6px rgba(255, 71, 87, 0.35) !important;
+    }
+
+    @keyframes shakeAnim {
+      10%, 90% { transform: translate3d(-3px, 0, 0); }
+      20%, 80% { transform: translate3d(5px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+      40%, 60% { transform: translate3d(6px, 0, 0); }
+    }
+
+    /* Success Pop Animation */
+    .success-pop {
+      animation: popWin 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+      border-color: #2ed573 !important;
+      background-color: #e8f8f0 !important;
+      box-shadow: 0 0 0 6px rgba(46, 213, 115, 0.35) !important;
+    }
+
+    @keyframes popWin {
+      0% { transform: scale(0.9); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    /* Custom Number Keypad (3 Rows from 1 to 9, plus 0 and backspace) */
+    .keypad-container {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .keypad-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .key-btn {
+      background: white;
+      border: 3px solid #e4e9f2;
+      border-radius: 20px;
+      height: 64px;
+      font-family: var(--font-nums);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2f3542;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 0 #cbd5e1, 0 8px 16px rgba(0,0,0,0.06);
+      transition: all 0.1s ease;
+    }
+
+    .key-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #cbd5e1, 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .key-btn:hover {
+      background: #f8faff;
+      border-color: #c2d1e8;
+    }
+
+    .key-btn.key-zero {
+      /* Standard 1-column button placed under 8 */
+    }
+
+    .key-btn.key-del {
+      background: #ffecf0;
+      border-color: #ffccd5;
+      color: #ff4757;
+      box-shadow: 0 5px 0 #fca5a5, 0 8px 16px rgba(255, 71, 87, 0.1);
+      font-size: 1.5rem;
+    }
+
+    .key-btn.key-del:active {
+      box-shadow: 0 1px 0 #fca5a5;
+    }
+
+    /* Action Buttons */
+    .actions-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn-action {
+      width: 100%;
+      max-width: 380px;
+      padding: 16px 24px;
+      border-radius: 50px;
+      border: none;
+      font-family: var(--font-main);
+      font-size: 1.45rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-check {
+      background: linear-gradient(135deg, #ff9f43 0%, #ff5252 100%);
+      color: white;
+      box-shadow: 0 10px 24px rgba(255, 82, 82, 0.35);
+      border-bottom: 5px solid #d63031;
+    }
+
+    .btn-check:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(255, 82, 82, 0.42);
+    }
+
+    .btn-check:active {
+      transform: translateY(3px);
+      border-bottom-width: 2px;
+    }
+
+    .btn-next {
+      background: linear-gradient(135deg, #2ed573 0%, #10ac84 100%);
+      color: white;
+      box-shadow: 0 10px 24px rgba(46, 213, 115, 0.4);
+      border-bottom: 5px solid #0e8062;
+      display: none;
+      animation: pulse 1.5s infinite;
+    }
+
+    .btn-retry {
+      background: linear-gradient(135deg, #ff9f43 0%, #ee5253 100%);
+      color: white;
+      box-shadow: 0 10px 24px rgba(238, 82, 83, 0.38);
+      border-bottom: 5px solid #b33939;
+      display: none;
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Feedback Banner */
+    .feedback-banner {
+      width: 100%;
+      max-width: 380px;
+      padding: 12px 18px;
+      border-radius: 20px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-banner.success {
+      background: #e8f8f0;
+      color: #10ac84;
+      border: 3px solid #2ed573;
+    }
+
+    .feedback-banner.error {
+      background: #ffebee;
+      color: #ff4757;
+      border: 3px solid #ff4757;
+    }
+
+    .feedback-banner.warning {
+      background: #fff8e1;
+      color: #f57c00;
+      border: 3px solid #ffb300;
+    }
+
+    /* Settings Modal */
+    .settings-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      text-align: right;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #2f3542;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .setting-group {
+      margin-bottom: 16px;
+    }
+
+    .setting-label {
+      font-weight: 700;
+      color: #57606f;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .level-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .level-btn {
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 2px solid #e4e9f2;
+      background: #f8faff;
+      font-family: var(--font-main);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .level-btn.active {
+      border-color: #3742fa;
+      background: #3742fa;
+      color: white;
+    }
+
+    .btn-reset-storage {
+      width: 100%;
+      background: #fff0f3;
+      color: #ff4757;
+      border: 2px dashed #ffb8c6;
+      border-radius: 14px;
+      padding: 10px;
+      font-family: var(--font-main);
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-reset-storage:hover {
+      background: #ffe3e8;
+    }
+
+    .btn-close-modal {
+      width: 100%;
+      background: #2ed573;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px;
+      font-family: var(--font-main);
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+
+    @media (max-height: 720px) {
+      .game-card { padding: 16px 14px; gap: 10px; }
+      .mascot-avatar { width: 90px; height: 90px; }
+      .mascot-svg { width: 60px; height: 60px; }
+      .digit-input { width: 75px; height: 85px; font-size: 3.2rem; }
+      .key-btn { height: 52px; font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="celebration-canvas"></canvas>
+
+  <!-- Top Navigation & Score -->
+  <div class="top-bar">
+    <div class="stars-badge">
+      <span class="stars-icon">⭐</span>
+      <span id="score-counter">0</span>
+      <span style="font-size: 0.95rem; font-weight: 700; color: #a4b0be; margin-right: 4px;">نجوم</span>
+    </div>
+
+    <div class="mode-settings">
+      <button class="icon-btn" id="btn-lang" title="تبديل لغة الصوت">
+        <span id="lang-flag">🇸🇦</span>
+        <span id="lang-label">عربي</span>
+      </button>
+      <button class="icon-btn" id="btn-settings-open" title="إعدادات الصعوبة والتقدم">
+        ⚙️ إعدادات
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Game Card -->
+  <div class="game-card">
+
+    <!-- Mascot & Voice Speaker -->
+    <div class="mascot-container" id="mascot-box" title="اضغط لسماع المسألة">
+      <div class="mascot-avatar" id="mascot-avatar">
+        <!-- Playful Cute Star/Bear Character SVG with friendly smile and girl bow -->
+        <svg class="mascot-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="52" r="38" fill="#ffffff"/>
+          <circle cx="28" cy="24" r="14" fill="#ff9f1a"/>
+          <circle cx="28" cy="24" r="8" fill="#ffd32a"/>
+          <circle cx="72" cy="24" r="14" fill="#ff9f1a"/>
+          <circle cx="72" cy="24" r="8" fill="#ffd32a"/>
+          <!-- Cute Girl Bow on head -->
+          <polygon points="70,16 80,10 80,22" fill="#ff4757"/>
+          <polygon points="70,16 60,10 60,22" fill="#ff4757"/>
+          <circle cx="70" cy="16" r="4" fill="#ff6b81"/>
+          <!-- Cheeks -->
+          <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
+          <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
+          <!-- Big Shiny Eyes -->
+          <circle cx="38" cy="46" r="6.5" fill="#2f3542"/>
+          <circle cx="36" cy="44" r="2.2" fill="#ffffff"/>
+          <circle cx="62" cy="46" r="6.5" fill="#2f3542"/>
+          <circle cx="60" cy="44" r="2.2" fill="#ffffff"/>
+          <!-- Nose & Happy Smile -->
+          <ellipse cx="50" cy="54" rx="5" ry="4" fill="#ff4757"/>
+          <path d="M44 60 Q50 68 56 60" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round"/>
+          <!-- Headphones arch -->
+          <path d="M16 52 C16 26 84 26 84 52" fill="none" stroke="#ff4757" stroke-width="6" stroke-linecap="round"/>
+          <rect x="10" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
+          <rect x="78" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
+        </svg>
+      </div>
+      <div class="headphones-badge">👧🎧</div>
+    </div>
+
+    <!-- Audio Replay Button -->
+    <button class="btn-audio-repeat" id="btn-replay-audio">
+      <span style="font-size: 1.6rem;">🔊</span>
+      <span>استمع للمسألة</span>
+      <div class="soundwave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+
+    <div class="status-text" id="status-text">اضغط على زر الاستماع للبدء! 👂</div>
+
+    <!-- Discreet Parent Peek for verification -->
+    <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
+      <button class="parent-peek" id="btn-peek">
+        <span>👁️</span> <span>إظهار المسألة (للوالدين)</span>
+      </button>
+      <div class="peek-content" id="peek-content">24 + 13 = ?</div>
+    </div>
+
+    <!-- Dynamic Answer Boxes (1 Box if answer < 10, 2 Boxes if answer >= 10) -->
+    <div class="answer-inputs-wrapper">
+      <div class="inputs-container" id="inputs-container">
+        <!-- Tens Box (Left in LTR) -->
+        <div class="digit-box" id="box-tens">
+          <div class="digit-label" id="label-tens">العشرات</div>
+          <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
+        </div>
+
+        <!-- Units Box (Right in LTR) -->
+        <div class="digit-box" id="box-units">
+          <div class="digit-label" id="label-units">الآحاد</div>
+          <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Number Keypad (3 rows of 1 to 9, plus 0 and backspace) -->
+    <div class="keypad-container" id="keypad">
+      <!-- Row 1: 1, 2, 3 -->
+      <div class="keypad-row">
+        <button class="key-btn" data-key="1">1</button>
+        <button class="key-btn" data-key="2">2</button>
+        <button class="key-btn" data-key="3">3</button>
+      </div>
+      <!-- Row 2: 4, 5, 6 -->
+      <div class="keypad-row">
+        <button class="key-btn" data-key="4">4</button>
+        <button class="key-btn" data-key="5">5</button>
+        <button class="key-btn" data-key="6">6</button>
+      </div>
+      <!-- Row 3: 7, 8, 9 -->
+      <div class="keypad-row">
+        <button class="key-btn" data-key="7">7</button>
+        <button class="key-btn" data-key="8">8</button>
+        <button class="key-btn" data-key="9">9</button>
+      </div>
+      <!-- Bottom Row: 0 under 8 and Clear -->
+      <div class="keypad-row">
+        <div style="visibility: hidden;"></div>
+        <button class="key-btn" data-key="0">0</button>
+        <button class="key-btn key-del" data-key="del" title="مسح">مسح ⌫</button>
+      </div>
+    </div>
+
+    <!-- Feedback Banner -->
+    <div class="feedback-banner" id="feedback-banner"></div>
+
+    <!-- Action Buttons -->
+    <div class="actions-area">
+      <button class="btn-action btn-check" id="btn-check">
+        <span>تحقق من الإجابة</span>
+        <span style="font-size: 1.5rem;">✔️</span>
+      </button>
+
+      <button class="btn-action btn-next" id="btn-next">
+        <span>مسألة جديدة يا بطل!</span>
+        <span style="font-size: 1.5rem;">🚀</span>
+      </button>
+
+      <button class="btn-action btn-retry" id="btn-retry">
+        <span>إعادة المسألة مرة ثانية</span>
+        <span style="font-size: 1.5rem;">🔄</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Settings Modal (Difficulty, Voice Speed, LocalStorage Reset) -->
+  <div class="settings-modal" id="settings-modal">
+    <div class="modal-card">
+      <div class="modal-title">
+        <span>⚙️ إعدادات التدريب والتقدم</span>
+        <span id="btn-close-modal-x" style="cursor: pointer; font-size: 1.5rem;">✖️</span>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">مستوى المسائل:</label>
+        <div class="level-options">
+          <button class="level-btn" data-level="1">آحاد فقط (1 إلى 9)</button>
+          <button class="level-btn" data-level="2">حتى 20 (بسيط)</button>
+          <button class="level-btn" data-level="3">رقمين حتى 99 (خطوتان)</button>
+          <button class="level-btn" data-level="4">رقمين حتى 99 (3 خطوات)</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">سرعة نطق الصوت:</label>
+        <div class="level-options">
+          <button class="level-btn" id="speed-slow" data-speed="0.75">بطيء جداً 🐢 (موصى به)</button>
+          <button class="level-btn" id="speed-normal" data-speed="0.95">عادي 🐇</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">لهجة نطق الأرقام (بالعربي):</label>
+        <div class="level-options">
+          <button class="level-btn active" id="dialect-egyptian" data-dialect="egyptian">لهجة قريبة 🇪🇬 (اتناشر، تلاتة)</button>
+          <button class="level-btn" id="dialect-fusha" data-dialect="fusha">فصحى مبسطة 🇸🇦 (اثنا عشر)</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">زر إظهار المسألة (للوالدين):</label>
+        <div class="level-options">
+          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">إظهار الزر 👁️</button>
+          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">إخفاء الزر 🙈</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">إدارة التقدم المحفوظ:</label>
+        <button class="btn-reset-storage" id="btn-reset-storage">🔄 إعادة ضبط النجوم والبدء من الصفر</button>
+      </div>
+
+      <button class="btn-close-modal" id="btn-modal-done">حفظ ومتابعة 👍</button>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       UC MATH KIDS APPLICATION LOGIC
+       ========================================================================== */
+
+    // Sound Synthesizer via Web Audio API (100% Offline & Pure Sound)
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      // Cheerful Button Tap Sound (Pop)
+      playTap() {
+        this.init();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        const now = this.ctx.currentTime;
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.08);
+      }
+
+      // Celebratory Birthday / Fanfare Sound on Correct Answer
+      playCorrect() {
+        this.init();
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+        notes.forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          const startTime = this.ctx.currentTime + (idx * 0.11);
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0, startTime);
+          gain.gain.linearRampToValueAtTime(0.35, startTime + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 0.36);
+        });
+      }
+
+      // Comical Cartoon Sound (Boing / Wah Wobble) on Wrong Answer
+      playComicalWrong() {
+        this.init();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        const now = this.ctx.currentTime;
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.45);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(800, now);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.46);
+      }
+
+      // Twinkle sound for stars
+      playStar() {
+        this.init();
+        const now = this.ctx.currentTime;
+        [880, 1320, 1760].forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          const start = now + (i * 0.08);
+          osc.frequency.setValueAtTime(freq, start);
+          gain.gain.setValueAtTime(0.2, start);
+          gain.gain.exponentialRampToValueAtTime(0.01, start + 0.2);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.21);
+        });
+      }
+    }
+
+    // Birthday Party Confetti & Particle System
+    class ConfettiCannon {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.animId = null;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+      }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
+      blast() {
+        this.resize();
+        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#9b59b6', '#ffd32a', '#ff6b81', '#00d2d3'];
+        const numParticles = 140;
+
+        for (let i = 0; i < numParticles; i++) {
+          this.particles.push({
+            x: this.canvas.width * 0.5 + (Math.random() * 80 - 40),
+            y: this.canvas.height * 0.5 + (Math.random() * 60 - 30),
+            vx: (Math.random() - 0.5) * 22,
+            vy: (Math.random() - 0.75) * 25,
+            size: Math.random() * 14 + 8,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 14,
+            shape: Math.random() > 0.4 ? 'rect' : 'circle',
+            alpha: 1,
+            gravity: 0.55
+          });
+        }
+
+        if (!this.animId) {
+          this.animate();
+        }
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          const p = this.particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= 0.98;
+          p.rotation += p.rotSpeed;
+          p.alpha -= 0.007;
+
+          if (p.alpha <= 0 || p.y > this.canvas.height + 50) {
+            this.particles.splice(i, 1);
+            continue;
+          }
+
+          this.ctx.save();
+          this.ctx.globalAlpha = p.alpha;
+          this.ctx.translate(p.x, p.y);
+          this.ctx.rotate((p.rotation * Math.PI) / 180);
+          this.ctx.fillStyle = p.color;
+
+          if (p.shape === 'rect') {
+            this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          } else {
+            this.ctx.beginPath();
+            this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            this.ctx.fill();
+          }
+          this.ctx.restore();
+        }
+
+        if (this.particles.length > 0) {
+          this.animId = requestAnimationFrame(() => this.animate());
+        } else {
+          this.animId = null;
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+      }
+    }
+
+    // Main App Controller
+    class UCMathApp {
+      constructor() {
+        this.sound = new SoundEngine();
+        this.confetti = new ConfettiCannon(document.getElementById('celebration-canvas'));
+
+        // Default App States
+        this.score = 0;
+        this.currentLevel = 3; // 1: single digits, 2: up to 20, 3: up to 99, 4: up to 99 with 3 steps
+        this.speechRate = 0.75; // Slow & friendly
+        this.lang = 'ar'; // 'ar' or 'en'
+        this.activeField = 'tens';
+        this.isSpeaking = false;
+        this.showParentPeek = false; // Default: hidden on screen unless enabled in settings
+        this.isAnswerLocked = false; // Prevents modifying answers after correct solution!
+        this.arabicDialect = 'egyptian'; // 'egyptian' (close dialect) or 'fusha' (simplified standard)
+
+        // Current Question Model
+        this.question = {
+          steps: [],
+          correctAnswer: 0,
+          displayText: '',
+          isSingleDigit: false
+        };
+
+        // Load saved progress from LocalStorage
+        this.loadProgress();
+
+        this.initDOMElements();
+        this.syncUIWithState();
+        this.attachEventListeners();
+        this.setupSpeechSynthesis();
+        this.generateNewQuestion();
+      }
+
+      // Load progress from localStorage
+      loadProgress() {
+        try {
+          const saved = localStorage.getItem('uc_math_kids_progress');
+          if (saved) {
+            const data = JSON.parse(saved);
+            if (typeof data.score === 'number') this.score = data.score;
+            if (data.currentLevel) this.currentLevel = parseInt(data.currentLevel, 10);
+            if (data.speechRate) this.speechRate = parseFloat(data.speechRate);
+            if (data.lang) this.lang = data.lang;
+            if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
+            if (data.arabicDialect) this.arabicDialect = data.arabicDialect;
+          }
+        } catch (e) {
+          console.warn('Could not load localStorage:', e);
+        }
+      }
+
+      // Save progress to localStorage
+      saveProgress() {
+        try {
+          const data = {
+            score: this.score,
+            currentLevel: this.currentLevel,
+            speechRate: this.speechRate,
+            lang: this.lang,
+            showParentPeek: this.showParentPeek,
+            arabicDialect: this.arabicDialect
+          };
+          localStorage.setItem('uc_math_kids_progress', JSON.stringify(data));
+        } catch (e) {
+          console.warn('Could not save to localStorage:', e);
+        }
+      }
+
+      initDOMElements() {
+        this.scoreCounter = document.getElementById('score-counter');
+        this.mascotAvatar = document.getElementById('mascot-avatar');
+        this.btnReplay = document.getElementById('btn-replay-audio');
+        this.statusText = document.getElementById('status-text');
+        this.inputsContainer = document.getElementById('inputs-container');
+        this.boxTens = document.getElementById('box-tens');
+        this.boxUnits = document.getElementById('box-units');
+        this.labelTens = document.getElementById('label-tens');
+        this.labelUnits = document.getElementById('label-units');
+        this.inputTens = document.getElementById('input-tens');
+        this.inputUnits = document.getElementById('input-units');
+        this.keypad = document.getElementById('keypad');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnNext = document.getElementById('btn-next');
+        this.btnRetry = document.getElementById('btn-retry');
+        this.feedbackBanner = document.getElementById('feedback-banner');
+        this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
+        this.btnPeek = document.getElementById('btn-peek');
+        this.peekContent = document.getElementById('peek-content');
+        this.btnLang = document.getElementById('btn-lang');
+        this.langFlag = document.getElementById('lang-flag');
+        this.langLabel = document.getElementById('lang-label');
+        this.settingsModal = document.getElementById('settings-modal');
+        this.btnSettingsOpen = document.getElementById('btn-settings-open');
+        this.btnModalDone = document.getElementById('btn-modal-done');
+        this.btnModalCloseX = document.getElementById('btn-close-modal-x');
+        this.btnResetStorage = document.getElementById('btn-reset-storage');
+      }
+
+      syncUIWithState() {
+        this.scoreCounter.textContent = this.score;
+
+        if (this.lang === 'ar') {
+          this.langFlag.textContent = '🇸🇦';
+          this.langLabel.textContent = 'عربي';
+        } else {
+          this.langFlag.textContent = '🇬🇧';
+          this.langLabel.textContent = 'English';
+        }
+
+        // Active Level in Modal
+        document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
+          if (parseInt(btn.dataset.level, 10) === this.currentLevel) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        // Active Speed in Modal
+        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
+          if (parseFloat(btn.dataset.speed) === this.speechRate) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        // Parent Peek Toggle
+        if (this.parentPeekWrapper) {
+          this.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
+        }
+        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
+          const isShow = btn.dataset.showpeek === 'true';
+          if (isShow === this.showParentPeek) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        // Arabic Dialect Toggle in Modal
+        document.querySelectorAll('.level-btn[data-dialect]').forEach(btn => {
+          if (btn.dataset.dialect === this.arabicDialect) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      attachEventListeners() {
+        // Audio Replay Button & Mascot
+        this.btnReplay.addEventListener('click', () => {
+          this.sound.playTap();
+          this.speakQuestion();
+        });
+
+        this.mascotAvatar.addEventListener('click', () => {
+          this.sound.playTap();
+          this.speakQuestion();
+        });
+
+        // Input Focus
+        this.inputTens.addEventListener('click', () => {
+          if (this.boxTens.style.display !== 'none') {
+            this.setActiveField('tens');
+          }
+        });
+        this.inputUnits.addEventListener('click', () => this.setActiveField('units'));
+
+        // Keypad button taps
+        this.keypad.addEventListener('click', (e) => {
+          const btn = e.target.closest('.key-btn');
+          if (!btn) return;
+          const key = btn.dataset.key;
+          this.handleKeyInput(key);
+        });
+
+        // Physical Keyboard Support
+        window.addEventListener('keydown', (e) => {
+          if (e.key >= '0' && e.key <= '9') {
+            this.handleKeyInput(e.key);
+          } else if (e.key === 'Backspace' || e.key === 'Delete') {
+            this.handleKeyInput('del');
+          } else if (e.key === 'Enter') {
+            if (this.btnNext.style.display === 'flex') {
+              this.btnNext.click();
+            } else if (this.btnRetry.style.display === 'flex') {
+              this.btnRetry.click();
+            } else {
+              this.checkAnswer();
+            }
+          }
+        });
+
+        // Check Button
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+
+        // Next Question Button
+        this.btnNext.addEventListener('click', () => {
+          this.sound.playTap();
+          this.generateNewQuestion();
+        });
+
+        // Retry Question Button
+        this.btnRetry.addEventListener('click', () => {
+          this.sound.playTap();
+          this.retryQuestion();
+        });
+
+        // Peek Question (Toggle for parents)
+        this.btnPeek.addEventListener('click', () => {
+          this.sound.playTap();
+          const isVisible = this.peekContent.style.display === 'block';
+          this.peekContent.style.display = isVisible ? 'none' : 'block';
+        });
+
+        // Language toggle
+        this.btnLang.addEventListener('click', () => {
+          this.sound.playTap();
+          this.lang = this.lang === 'ar' ? 'en' : 'ar';
+          this.saveProgress();
+          this.syncUIWithState();
+          this.speakQuestion();
+        });
+
+        // Settings Modal
+        this.btnSettingsOpen.addEventListener('click', () => {
+          this.sound.playTap();
+          this.settingsModal.style.display = 'flex';
+        });
+
+        const closeModal = () => {
+          this.sound.playTap();
+          this.settingsModal.style.display = 'none';
+          this.generateNewQuestion();
+        };
+
+        this.btnModalDone.addEventListener('click', closeModal);
+        this.btnModalCloseX.addEventListener('click', closeModal);
+
+        // Reset progress in LocalStorage
+        this.btnResetStorage.addEventListener('click', () => {
+          this.sound.playTap();
+          if (confirm('هل تريد تصفير عدد النجوم والبدء من الصفر؟')) {
+            this.score = 0;
+            this.saveProgress();
+            this.syncUIWithState();
+            this.showFeedback('warning', 'تم إعادة تصفير النجوم بنجاح! 🌟');
+          }
+        });
+
+        // Level selection in modal
+        document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-level]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentLevel = parseInt(btn.dataset.level, 10);
+            this.saveProgress();
+          });
+        });
+
+        // Speed selection in modal
+        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-speed]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.speechRate = parseFloat(btn.dataset.speed);
+            this.saveProgress();
+          });
+        });
+
+        // Parent peek toggle in modal
+        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-showpeek]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.showParentPeek = (btn.dataset.showpeek === 'true');
+            if (this.parentPeekWrapper) {
+              this.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
+            }
+            this.saveProgress();
+          });
+        });
+
+        // Dialect toggle in modal
+        document.querySelectorAll('.level-btn[data-dialect]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-dialect]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.arabicDialect = btn.dataset.dialect;
+            this.saveProgress();
+            this.speakQuestion();
+          });
+        });
+      }
+
+      setActiveField(field, force = false) {
+        if (this.isAnswerLocked) return;
+
+        // In 2-digit mode: cannot move to second field (units) unless first field (tens) has a digit!
+        if (field === 'units' && !this.question.isSingleDigit && !force) {
+          if (this.inputTens.textContent.trim() === '_') {
+            this.inputTens.classList.add('shake-error');
+            setTimeout(() => this.inputTens.classList.remove('shake-error'), 400);
+            this.showFeedback('warning', 'اكتب الرقم الأول أولاً يا بطل! ✍️');
+            this.activeField = 'tens';
+            this.inputTens.classList.add('active');
+            this.inputUnits.classList.remove('active');
+            return;
+          }
+        }
+
+        this.sound.playTap();
+        this.activeField = field;
+        if (field === 'tens' && !this.question.isSingleDigit) {
+          this.inputTens.classList.add('active');
+          this.inputUnits.classList.remove('active');
+        } else {
+          this.inputUnits.classList.add('active');
+          this.inputTens.classList.remove('active');
+        }
+      }
+
+      handleKeyInput(key) {
+        if (this.isAnswerLocked) return;
+        this.sound.playTap();
+
+        if (key === 'del') {
+          if (this.question.isSingleDigit) {
+            this.inputUnits.textContent = '_';
+            return;
+          }
+
+          if (this.activeField === 'units') {
+            if (this.inputUnits.textContent !== '_') {
+              this.inputUnits.textContent = '_';
+            } else {
+              // Units is already empty, move back to tens and clear it
+              this.inputTens.textContent = '_';
+              this.setActiveField('tens', true);
+            }
+          } else {
+            this.inputTens.textContent = '_';
+          }
+          return;
+        }
+
+        // If Single Digit problem (only units field visible)
+        if (this.question.isSingleDigit) {
+          this.inputUnits.textContent = key;
+          return;
+        }
+
+        // Two digits problem:
+        if (this.activeField === 'tens') {
+          this.inputTens.textContent = key;
+          // Automatically advance to second field!
+          this.setActiveField('units', true);
+        } else {
+          this.inputUnits.textContent = key;
+        }
+      }
+
+      setupSpeechSynthesis() {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.onvoiceschanged = () => {
+            this.voices = window.speechSynthesis.getVoices();
+          };
+          this.voices = window.speechSynthesis.getVoices();
+        }
+      }
+
+      // Convert numbers (0-99) to natural Arabic words
+      arabicNumberToWords(num, dialect = 'egyptian') {
+        const ones = [
+          'صفر', 'واحد', 'اتنين', 'تلاتة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'تمانية', 'تسعة'
+        ];
+        const teens = [
+          'عشرة', 'حداشر', 'اتناشر', 'تلاتاشر', 'أربعتاشر', 'خمستاشر', 'ستاشر', 'سبعتاشر', 'تمنتاشر', 'تسعتاشر'
+        ];
+        const tens = [
+          '', '', 'عشرين', 'تلاتين', 'أربعين', 'خمسين', 'ستين', 'سبعين', 'تمانين', 'تسعين'
+        ];
+
+        const onesFusha = [
+          'صفر', 'واحد', 'اثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'ثمانية', 'تسعة'
+        ];
+        const teensFusha = [
+          'عشرة', 'أحد عشر', 'اثنا عشر', 'ثلاثة عشر', 'أربعة عشر', 'خمسة عشر', 'ستة عشر', 'سبعة عشر', 'ثمانية عشر', 'تسعة عشر'
+        ];
+        const tensFusha = [
+          '', '', 'عشرون', 'ثلاثون', 'أربعون', 'خمسون', 'ستون', 'سبعون', 'ثمانون', 'تسعون'
+        ];
+
+        const useOnes = dialect === 'egyptian' ? ones : onesFusha;
+        const useTeens = dialect === 'egyptian' ? teens : teensFusha;
+        const useTens = dialect === 'egyptian' ? tens : tensFusha;
+
+        if (num < 10) return useOnes[num];
+        if (num >= 10 && num < 20) return useTeens[num - 10];
+
+        const unit = num % 10;
+        const ten = Math.floor(num / 10);
+
+        if (unit === 0) return useTens[ten];
+        return `${useOnes[unit]} و${useTens[ten]}`;
+      }
+
+      // Best Female Voice Selector (strictly Arabic voices for Arabic)
+      getBestFemaleVoice(lang) {
+        if (!this.voices || this.voices.length === 0) {
+          this.voices = window.speechSynthesis.getVoices();
+        }
+        if (!this.voices || this.voices.length === 0) return null;
+
+        if (lang === 'ar') {
+          // Strictly Arabic voices:
+          const arabicVoices = this.voices.filter(v => {
+            const l = (v.lang || '').toLowerCase();
+            const n = (v.name || '').toLowerCase();
+            return l.startsWith('ar') || l.includes('arabic') || n.includes('arabic') || n.includes('salma') || n.includes('zari') || n.includes('hoda') || n.includes('عربي');
+          });
+
+          if (arabicVoices.length > 0) {
+            // 1. Salma (Egyptian Arabic Natural female - most popular close dialect)
+            let match = arabicVoices.find(v => v.name.toLowerCase().includes('salma'));
+            if (match) return match;
+
+            // 2. Zari (Saudi Arabic Natural female)
+            match = arabicVoices.find(v => v.name.toLowerCase().includes('zari'));
+            if (match) return match;
+
+            // 3. Egyptian regional voice
+            match = arabicVoices.find(v => (v.lang || '').toLowerCase().includes('eg'));
+            if (match) return match;
+
+            // 4. Any female named voice
+            const femaleKeywords = ['hoda', 'mariam', 'fatima', 'sana', 'zeina', 'laila', 'layla', 'nour', 'yasmin', 'female'];
+            match = arabicVoices.find(v => femaleKeywords.some(k => v.name.toLowerCase().includes(k)));
+            if (match) return match;
+
+            // 5. Google Arabic
+            match = arabicVoices.find(v => v.name.includes('Google') || v.name.includes('العربية'));
+            if (match) return match;
+
+            // 6. Any non-male Arabic voice
+            const maleKeywords = ['shakir', 'naayf', 'hamed', 'tariq', 'male', 'maged', 'tarik'];
+            match = arabicVoices.find(v => !maleKeywords.some(k => v.name.toLowerCase().includes(k)));
+            if (match) return match;
+
+            return arabicVoices[0];
+          }
+
+          // NEVER fallback to English voice for Arabic!
+          return null;
+        }
+
+        // English voice selection
+        const enVoices = this.voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+        const femaleKeywords = ['zira', 'jenny', 'samantha', 'victoria', 'karen', 'female'];
+        let match = enVoices.find(v => femaleKeywords.some(k => v.name.toLowerCase().includes(k)));
+        return match || enVoices[0] || this.voices[0];
+      }
+
+      // Generate New Question
+      generateNewQuestion() {
+        let numSteps = this.currentLevel === 4 ? 3 : 2;
+        let isTwoDigits = (this.currentLevel === 3 || this.currentLevel === 4);
+
+        let steps = [];
+        let currentTotal = 0;
+
+        if (isTwoDigits) {
+          // Both addition and subtraction MUST use 2-digit numbers (10 to 99)
+          // AND Tens sum <= 9, Units sum <= 9 (No carry in units, No carry in tens, No borrowing in subtraction!)
+          let curT, curU;
+
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              let minT = numSteps === 3 ? 3 : 2;
+              let maxT = numSteps === 3 ? 7 : 8;
+              let minU = numSteps === 3 ? 2 : 1;
+              let maxU = numSteps === 3 ? 7 : 8;
+
+              curT = Math.floor(Math.random() * (maxT - minT + 1)) + minT;
+              curU = Math.floor(Math.random() * (maxU - minU + 1)) + minU;
+
+              const val = curT * 10 + curU;
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const canAdd = (9 - curT) >= 1 && (9 - curU) >= 0;
+              const canSubtract = (curT - 1) >= 1 && curU >= 0;
+
+              let op;
+              if (canAdd && canSubtract) {
+                op = Math.random() > 0.5 ? '+' : '-';
+              } else if (canAdd) {
+                op = '+';
+              } else {
+                op = '-';
+              }
+
+              let t, u;
+              if (op === '+') {
+                const maxT = 9 - curT;
+                t = Math.floor(Math.random() * maxT) + 1;
+
+                const maxU = 9 - curU;
+                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
+
+                curT += t;
+                curU += u;
+              } else {
+                const maxT = curT - 1;
+                t = Math.floor(Math.random() * maxT) + 1;
+
+                const maxU = curU;
+                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
+
+                curT -= t;
+                curU -= u;
+              }
+
+              const val = t * 10 + u;
+              currentTotal = curT * 10 + curU;
+              steps.push({ op, val });
+            }
+          }
+        } else if (this.currentLevel === 1) {
+          // Single digit only (1 to 9) - Units sum <= 9
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              const val = Math.floor(Math.random() * 8) + 1;
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const canAdd = (9 - currentTotal) >= 1;
+              const canSubtract = currentTotal > 1;
+
+              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
+              let val;
+              if (op === '-') {
+                val = Math.floor(Math.random() * (currentTotal - 1)) + 1;
+                currentTotal -= val;
+              } else {
+                val = Math.floor(Math.random() * (9 - currentTotal)) + 1;
+                currentTotal += val;
+              }
+              steps.push({ op, val });
+            }
+          }
+        } else {
+          // Level 2: Up to 20 - Units sum <= 9
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              const u0 = Math.floor(Math.random() * 6) + 1;
+              const val = 10 + u0; // e.g. 11 to 16
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const curU = currentTotal % 10;
+              const canAdd = (9 - curU) >= 1 && (20 - currentTotal) >= 1;
+              const canSubtract = curU >= 1;
+
+              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
+              let val;
+              if (op === '-') {
+                val = Math.floor(Math.random() * curU) + 1;
+                currentTotal -= val;
+              } else {
+                val = Math.floor(Math.random() * (9 - curU)) + 1;
+                currentTotal += val;
+              }
+              steps.push({ op, val });
+            }
+          }
+        }
+
+        const isSingleDigit = currentTotal < 10;
+
+        this.question = {
+          steps,
+          correctAnswer: currentTotal,
+          displayText: steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ?',
+          isSingleDigit: isSingleDigit
+        };
+
+        this.peekContent.textContent = this.question.displayText;
+        this.peekContent.style.display = 'none';
+
+        // Adapt fields dynamically: 1 field if answer < 10, 2 fields if answer >= 10
+        this.updateInputFieldsLayout();
+
+        // Speak immediately without "Ready"
+        setTimeout(() => {
+          this.speakQuestion();
+        }, 300);
+      }
+
+      updateInputFieldsLayout() {
+        this.resetUIStates();
+
+        if (this.question.isSingleDigit) {
+          // Single field only!
+          this.boxTens.style.display = 'none';
+          this.labelUnits.textContent = 'الإجابة';
+          this.setActiveField('units');
+        } else {
+          // Two fields: Tens and Units
+          this.boxTens.style.display = 'flex';
+          this.labelUnits.textContent = 'الآحاد';
+          this.labelTens.textContent = 'العشرات';
+          this.setActiveField('tens');
+        }
+      }
+
+      // Audio Speech without "Ready" / "جاهز", direct problem dictation in sweet female voice
+      speakQuestion() {
+        if (!('speechSynthesis' in window)) {
+          this.statusText.textContent = "عذراً، المتصفح لا يدعم نطق الصوت.";
+          return;
+        }
+
+        window.speechSynthesis.cancel(); // Stop any pending speech
+
+        let textToSpeak = '';
+        if (this.lang === 'ar') {
+          // Direct numbers in natural Arabic words!
+          this.question.steps.forEach((step, idx) => {
+            const word = this.arabicNumberToWords(step.val, this.arabicDialect);
+            if (idx === 0) {
+              textToSpeak += `${word} ... `;
+            } else {
+              const opWord = step.op === '+' ? 'زائد' : 'ناقص';
+              textToSpeak += `${opWord} ${word} ... `;
+            }
+          });
+        } else {
+          // Direct numbers without "Ready"
+          this.question.steps.forEach((step, idx) => {
+            if (idx === 0) {
+              textToSpeak += `${step.val} , `;
+            } else {
+              const opWord = step.op === '+' ? 'plus' : 'minus';
+              textToSpeak += `${opWord} ${step.val} , `;
+            }
+          });
+        }
+
+        const utter = new SpeechSynthesisUtterance(textToSpeak.trim());
+        utter.rate = this.speechRate; // Very slow and calm for child
+        utter.pitch = 1.25; // Sweet, youthful friendly female pitch
+        utter.lang = this.lang === 'ar' ? (this.arabicDialect === 'egyptian' ? 'ar-EG' : 'ar-SA') : 'en-US';
+
+        // Select best female voice
+        const femaleVoice = this.getBestFemaleVoice(this.lang);
+        if (femaleVoice) {
+          utter.voice = femaleVoice;
+        }
+
+        utter.onstart = () => {
+          this.isSpeaking = true;
+          this.mascotAvatar.classList.add('speaking');
+          this.btnReplay.classList.add('speaking');
+          this.statusText.textContent = this.lang === 'ar' ? 'استمع جيداً يا عبقري... 🎧' : 'Listen carefully... 🎧';
+        };
+
+        utter.onend = () => {
+          this.isSpeaking = false;
+          this.mascotAvatar.classList.remove('speaking');
+          this.btnReplay.classList.remove('speaking');
+          this.statusText.textContent = this.lang === 'ar' ? 'ما هي إجابتك؟ اكتبها بالأسفل 👇' : 'What is your answer? Enter below 👇';
+        };
+
+        utter.onerror = () => {
+          this.isSpeaking = false;
+          this.mascotAvatar.classList.remove('speaking');
+          this.btnReplay.classList.remove('speaking');
+          this.statusText.textContent = 'اضغط على زر الاستماع لإعادة المسألة 🔊';
+        };
+
+        window.speechSynthesis.speak(utter);
+      }
+
+      checkAnswer() {
+        let userVal;
+
+        if (this.question.isSingleDigit) {
+          const uVal = this.inputUnits.textContent.trim();
+          if (uVal === '_') {
+            this.showFeedback('warning', 'اكتب إجابتك أولاً يا بطل! ✍️');
+            return;
+          }
+          userVal = parseInt(uVal, 10);
+        } else {
+          const tVal = this.inputTens.textContent.trim();
+          const uVal = this.inputUnits.textContent.trim();
+
+          if (tVal === '_' && uVal === '_') {
+            this.showFeedback('warning', 'اكتب إجابتك أولاً يا بطل! ✍️');
+            return;
+          }
+
+          const tensDigit = tVal === '_' ? '0' : tVal;
+          const unitsDigit = uVal === '_' ? '0' : uVal;
+          userVal = parseInt(tensDigit + unitsDigit, 10);
+        }
+
+        if (userVal === this.question.correctAnswer) {
+          this.handleCorrect();
+        } else {
+          this.handleWrong();
+        }
+      }
+
+      handleCorrect() {
+        this.sound.playCorrect();
+        this.sound.playStar();
+        this.confetti.blast();
+
+        this.score += 1;
+        this.scoreCounter.textContent = this.score;
+        this.saveProgress(); // Persist score in localStorage!
+        // Lock inputs so they cannot be modified after correct answer!
+        this.isAnswerLocked = true;
+        this.inputTens.classList.remove('active');
+        this.inputUnits.classList.remove('active');
+        if (this.inputsContainer) {
+          this.inputsContainer.style.pointerEvents = 'none';
+        }
+
+        this.inputUnits.classList.add('success-pop');
+        if (!this.question.isSingleDigit) {
+          this.inputTens.classList.add('success-pop');
+        }
+
+        this.showFeedback('success', '🎉 عبقري! إجابة صحيحة وممتازة! 🌟');
+        this.statusText.textContent = 'ممتاز جداً! أنت بطل الحساب الذهني 🏆';
+
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+        this.btnNext.style.display = 'flex';
+      }
+
+      handleWrong() {
+        this.sound.playComicalWrong();
+
+        this.inputUnits.classList.add('shake-error');
+        if (!this.question.isSingleDigit) {
+          this.inputTens.classList.add('shake-error');
+        }
+
+        setTimeout(() => {
+          this.inputUnits.classList.remove('shake-error');
+          this.inputTens.classList.remove('shake-error');
+        }, 600);
+
+        this.showFeedback('error', '😉 أوبس! ليست صحيحة.. جرب مرة ثانية يا شاطر!');
+        this.statusText.textContent = 'لا بأس، اضغط زر إعادة المسألة وحاول ثانية 💪';
+
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+      }
+
+      retryQuestion() {
+        this.resetUIStates();
+
+        if (this.question.isSingleDigit) {
+          this.setActiveField('units');
+        } else {
+          this.setActiveField('tens');
+        }
+
+        this.speakQuestion();
+      }
+
+      resetUIStates() {
+        this.isAnswerLocked = false;
+        if (this.inputsContainer) {
+          this.inputsContainer.style.pointerEvents = 'auto';
+        }
+
+        this.inputTens.textContent = '_';
+        this.inputUnits.textContent = '_';
+        this.inputTens.classList.remove('shake-error', 'success-pop');
+        this.inputUnits.classList.remove('shake-error', 'success-pop');
+        this.feedbackBanner.style.display = 'none';
+
+        this.btnCheck.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+      }
+
+      showFeedback(type, message) {
+        this.feedbackBanner.className = `feedback-banner ${type}`;
+        this.feedbackBanner.textContent = message;
+        this.feedbackBanner.style.display = 'flex';
+      }
+    }
+
+    // Launch App when DOM is loaded
+    window.addEventListener('DOMContentLoaded', () => {
+      window.app = new UCMathApp();
+    });
+  </script>
+</body>
+</html>
