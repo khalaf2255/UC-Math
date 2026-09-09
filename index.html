@@ -729,22 +729,35 @@
       align-items: center;
       justify-content: center;
       z-index: 10000;
+      padding: 14px 10px;
+      overflow-y: auto;
     }
 
     .modal-card {
       background: white;
-      border-radius: 28px;
-      padding: 24px;
-      width: 90%;
+      border-radius: 26px;
+      padding: 20px 18px;
+      width: 100%;
       max-width: 440px;
+      max-height: 90vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       text-align: left;
     }
 
+    .modal-card::-webkit-scrollbar {
+      width: 5px;
+    }
+    .modal-card::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 6px;
+    }
+
     .modal-title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       color: #2f3542;
       display: flex;
       align-items: center;
@@ -752,35 +765,45 @@
     }
 
     .setting-group {
-      margin-bottom: 16px;
+      margin-bottom: 13px;
     }
 
     .setting-label {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       color: #57606f;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: block;
     }
 
+    /* Keep options side-by-side! */
     .level-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
     }
 
+    .level-options.popup-duration-options {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
     .level-btn {
       background: #f1f2f6;
       border: 2px solid #e4e7eb;
-      border-radius: 16px;
-      padding: 10px 12px;
+      border-radius: 14px;
+      padding: 8px 6px;
       font-family: var(--font-main);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #57606f;
       cursor: pointer;
       text-align: center;
       transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
 
     .level-btn:hover {
@@ -797,10 +820,10 @@
     .btn-reset-storage {
       background: #fff1f2;
       border: 2px dashed #fda4af;
-      border-radius: 16px;
-      padding: 10px 14px;
+      border-radius: 14px;
+      padding: 9px 12px;
       font-family: var(--font-main);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 800;
       color: #e11d48;
       cursor: pointer;
@@ -818,38 +841,114 @@
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 13px;
+      padding: 12px;
       width: 100%;
       font-family: var(--font-main);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 6px 18px rgba(74, 144, 226, 0.35);
       margin-top: 10px;
+      flex-shrink: 0;
     }
 
-    @media (max-width: 440px) {
+    @media (max-width: 480px) {
+      body {
+        padding: 8px;
+      }
+      .top-bar {
+        max-width: 420px;
+        margin-bottom: 8px;
+      }
+      .stars-badge {
+        font-size: 1.15rem;
+        padding: 6px 14px;
+      }
+      .icon-btn {
+        padding: 7px 14px;
+        font-size: 0.9rem;
+      }
       .game-card {
-        padding: 20px 14px 24px 14px;
-        border-radius: 28px;
+        padding: 16px 12px 20px 12px;
+        border-radius: 26px;
+        border-width: 4px;
+      }
+      .mascot-container {
+        margin-top: -46px;
+      }
+      .mascot-avatar {
+        width: 88px;
+        height: 88px;
+      }
+      .mascot-svg {
+        width: 68px;
+        height: 68px;
+      }
+      .btn-audio-repeat {
+        padding: 8px 18px;
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+      }
+      .status-text {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        min-height: 24px;
+      }
+      .solved-problem-badge {
+        font-size: 1.15rem;
+        padding: 5px 14px;
+        margin-bottom: 10px;
       }
       .digit-input {
         width: 72px;
-        height: 86px;
-        font-size: 3rem;
+        height: 84px;
+        font-size: 2.85rem;
+        border-radius: 18px;
       }
       .key-btn {
-        height: 58px;
-        font-size: 1.9rem;
+        height: 52px;
+        font-size: 1.85rem;
+        border-radius: 16px;
       }
       .key-btn.key-reset {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
       .key-btn.key-del {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
       }
-      .level-options {
-        grid-template-columns: 1fr;
+      .btn-action {
+        padding: 13px 20px;
+        font-size: 1.25rem;
+      }
+      .modal-card {
+        padding: 16px 12px;
+        max-height: 92vh;
+      }
+      .level-btn {
+        font-size: 0.82rem;
+        padding: 8px 4px;
+      }
+      .popup-duration-options .level-btn {
+        font-size: 0.78rem;
+        padding: 7px 2px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .digit-input {
+        width: 62px;
+        height: 74px;
+        font-size: 2.4rem;
+      }
+      .key-btn {
+        height: 46px;
+        font-size: 1.6rem;
+      }
+      .key-btn.key-reset {
+        font-size: 0.82rem;
+      }
+      .key-btn.key-del {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -1028,26 +1127,26 @@
       <div class="setting-group">
         <label class="setting-label">Problem Level:</label>
         <div class="level-options">
-          <button class="level-btn" data-level="1">Single Digits (1 to 9)</button>
+          <button class="level-btn" data-level="1">Single (1-9)</button>
           <button class="level-btn" data-level="2">Up to 20 (Simple)</button>
-          <button class="level-btn" data-level="3">2-Digits Up to 99 (2 Steps)</button>
-          <button class="level-btn" data-level="4">2-Digits Up to 99 (3 Steps)</button>
+          <button class="level-btn" data-level="3">2-Digits (2 Steps)</button>
+          <button class="level-btn" data-level="4">2-Digits (3 Steps)</button>
         </div>
       </div>
 
       <div class="setting-group">
         <label class="setting-label">Voice Speech Speed:</label>
         <div class="level-options">
-          <button class="level-btn" id="speed-slow" data-speed="0.75">Very Slow 🐢 (Recommended)</button>
+          <button class="level-btn" id="speed-slow" data-speed="0.75">Slow 🐢 (Recommended)</button>
           <button class="level-btn" id="speed-normal" data-speed="0.95">Normal 🐇</button>
         </div>
       </div>
 
       <div class="setting-group">
         <label class="setting-label">Celebration Popup Duration:</label>
-        <div class="level-options">
+        <div class="level-options popup-duration-options">
           <button class="level-btn" data-popup="1.5">1.5s ⚡</button>
-          <button class="level-btn active" data-popup="2">2s 👍 (Default)</button>
+          <button class="level-btn active" data-popup="2">2s 👍</button>
           <button class="level-btn" data-popup="3">3s ⏱️</button>
           <button class="level-btn" data-popup="4">4s 🐢</button>
         </div>
@@ -1056,8 +1155,8 @@
       <div class="setting-group">
         <label class="setting-label">Parent Peek Button:</label>
         <div class="level-options">
-          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show Button 👁️</button>
-          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide Button 🙈</button>
+          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show 👁️</button>
+          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide 🙈</button>
         </div>
       </div>
 
