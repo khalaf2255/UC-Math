@@ -678,6 +678,38 @@
       color: #b45309;
     }
 
+    .feedback-popup-equation {
+      background: #eff6ff;
+      border: 3px solid #60a5fa;
+      border-radius: 20px;
+      padding: 10px 24px;
+      font-family: var(--font-nums);
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #1e40af;
+      letter-spacing: 1.5px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+      animation: popWin 0.4s ease-out;
+      display: none;
+    }
+
+    .solved-problem-badge {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-family: var(--font-nums);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #15803d;
+      margin-bottom: 12px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.12);
+      animation: popWin 0.3s ease-out;
+    }
+
     .feedback-popup-hint {
       font-size: 0.85rem;
       color: #94a3b8;
@@ -896,6 +928,9 @@
 
     <div class="status-text" id="status-text">Click listen to start! 👂</div>
 
+    <!-- Solved Problem Display (Appears when child answers correctly) -->
+    <div class="solved-problem-badge" id="solved-problem-badge"></div>
+
     <!-- Discreet Parent Peek for verification -->
     <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
       <button class="parent-peek" id="btn-peek">
@@ -977,6 +1012,7 @@
     <div class="feedback-popup-card" id="feedback-popup-card">
       <div class="feedback-popup-icon" id="feedback-popup-icon">🎉</div>
       <div class="feedback-popup-text" id="feedback-popup-text"></div>
+      <div class="feedback-popup-equation" id="feedback-popup-equation"></div>
       <div class="feedback-popup-hint" id="feedback-popup-hint">(Tap anywhere to close)</div>
     </div>
   </div>
@@ -1288,6 +1324,10 @@
         this.feedbackCard = document.getElementById('feedback-popup-card');
         this.feedbackIcon = document.getElementById('feedback-popup-icon');
         this.feedbackText = document.getElementById('feedback-popup-text');
+        this.feedbackEquation = document.getElementById('feedback-popup-equation');
+
+        // Solved Problem Badge
+        this.solvedProblemBadge = document.getElementById('solved-problem-badge');
 
         // Parent Peek
         this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
@@ -1874,8 +1914,15 @@
           this.inputTens.classList.add('success-pop');
         }
 
-        this.showFeedback('success', 'Genius! Correct & Excellent! 🌟');
-        this.statusText.textContent = 'Awesome! You are a Math Champion 🏆';
+        const equationText = this.question.steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ' + this.question.correctAnswer;
+
+        if (this.solvedProblemBadge) {
+          this.solvedProblemBadge.textContent = '🎯 Problem: ' + equationText + ' ✔️';
+          this.solvedProblemBadge.style.display = 'inline-flex';
+        }
+
+        this.showFeedback('success', 'Genius! Correct & Excellent! 🌟', equationText);
+        this.statusText.textContent = 'Awesome! You solved: ' + equationText + ' 🏆';
 
         this.btnCheck.style.display = 'none';
         this.btnRetry.style.display = 'none';
@@ -1925,6 +1972,9 @@
         this.inputUnits.textContent = '_';
         this.inputTens.classList.remove('shake-error', 'success-pop');
         this.inputUnits.classList.remove('shake-error', 'success-pop');
+        if (this.solvedProblemBadge) {
+          this.solvedProblemBadge.style.display = 'none';
+        }
         this.hideFeedback();
 
         this.btnCheck.style.display = 'flex';
@@ -1933,7 +1983,7 @@
       }
 
       // Auto-Dismissing Popup Modal
-      showFeedback(type, message) {
+      showFeedback(type, message, equation = '') {
         if (this._feedbackTimer) {
           clearTimeout(this._feedbackTimer);
           this._feedbackTimer = null;
@@ -1942,6 +1992,16 @@
         this.feedbackCard.className = `feedback-popup-card ${type}`;
         this.feedbackIcon.textContent = type === 'success' ? '🎉' : type === 'error' ? '💡' : '⭐';
         this.feedbackText.textContent = message;
+
+        if (this.feedbackEquation) {
+          if (equation) {
+            this.feedbackEquation.textContent = equation;
+            this.feedbackEquation.style.display = 'inline-block';
+          } else {
+            this.feedbackEquation.style.display = 'none';
+          }
+        }
+
         this.feedbackOverlay.classList.add('show');
 
         // Auto-dismiss after user-configured duration
