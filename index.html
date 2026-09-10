@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UC Math Little Genius 🌟 Mental Math for Kids</title>
+  <title>Kids Math & Words Arena 🌟 UC Math & Spelling Games</title>
   <link rel="shortcut icon" href="" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px 8px;
       overflow-x: hidden;
       color: #2d3436;
       position: relative;
@@ -80,27 +80,33 @@
       50% { transform: translateY(-28px) scale(1.08); }
     }
 
-    /* Top Control Bar */
+    /* Top Navigation Bar */
     .top-bar {
       width: 100%;
-      max-width: 540px;
+      max-width: 520px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       z-index: 10;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .stars-badge {
       background: white;
-      padding: 8px 20px;
+      padding: 7px 18px;
       border-radius: 50px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       color: #ff9f1a;
       border: 2px solid #ffeaa7;
     }
@@ -125,9 +131,9 @@
       background: white;
       border: none;
       border-radius: 50px;
-      padding: 9px 18px;
+      padding: 8px 16px;
       font-family: var(--font-main);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #2f3542;
       cursor: pointer;
@@ -148,16 +154,182 @@
       transform: translateY(1px);
     }
 
-    /* Main Game Card */
-    .game-card {
+    .btn-home {
+      background: #f0fdf4;
+      border: 2px solid #bbf7d0;
+      color: #15803d;
+      font-weight: 800;
+    }
+
+    /* Views Layout */
+    .app-view {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       1. GAMES HUB VIEW
+       ========================================================================== */
+    .hub-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
-      border-radius: 36px;
+      border-radius: 32px;
       box-shadow: var(--shadow);
       border: 5px solid rgba(255, 255, 255, 0.9);
       width: 100%;
       max-width: 480px;
-      padding: 24px 20px 28px 20px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+      text-align: center;
+    }
+
+    .hub-header {
+      margin-bottom: 20px;
+    }
+
+    .hub-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #2f3542;
+      margin-bottom: 4px;
+    }
+
+    .hub-subtitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #747d8c;
+    }
+
+    .games-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .game-choice-card {
+      background: white;
+      border: 3px solid #e4e9f2;
+      border-radius: 24px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-choice-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(74, 144, 226, 0.2);
+      border-color: #3b82f6;
+    }
+
+    .game-choice-card:active {
+      transform: translateY(1px);
+    }
+
+    .game-choice-card.card-math {
+      border-left: 6px solid #4a90e2;
+    }
+
+    .game-choice-card.card-spelling {
+      border-left: 6px solid #2ed573;
+    }
+
+    .game-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .card-math .game-icon-box {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    }
+
+    .card-spelling .game-icon-box {
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    }
+
+    .game-details {
+      flex: 1;
+    }
+
+    .game-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .card-math .game-badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .card-spelling .game-badge {
+      background: #f0fdf4;
+      color: #15803d;
+    }
+
+    .game-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #2f3542;
+      margin-bottom: 2px;
+    }
+
+    .game-desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .game-play-arrow {
+      font-size: 1.5rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .game-choice-card:hover .game-play-arrow {
+      transform: translateX(4px);
+      color: #3b82f6;
+    }
+
+    /* ==========================================================================
+       2. COMMON GAME CARD STYLES
+       ========================================================================== */
+    .game-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      border: 5px solid rgba(255, 255, 255, 0.9);
+      width: 100%;
+      max-width: 480px;
+      padding: 22px 18px 24px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -168,14 +340,14 @@
     /* Mascot Avatar */
     .mascot-container {
       position: relative;
-      margin-top: -54px;
+      margin-top: -50px;
       margin-bottom: 8px;
       cursor: pointer;
     }
 
     .mascot-avatar {
-      width: 105px;
-      height: 105px;
+      width: 96px;
+      height: 96px;
       background: linear-gradient(135deg, #ffd32a 0%, #ff9f1a 100%);
       border-radius: 50%;
       border: 5px solid white;
@@ -204,8 +376,8 @@
     }
 
     .mascot-svg {
-      width: 82px;
-      height: 82px;
+      width: 76px;
+      height: 76px;
     }
 
     .headphones-badge {
@@ -215,12 +387,12 @@
       background: #ff4757;
       color: white;
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border: 3px solid white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
@@ -231,9 +403,9 @@
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 10px 24px;
+      padding: 9px 22px;
       font-family: var(--font-main);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -242,7 +414,7 @@
       box-shadow: 0 8px 20px rgba(74, 144, 226, 0.35);
       border-bottom: 4px solid #1a56a6;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .btn-audio-repeat:hover {
@@ -270,7 +442,7 @@
       display: flex;
       align-items: center;
       gap: 3px;
-      height: 18px;
+      height: 16px;
     }
 
     .soundwave span {
@@ -293,13 +465,31 @@
 
     /* Status Instruction Text */
     .status-text {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #57606f;
-      margin-bottom: 12px;
-      min-height: 28px;
+      margin-bottom: 8px;
+      min-height: 26px;
       text-align: center;
       transition: all 0.3s;
+    }
+
+    /* Solved Problem Badge on Main Card */
+    .solved-problem-badge {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-family: var(--font-nums);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #15803d;
+      margin-bottom: 10px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.12);
+      animation: popWin 0.3s ease-out;
     }
 
     /* Parent Peek */
@@ -336,12 +526,14 @@
       display: none;
     }
 
-    /* Answer Input Fields */
+    /* ==========================================================================
+       3. UC MATH GAME SPECIFIC (INPUTS & KEYPAD)
+       ========================================================================== */
     .answer-inputs-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       width: 100%;
     }
 
@@ -349,7 +541,7 @@
       display: flex;
       justify-content: center;
       gap: 16px;
-      direction: ltr; /* Left-to-Right: Tens on Left, Units on Right */
+      direction: ltr; /* Tens on Left, Ones on Right */
     }
 
     .digit-box {
@@ -366,16 +558,16 @@
     }
 
     .digit-input {
-      width: 82px;
-      height: 94px;
+      width: 78px;
+      height: 90px;
       background: white;
       border: 4px solid #dcdde1;
-      border-radius: 22px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-nums);
-      font-size: 3.4rem;
+      font-size: 3.2rem;
       font-weight: 800;
       color: #2f3542;
       box-shadow: inset 0 3px 8px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.06);
@@ -394,7 +586,7 @@
       content: '';
       position: absolute;
       bottom: 8px;
-      width: 32px;
+      width: 30px;
       height: 4px;
       background: #ff4757;
       border-radius: 2px;
@@ -435,7 +627,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Custom Number Keypad */
+    /* Number Keypad */
     .keypad-container {
       width: 100%;
       max-width: 380px;
@@ -456,10 +648,10 @@
     .key-btn {
       background: white;
       border: 3px solid #e4e9f2;
-      border-radius: 20px;
-      height: 64px;
+      border-radius: 18px;
+      height: 60px;
       font-family: var(--font-nums);
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 700;
       color: #2f3542;
       cursor: pointer;
@@ -480,7 +672,6 @@
       border-color: #c2d1e8;
     }
 
-    /* Reset button placed in bottom row under 7 */
     .key-btn.key-reset {
       background: #eff6ff;
       border: 3px solid #bfdbfe;
@@ -491,7 +682,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 4px;
     }
 
     .key-btn.key-reset:hover {
@@ -504,7 +695,6 @@
       box-shadow: 0 1px 0 #93c5fd, 0 3px 8px rgba(59, 130, 246, 0.05);
     }
 
-    /* Delete button placed under 9 */
     .key-btn.key-del {
       background: #ffecf0;
       border: 3px solid #ffccd5;
@@ -528,23 +718,177 @@
       box-shadow: 0 1px 0 #fca5a5, 0 3px 8px rgba(255, 71, 87, 0.05);
     }
 
+    /* ==========================================================================
+       4. NUMBER WORDS (SPELLING) GAME SPECIFIC
+       ========================================================================== */
+    .spelling-number-badge {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 3px solid #60a5fa;
+      border-radius: 24px;
+      padding: 8px 30px;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .spelling-number-val {
+      font-family: var(--font-nums);
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1;
+    }
+
+    /* Word Letters Display Container */
+    .word-slots-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 380px;
+      margin-bottom: 16px;
+      min-height: 60px;
+      align-items: center;
+    }
+
+    .letter-slot {
+      width: 42px;
+      height: 52px;
+      background: white;
+      border: 3px solid #cbd5e1;
+      border-radius: 14px;
+      font-family: var(--font-nums);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .letter-slot.filled {
+      border-color: #3b82f6;
+      background: #f8fafc;
+      color: #1d4ed8;
+      transform: scale(1.02);
+    }
+
+    .letter-slot.active-cursor {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+    }
+
+    .letter-slot.active-cursor::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      width: 20px;
+      height: 3px;
+      background: #ff4757;
+      border-radius: 2px;
+      animation: blinkCursor 0.8s infinite alternate;
+    }
+
+    .letter-slot.hyphen {
+      width: 24px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: #64748b;
+      font-size: 2rem;
+    }
+
+    /* Alphabet Keypad */
+    .alphabet-keypad {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .alpha-row {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .alpha-key {
+      flex: 1;
+      max-width: 38px;
+      height: 48px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-family: var(--font-nums);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #334155;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 12px rgba(0,0,0,0.05);
+      transition: all 0.1s ease;
+    }
+
+    .alpha-key:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .alpha-key:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #cbd5e1;
+    }
+
+    .alpha-key.key-wide-reset {
+      flex: 2;
+      max-width: 78px;
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+      box-shadow: 0 4px 0 #93c5fd;
+      font-size: 0.95rem;
+      gap: 3px;
+    }
+
+    .alpha-key.key-wide-del {
+      flex: 2;
+      max-width: 78px;
+      background: #ffecf0;
+      border-color: #ffccd5;
+      color: #ff4757;
+      box-shadow: 0 4px 0 #fca5a5;
+      font-size: 1.05rem;
+      gap: 3px;
+    }
+
     /* Action Buttons Area */
     .actions-area {
       width: 100%;
       max-width: 380px;
-      margin-top: 18px;
+      margin-top: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .btn-action {
       width: 100%;
-      padding: 15px 24px;
+      padding: 14px 22px;
       border-radius: 50px;
       border: none;
       font-family: var(--font-main);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
@@ -617,7 +961,7 @@
     .feedback-popup-card {
       background: white;
       border-radius: 30px;
-      padding: 30px 24px;
+      padding: 26px 20px;
       width: 90%;
       max-width: 360px;
       text-align: center;
@@ -637,7 +981,7 @@
     }
 
     .feedback-popup-icon {
-      font-size: 3.6rem;
+      font-size: 3.5rem;
       animation: bounceMascot 1s infinite alternate ease-in-out;
     }
 
@@ -648,10 +992,25 @@
 
     .feedback-popup-text {
       font-family: var(--font-main);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: #2f3542;
       line-height: 1.35;
+    }
+
+    .feedback-popup-equation {
+      background: #eff6ff;
+      border: 3px solid #60a5fa;
+      border-radius: 20px;
+      padding: 8px 22px;
+      font-family: var(--font-nums);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #1e40af;
+      letter-spacing: 1.2px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+      animation: popWin 0.4s ease-out;
+      display: none;
     }
 
     .feedback-popup-card.success {
@@ -676,38 +1035,6 @@
     }
     .feedback-popup-card.warning .feedback-popup-text {
       color: #b45309;
-    }
-
-    .feedback-popup-equation {
-      background: #eff6ff;
-      border: 3px solid #60a5fa;
-      border-radius: 20px;
-      padding: 10px 24px;
-      font-family: var(--font-nums);
-      font-size: 2.1rem;
-      font-weight: 800;
-      color: #1e40af;
-      letter-spacing: 1.5px;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
-      animation: popWin 0.4s ease-out;
-      display: none;
-    }
-
-    .solved-problem-badge {
-      background: #f0fdf4;
-      border: 2px solid #86efac;
-      border-radius: 50px;
-      padding: 6px 20px;
-      font-family: var(--font-nums);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #15803d;
-      margin-bottom: 12px;
-      display: none;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.12);
-      animation: popWin 0.3s ease-out;
     }
 
     .feedback-popup-hint {
@@ -776,7 +1103,6 @@
       display: block;
     }
 
-    /* Keep options side-by-side! */
     .level-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -852,9 +1178,10 @@
       flex-shrink: 0;
     }
 
+    /* Mobile Responsive */
     @media (max-width: 480px) {
       body {
-        padding: 8px;
+        padding: 8px 6px;
       }
       .top-bar {
         max-width: 420px;
@@ -862,31 +1189,49 @@
       }
       .stars-badge {
         font-size: 1.15rem;
-        padding: 6px 14px;
+        padding: 5px 14px;
       }
       .icon-btn {
-        padding: 7px 14px;
-        font-size: 0.9rem;
+        padding: 6px 12px;
+        font-size: 0.88rem;
       }
-      .game-card {
+      .hub-card, .game-card {
         padding: 16px 12px 20px 12px;
         border-radius: 26px;
         border-width: 4px;
       }
+      .hub-title {
+        font-size: 1.45rem;
+      }
+      .game-choice-card {
+        padding: 14px;
+        gap: 12px;
+      }
+      .game-icon-box {
+        width: 54px;
+        height: 54px;
+        font-size: 1.7rem;
+      }
+      .game-name {
+        font-size: 1.15rem;
+      }
+      .game-desc {
+        font-size: 0.8rem;
+      }
       .mascot-container {
-        margin-top: -46px;
+        margin-top: -44px;
       }
       .mascot-avatar {
-        width: 88px;
-        height: 88px;
+        width: 86px;
+        height: 86px;
       }
       .mascot-svg {
-        width: 68px;
-        height: 68px;
+        width: 66px;
+        height: 66px;
       }
       .btn-audio-repeat {
         padding: 8px 18px;
-        font-size: 1.05rem;
+        font-size: 1rem;
         margin-bottom: 6px;
       }
       .status-text {
@@ -897,7 +1242,7 @@
       .solved-problem-badge {
         font-size: 1.15rem;
         padding: 5px 14px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
       .digit-input {
         width: 72px;
@@ -916,9 +1261,32 @@
       .key-btn.key-del {
         font-size: 1.15rem;
       }
+      .spelling-number-badge {
+        padding: 6px 22px;
+        margin-bottom: 10px;
+      }
+      .spelling-number-val {
+        font-size: 2.8rem;
+      }
+      .letter-slot {
+        width: 36px;
+        height: 46px;
+        font-size: 1.55rem;
+        border-radius: 12px;
+      }
+      .alpha-key {
+        max-width: 34px;
+        height: 44px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+      }
+      .alpha-key.key-wide-reset, .alpha-key.key-wide-del {
+        max-width: 66px;
+        font-size: 0.85rem;
+      }
       .btn-action {
-        padding: 13px 20px;
-        font-size: 1.25rem;
+        padding: 12px 18px;
+        font-size: 1.2rem;
       }
       .modal-card {
         padding: 16px 12px;
@@ -935,6 +1303,20 @@
     }
 
     @media (max-width: 360px) {
+      .letter-slot {
+        width: 30px;
+        height: 40px;
+        font-size: 1.35rem;
+      }
+      .alpha-key {
+        max-width: 29px;
+        height: 40px;
+        font-size: 1.05rem;
+      }
+      .alpha-key.key-wide-reset, .alpha-key.key-wide-del {
+        max-width: 56px;
+        font-size: 0.75rem;
+      }
       .digit-input {
         width: 62px;
         height: 74px;
@@ -943,12 +1325,6 @@
       .key-btn {
         height: 46px;
         font-size: 1.6rem;
-      }
-      .key-btn.key-reset {
-        font-size: 0.82rem;
-      }
-      .key-btn.key-del {
-        font-size: 0.95rem;
       }
     }
   </style>
@@ -966,10 +1342,17 @@
 
   <!-- Top Navigation & Score -->
   <div class="top-bar">
-    <div class="stars-badge">
-      <span class="stars-icon">⭐</span>
-      <span id="score-counter">0</span>
-      <span style="font-size: 0.95rem; font-weight: 700; color: #a4b0be; margin-left: 4px;">Stars</span>
+    <div class="top-bar-left">
+      <button class="icon-btn btn-home" id="btn-home" style="display: none;" title="Back to Games Hub">
+        <span>🏠</span>
+        <span>Games</span>
+      </button>
+
+      <div class="stars-badge">
+        <span class="stars-icon">⭐</span>
+        <span id="score-counter">0</span>
+        <span style="font-size: 0.95rem; font-weight: 700; color: #a4b0be; margin-left: 4px;">Stars</span>
+      </div>
     </div>
 
     <div class="mode-settings">
@@ -979,134 +1362,283 @@
     </div>
   </div>
 
-  <!-- Main Game Card -->
-  <div class="game-card">
-
-    <!-- Mascot & Voice Speaker -->
-    <div class="mascot-container" id="mascot-box" title="Click to hear question">
-      <div class="mascot-avatar" id="mascot-avatar">
-        <!-- Cute Playful Character SVG -->
-        <svg class="mascot-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="52" r="38" fill="#ffffff"/>
-          <circle cx="28" cy="24" r="14" fill="#ff9f1a"/>
-          <circle cx="28" cy="24" r="8" fill="#ffd32a"/>
-          <circle cx="72" cy="24" r="14" fill="#ff9f1a"/>
-          <circle cx="72" cy="24" r="8" fill="#ffd32a"/>
-          <!-- Cute Girl Bow on head -->
-          <polygon points="70,16 80,10 80,22" fill="#ff4757"/>
-          <polygon points="70,16 60,10 60,22" fill="#ff4757"/>
-          <circle cx="70" cy="16" r="4" fill="#ff6b81"/>
-          <!-- Cheeks -->
-          <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
-          <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
-          <!-- Big Shiny Eyes -->
-          <circle cx="38" cy="46" r="6.5" fill="#2f3542"/>
-          <circle cx="36" cy="44" r="2.2" fill="#ffffff"/>
-          <circle cx="62" cy="46" r="6.5" fill="#2f3542"/>
-          <circle cx="60" cy="44" r="2.2" fill="#ffffff"/>
-          <!-- Nose & Happy Smile -->
-          <ellipse cx="50" cy="54" rx="5" ry="4" fill="#ff4757"/>
-          <path d="M44 60 Q50 68 56 60" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round"/>
-          <!-- Headphones arch -->
-          <path d="M16 52 C16 26 84 26 84 52" fill="none" stroke="#ff4757" stroke-width="6" stroke-linecap="round"/>
-          <rect x="10" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
-          <rect x="78" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
-        </svg>
+  <!-- =========================================================================
+       VIEW 1: GAMES HUB (DASHBOARD)
+       ========================================================================= -->
+  <div class="app-view" id="view-hub">
+    <div class="hub-card">
+      <div class="hub-header">
+        <div class="hub-title">Kids Arena 🚀</div>
+        <div class="hub-subtitle">Choose your favorite game and become a math champion!</div>
       </div>
-      <div class="headphones-badge">👧🎧</div>
-    </div>
 
-    <!-- Audio Replay Button -->
-    <button class="btn-audio-repeat" id="btn-replay-audio">
-      <span style="font-size: 1.6rem;">🔊</span>
-      <span>Listen to Problem</span>
-      <div class="soundwave">
-        <span></span><span></span><span></span><span></span>
-      </div>
-    </button>
-
-    <div class="status-text" id="status-text">Click listen to start! 👂</div>
-
-    <!-- Solved Problem Display (Appears when child answers correctly) -->
-    <div class="solved-problem-badge" id="solved-problem-badge"></div>
-
-    <!-- Discreet Parent Peek for verification -->
-    <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
-      <button class="parent-peek" id="btn-peek">
-        <span>👁️</span> <span>Show Problem (Parents)</span>
-      </button>
-      <div class="peek-content" id="peek-content">24 + 13 = ?</div>
-    </div>
-
-    <!-- Dynamic Answer Boxes (Tens on Left, Units on Right) -->
-    <div class="answer-inputs-wrapper">
-      <div class="inputs-container" id="inputs-container">
-        <!-- Tens Box -->
-        <div class="digit-box" id="box-tens">
-          <div class="digit-label" id="label-tens">Tens</div>
-          <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
+      <div class="games-grid">
+        <!-- Game 1: UC Math -->
+        <div class="game-choice-card card-math" id="btn-launch-ucmath">
+          <div class="game-icon-box">🧠⚡</div>
+          <div class="game-details">
+            <span class="game-badge">Mental Math</span>
+            <div class="game-name">UC Math Hero</div>
+            <div class="game-desc">Listen to fast addition & subtraction, then enter Tens & Ones!</div>
+          </div>
+          <div class="game-play-arrow">▶</div>
         </div>
 
-        <!-- Units / Ones Box -->
-        <div class="digit-box" id="box-units">
-          <div class="digit-label" id="label-units">Ones</div>
-          <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
+        <!-- Game 2: Number Words -->
+        <div class="game-choice-card card-spelling" id="btn-launch-spelling">
+          <div class="game-icon-box">🔤🔢</div>
+          <div class="game-details">
+            <span class="game-badge">Number Words</span>
+            <div class="game-name">Spell Numbers</div>
+            <div class="game-desc">See the number, listen to its sound, and spell it out in letters!</div>
+          </div>
+          <div class="game-play-arrow">▶</div>
         </div>
       </div>
     </div>
-
-    <!-- Custom Number Keypad -->
-    <div class="keypad-container" id="keypad">
-      <!-- Row 1: 1, 2, 3 -->
-      <div class="keypad-row">
-        <button class="key-btn" data-key="1">1</button>
-        <button class="key-btn" data-key="2">2</button>
-        <button class="key-btn" data-key="3">3</button>
-      </div>
-      <!-- Row 2: 4, 5, 6 -->
-      <div class="keypad-row">
-        <button class="key-btn" data-key="4">4</button>
-        <button class="key-btn" data-key="5">5</button>
-        <button class="key-btn" data-key="6">6</button>
-      </div>
-      <!-- Row 3: 7, 8, 9 -->
-      <div class="keypad-row">
-        <button class="key-btn" data-key="7">7</button>
-        <button class="key-btn" data-key="8">8</button>
-        <button class="key-btn" data-key="9">9</button>
-      </div>
-      <!-- Bottom Row: Reset on Left under 7, 0 in Middle under 8, Del on Right under 9 -->
-      <div class="keypad-row">
-        <button class="key-btn key-reset" id="btn-key-reset" data-key="reset" title="Reset Problem">
-          <span>Reset</span>
-          <span style="font-size: 1.15rem;">🔄</span>
-        </button>
-        <button class="key-btn" data-key="0">0</button>
-        <button class="key-btn key-del" data-key="del" title="Delete">Del ⌫</button>
-      </div>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="actions-area">
-      <button class="btn-action btn-check" id="btn-check">
-        <span>Check Answer</span>
-        <span style="font-size: 1.5rem;">✔️</span>
-      </button>
-
-      <button class="btn-action btn-next" id="btn-next">
-        <span>Next Question!</span>
-        <span style="font-size: 1.5rem;">🚀</span>
-      </button>
-
-      <button class="btn-action btn-retry" id="btn-retry">
-        <span>Try Again</span>
-        <span style="font-size: 1.5rem;">🔄</span>
-      </button>
-    </div>
-
   </div>
 
-  <!-- Auto-Dismissing Feedback Popup Modal -->
+  <!-- =========================================================================
+       VIEW 2: UC MATH (MENTAL MATH GAME)
+       ========================================================================= -->
+  <div class="app-view" id="view-ucmath" style="display: none;">
+    <div class="game-card">
+
+      <!-- Mascot & Voice Speaker -->
+      <div class="mascot-container" id="mascot-box-math" title="Click to hear problem">
+        <div class="mascot-avatar" id="mascot-avatar-math">
+          <svg class="mascot-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="52" r="38" fill="#ffffff"/>
+            <circle cx="28" cy="24" r="14" fill="#ff9f1a"/>
+            <circle cx="28" cy="24" r="8" fill="#ffd32a"/>
+            <circle cx="72" cy="24" r="14" fill="#ff9f1a"/>
+            <circle cx="72" cy="24" r="8" fill="#ffd32a"/>
+            <polygon points="70,16 80,10 80,22" fill="#ff4757"/>
+            <polygon points="70,16 60,10 60,22" fill="#ff4757"/>
+            <circle cx="70" cy="16" r="4" fill="#ff6b81"/>
+            <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="38" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="36" cy="44" r="2.2" fill="#ffffff"/>
+            <circle cx="62" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="60" cy="44" r="2.2" fill="#ffffff"/>
+            <ellipse cx="50" cy="54" rx="5" ry="4" fill="#ff4757"/>
+            <path d="M44 60 Q50 68 56 60" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 52 C16 26 84 26 84 52" fill="none" stroke="#ff4757" stroke-width="6" stroke-linecap="round"/>
+            <rect x="10" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
+            <rect x="78" y="44" width="12" height="18" rx="6" fill="#ff6b81"/>
+          </svg>
+        </div>
+        <div class="headphones-badge">👧🎧</div>
+      </div>
+
+      <!-- Audio Replay Button -->
+      <button class="btn-audio-repeat" id="btn-replay-math">
+        <span style="font-size: 1.5rem;">🔊</span>
+        <span>Listen to Problem</span>
+        <div class="soundwave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <div class="status-text" id="status-text-math">Click listen to start! 👂</div>
+
+      <!-- Solved Problem Display Badge -->
+      <div class="solved-problem-badge" id="solved-badge-math"></div>
+
+      <!-- Parent Peek -->
+      <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
+        <button class="parent-peek" id="btn-peek">
+          <span>👁️</span> <span>Show Problem (Parents)</span>
+        </button>
+        <div class="peek-content" id="peek-content">24 + 13 = ?</div>
+      </div>
+
+      <!-- Dynamic Answer Boxes (Tens & Ones) -->
+      <div class="answer-inputs-wrapper">
+        <div class="inputs-container" id="inputs-container">
+          <!-- Tens Box -->
+          <div class="digit-box" id="box-tens">
+            <div class="digit-label" id="label-tens">Tens</div>
+            <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
+          </div>
+
+          <!-- Ones Box -->
+          <div class="digit-box" id="box-units">
+            <div class="digit-label" id="label-units">Ones</div>
+            <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Number Keypad -->
+      <div class="keypad-container" id="keypad">
+        <div class="keypad-row">
+          <button class="key-btn" data-key="1">1</button>
+          <button class="key-btn" data-key="2">2</button>
+          <button class="key-btn" data-key="3">3</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key-btn" data-key="4">4</button>
+          <button class="key-btn" data-key="5">5</button>
+          <button class="key-btn" data-key="6">6</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key-btn" data-key="7">7</button>
+          <button class="key-btn" data-key="8">8</button>
+          <button class="key-btn" data-key="9">9</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key-btn key-reset" id="btn-key-reset" data-key="reset" title="Reset Problem">
+            <span>Reset</span>
+            <span style="font-size: 1.15rem;">🔄</span>
+          </button>
+          <button class="key-btn" data-key="0">0</button>
+          <button class="key-btn key-del" data-key="del" title="Delete">Del ⌫</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions-area">
+        <button class="btn-action btn-check" id="btn-check-math">
+          <span>Check Answer</span>
+          <span style="font-size: 1.5rem;">✔️</span>
+        </button>
+
+        <button class="btn-action btn-next" id="btn-next-math">
+          <span>Next Question!</span>
+          <span style="font-size: 1.5rem;">🚀</span>
+        </button>
+
+        <button class="btn-action btn-retry" id="btn-retry-math">
+          <span>Try Again</span>
+          <span style="font-size: 1.5rem;">🔄</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       VIEW 3: NUMBER WORDS (SPELLING GAME)
+       ========================================================================= -->
+  <div class="app-view" id="view-spelling" style="display: none;">
+    <div class="game-card">
+
+      <!-- Mascot Speaker -->
+      <div class="mascot-container" id="mascot-box-spelling" title="Click to hear number">
+        <div class="mascot-avatar" id="mascot-avatar-spelling">
+          <svg class="mascot-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="52" r="38" fill="#ffffff"/>
+            <circle cx="28" cy="24" r="14" fill="#2ed573"/>
+            <circle cx="28" cy="24" r="8" fill="#7bed9f"/>
+            <circle cx="72" cy="24" r="14" fill="#2ed573"/>
+            <circle cx="72" cy="24" r="8" fill="#7bed9f"/>
+            <!-- Cute Star on head -->
+            <polygon points="70,12 73,19 80,19 74,23 76,30 70,25 64,30 66,23 60,19 67,19" fill="#ffd32a"/>
+            <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="38" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="36" cy="44" r="2.2" fill="#ffffff"/>
+            <circle cx="62" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="60" cy="44" r="2.2" fill="#ffffff"/>
+            <ellipse cx="50" cy="54" rx="5" ry="4" fill="#2ed573"/>
+            <path d="M44 60 Q50 68 56 60" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 52 C16 26 84 26 84 52" fill="none" stroke="#2ed573" stroke-width="6" stroke-linecap="round"/>
+            <rect x="10" y="44" width="12" height="18" rx="6" fill="#7bed9f"/>
+            <rect x="78" y="44" width="12" height="18" rx="6" fill="#7bed9f"/>
+          </svg>
+        </div>
+        <div class="headphones-badge" style="background: #2ed573;">🔤🎧</div>
+      </div>
+
+      <!-- Audio Replay Button -->
+      <button class="btn-audio-repeat" id="btn-replay-spelling" style="background: linear-gradient(135deg, #2ed573 0%, #10ac84 100%); border-bottom-color: #0e8062;">
+        <span style="font-size: 1.5rem;">🔊</span>
+        <span>Pronounce Number</span>
+        <div class="soundwave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <div class="status-text" id="status-text-spelling">Look at the number and spell the word! ✍️</div>
+
+      <!-- Solved Problem Display Badge -->
+      <div class="solved-problem-badge" id="solved-badge-spelling"></div>
+
+      <!-- Big Number Badge -->
+      <div class="spelling-number-badge">
+        <span style="font-size: 1.4rem; color: #3b82f6;">Number:</span>
+        <span class="spelling-number-val" id="spelling-number-display">1</span>
+      </div>
+
+      <!-- Word Letter Slots -->
+      <div class="word-slots-container" id="word-slots-container">
+        <!-- Generated Dynamically: e.g. [ O ] [ N ] [ E ] -->
+      </div>
+
+      <!-- Alphabet Keypad (QWERTY with Reset and Del) -->
+      <div class="alphabet-keypad" id="alphabet-keypad">
+        <div class="alpha-row">
+          <button class="alpha-key" data-char="Q">Q</button>
+          <button class="alpha-key" data-char="W">W</button>
+          <button class="alpha-key" data-char="E">E</button>
+          <button class="alpha-key" data-char="R">R</button>
+          <button class="alpha-key" data-char="T">T</button>
+          <button class="alpha-key" data-char="Y">Y</button>
+          <button class="alpha-key" data-char="U">U</button>
+          <button class="alpha-key" data-char="I">I</button>
+          <button class="alpha-key" data-char="O">O</button>
+          <button class="alpha-key" data-char="P">P</button>
+        </div>
+        <div class="alpha-row">
+          <button class="alpha-key" data-char="A">A</button>
+          <button class="alpha-key" data-char="S">S</button>
+          <button class="alpha-key" data-char="D">D</button>
+          <button class="alpha-key" data-char="F">F</button>
+          <button class="alpha-key" data-char="G">G</button>
+          <button class="alpha-key" data-char="H">H</button>
+          <button class="alpha-key" data-char="J">J</button>
+          <button class="alpha-key" data-char="K">K</button>
+          <button class="alpha-key" data-char="L">L</button>
+        </div>
+        <div class="alpha-row">
+          <button class="alpha-key key-wide-reset" data-action="reset">Reset 🔄</button>
+          <button class="alpha-key" data-char="Z">Z</button>
+          <button class="alpha-key" data-char="X">X</button>
+          <button class="alpha-key" data-char="C">C</button>
+          <button class="alpha-key" data-char="V">V</button>
+          <button class="alpha-key" data-char="B">B</button>
+          <button class="alpha-key" data-char="N">N</button>
+          <button class="alpha-key" data-char="M">M</button>
+          <button class="alpha-key key-wide-del" data-action="del">Del ⌫</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions-area">
+        <button class="btn-action btn-check" id="btn-check-spelling">
+          <span>Check Spelling</span>
+          <span style="font-size: 1.5rem;">✔️</span>
+        </button>
+
+        <button class="btn-action btn-next" id="btn-next-spelling">
+          <span>Next Number!</span>
+          <span style="font-size: 1.5rem;">🚀</span>
+        </button>
+
+        <button class="btn-action btn-retry" id="btn-retry-spelling">
+          <span>Try Again</span>
+          <span style="font-size: 1.5rem;">🔄</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SHARED AUTO-DISMISSING CELEBRATION POPUP MODAL
+       ========================================================================= -->
   <div class="feedback-popup-overlay" id="feedback-popup-overlay">
     <div class="feedback-popup-card" id="feedback-popup-card">
       <div class="feedback-popup-icon" id="feedback-popup-icon">🎉</div>
@@ -1116,7 +1648,9 @@
     </div>
   </div>
 
-  <!-- Settings Modal -->
+  <!-- =========================================================================
+       SETTINGS MODAL (SHARED)
+       ========================================================================= -->
   <div class="settings-modal" id="settings-modal">
     <div class="modal-card">
       <div class="modal-title">
@@ -1124,16 +1658,29 @@
         <span id="btn-close-modal-x" style="cursor: pointer; font-size: 1.5rem;">✖️</span>
       </div>
 
+      <!-- UC Math Level -->
       <div class="setting-group">
-        <label class="setting-label">Problem Level:</label>
+        <label class="setting-label">UC Math Difficulty Level:</label>
         <div class="level-options">
-          <button class="level-btn" data-level="1">Single (1-9)</button>
-          <button class="level-btn" data-level="2">Up to 20 (Simple)</button>
-          <button class="level-btn" data-level="3">2-Digits (2 Steps)</button>
-          <button class="level-btn" data-level="4">2-Digits (3 Steps)</button>
+          <button class="level-btn" data-mathlevel="1">Single (1-9)</button>
+          <button class="level-btn" data-mathlevel="2">Up to 20 (Simple)</button>
+          <button class="level-btn" data-mathlevel="3">2-Digits (2 Steps)</button>
+          <button class="level-btn" data-mathlevel="4">2-Digits (3 Steps)</button>
         </div>
       </div>
 
+      <!-- Number Words Level -->
+      <div class="setting-group">
+        <label class="setting-label">Number Words Difficulty Level:</label>
+        <div class="level-options">
+          <button class="level-btn" data-spelllevel="1">Numbers 1 to 10</button>
+          <button class="level-btn" data-spelllevel="2">Numbers 11 to 20</button>
+          <button class="level-btn" data-spelllevel="3">Tens (10 to 90)</button>
+          <button class="level-btn" data-spelllevel="4">Numbers 1 to 99</button>
+        </div>
+      </div>
+
+      <!-- Speech Speed -->
       <div class="setting-group">
         <label class="setting-label">Voice Speech Speed:</label>
         <div class="level-options">
@@ -1142,6 +1689,7 @@
         </div>
       </div>
 
+      <!-- Celebration Popup Duration -->
       <div class="setting-group">
         <label class="setting-label">Celebration Popup Duration:</label>
         <div class="level-options popup-duration-options">
@@ -1152,14 +1700,16 @@
         </div>
       </div>
 
+      <!-- Parent Peek Button -->
       <div class="setting-group">
-        <label class="setting-label">Parent Peek Button:</label>
+        <label class="setting-label">Parent Peek Button (UC Math):</label>
         <div class="level-options">
           <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show 👁️</button>
           <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide 🙈</button>
         </div>
       </div>
 
+      <!-- Progress Management -->
       <div class="setting-group">
         <label class="setting-label">Saved Progress:</label>
         <button class="btn-reset-storage" id="btn-reset-storage">🔄 Reset Stars & Start Over</button>
@@ -1171,10 +1721,8 @@
 
   <script>
     /* ==========================================================================
-       UC MATH KIDS APPLICATION LOGIC (100% ENGLISH)
+       SOUND ENGINE (Web Audio API - 100% Offline)
        ========================================================================== */
-
-    // Sound Synthesizer via Web Audio API (100% Offline & Pure Sound)
     class SoundEngine {
       constructor() {
         this.ctx = null;
@@ -1190,7 +1738,6 @@
         }
       }
 
-      // Friendly button tap click
       playTap() {
         this.init();
         if (!this.ctx) return;
@@ -1211,7 +1758,6 @@
         osc.stop(this.ctx.currentTime + 0.08);
       }
 
-      // Joyful Success Fanfare
       playFanfare() {
         this.init();
         if (!this.ctx) return;
@@ -1234,7 +1780,6 @@
         });
       }
 
-      // Comical Gentle Wrong Boing
       playComicalWrong() {
         this.init();
         if (!this.ctx) return;
@@ -1256,7 +1801,9 @@
       }
     }
 
-    // Celebratory Confetti Cannon
+    /* ==========================================================================
+       CONFETTI CANNON (Canvas 2D)
+       ========================================================================== */
     class ConfettiCannon {
       constructor(canvas) {
         this.canvas = canvas;
@@ -1331,51 +1878,72 @@
       }
     }
 
-    // Main App Controller
-    class UCMathApp {
+    /* ==========================================================================
+       NUMBERS TO WORDS DICTIONARY HELPER
+       ========================================================================== */
+    const WORDS_DICT = {
+      1: 'ONE', 2: 'TWO', 3: 'THREE', 4: 'FOUR', 5: 'FIVE',
+      6: 'SIX', 7: 'SEVEN', 8: 'EIGHT', 9: 'NINE', 10: 'TEN',
+      11: 'ELEVEN', 12: 'TWELVE', 13: 'THIRTEEN', 14: 'FOURTEEN', 15: 'FIFTEEN',
+      16: 'SIXTEEN', 17: 'SEVENTEEN', 18: 'EIGHTEEN', 19: 'NINETEEN',
+      20: 'TWENTY', 30: 'THIRTY', 40: 'FORTY', 50: 'FIFTY',
+      60: 'SIXTY', 70: 'SEVENTY', 80: 'EIGHTY', 90: 'NINETY'
+    };
+
+    function getNumberWord(num) {
+      if (WORDS_DICT[num]) return WORDS_DICT[num];
+      const ten = Math.floor(num / 10) * 10;
+      const unit = num % 10;
+      return `${WORDS_DICT[ten]}-${WORDS_DICT[unit]}`;
+    }
+
+    /* ==========================================================================
+       CENTRAL APP COORDINATOR (Multi-Game Platform)
+       ========================================================================== */
+    class KidsArenaApp {
       constructor() {
         this.sound = new SoundEngine();
         this.confetti = new ConfettiCannon(document.getElementById('celebration-canvas'));
 
-        // Default App States
+        // Shared Global State
         this.score = 0;
-        this.currentLevel = 3; // 1: single digits, 2: up to 20, 3: up to 99, 4: up to 99 with 3 steps
-        this.speechRate = 0.75; // Slow & friendly
-        this.popupDuration = 2; // Duration in seconds for feedback popup
-        this.activeField = 'tens';
-        this.isSpeaking = false;
+        this.speechRate = 0.75;
+        this.popupDuration = 2;
+        this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling'
+
+        // Game 1: UC Math State
+        this.ucMathLevel = 3;
         this.showParentPeek = false;
-        this.isAnswerLocked = false; // Prevents modifying answers after correct solution!
+
+        // Game 2: Number Words State
+        this.spellingLevel = 1; // 1: 1-10, 2: 11-20, 3: Tens, 4: 1-99
+
+        this.voices = [];
         this._feedbackTimer = null;
 
-        // Current Question Model
-        this.question = {
-          steps: [],
-          correctAnswer: 0,
-          displayText: '',
-          isSingleDigit: false
-        };
-
-        // Load saved progress from LocalStorage
         this.loadProgress();
+        this.initSharedDOMElements();
+        this.setupSpeech();
+        this.syncSharedUI();
 
-        this.initDOMElements();
-        this.syncUIWithState();
-        this.attachEventListeners();
-        this.setupSpeechSynthesis();
-        this.generateNewQuestion(false); // First question loaded visually; audio waits for child to tap 'Listen'
+        // Initialize sub-game controllers
+        this.ucMathController = new UCMathController(this);
+        this.spellingController = new NumberWordsController(this);
+
+        this.attachGlobalListeners();
+        this.showView('hub');
       }
 
-      // Load progress from localStorage
       loadProgress() {
         try {
-          const saved = localStorage.getItem('uc_math_kids_progress');
+          const saved = localStorage.getItem('kids_arena_math_progress');
           if (saved) {
             const data = JSON.parse(saved);
             if (typeof data.score === 'number') this.score = data.score;
-            if (data.currentLevel) this.currentLevel = parseInt(data.currentLevel, 10);
             if (data.speechRate) this.speechRate = parseFloat(data.speechRate);
             if (typeof data.popupDuration === 'number') this.popupDuration = data.popupDuration;
+            if (data.ucMathLevel) this.ucMathLevel = parseInt(data.ucMathLevel, 10);
+            if (data.spellingLevel) this.spellingLevel = parseInt(data.spellingLevel, 10);
             if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
           }
         } catch (e) {
@@ -1383,317 +1951,55 @@
         }
       }
 
-      // Save progress to localStorage
       saveProgress() {
         try {
           const data = {
             score: this.score,
-            currentLevel: this.currentLevel,
             speechRate: this.speechRate,
             popupDuration: this.popupDuration,
+            ucMathLevel: this.ucMathLevel,
+            spellingLevel: this.spellingLevel,
             showParentPeek: this.showParentPeek
           };
-          localStorage.setItem('uc_math_kids_progress', JSON.stringify(data));
+          localStorage.setItem('kids_arena_math_progress', JSON.stringify(data));
         } catch (e) {
           console.warn('Could not save to localStorage:', e);
         }
       }
 
-      initDOMElements() {
+      addScore(points = 1) {
+        this.score += points;
+        this.scoreCounter.textContent = this.score;
+        this.saveProgress();
+      }
+
+      initSharedDOMElements() {
         this.scoreCounter = document.getElementById('score-counter');
-        this.mascotAvatar = document.getElementById('mascot-avatar');
-        this.mascotBox = document.getElementById('mascot-box');
-        this.btnReplay = document.getElementById('btn-replay-audio');
-        this.statusText = document.getElementById('status-text');
-        this.inputsContainer = document.getElementById('inputs-container');
-        this.boxTens = document.getElementById('box-tens');
-        this.boxUnits = document.getElementById('box-units');
-        this.labelTens = document.getElementById('label-tens');
-        this.labelUnits = document.getElementById('label-units');
-        this.inputTens = document.getElementById('input-tens');
-        this.inputUnits = document.getElementById('input-units');
-        this.keypad = document.getElementById('keypad');
-        this.btnKeyReset = document.getElementById('btn-key-reset');
-        this.btnCheck = document.getElementById('btn-check');
-        this.btnNext = document.getElementById('btn-next');
-        this.btnRetry = document.getElementById('btn-retry');
-
-        // Feedback Popup Elements
-        this.feedbackOverlay = document.getElementById('feedback-popup-overlay');
-        this.feedbackCard = document.getElementById('feedback-popup-card');
-        this.feedbackIcon = document.getElementById('feedback-popup-icon');
-        this.feedbackText = document.getElementById('feedback-popup-text');
-        this.feedbackEquation = document.getElementById('feedback-popup-equation');
-
-        // Solved Problem Badge
-        this.solvedProblemBadge = document.getElementById('solved-problem-badge');
-
-        // Parent Peek
-        this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
-        this.btnPeek = document.getElementById('btn-peek');
-        this.peekContent = document.getElementById('peek-content');
-
-        // Settings Modal
+        this.btnHome = document.getElementById('btn-home');
         this.btnSettingsOpen = document.getElementById('btn-settings-open');
         this.settingsModal = document.getElementById('settings-modal');
         this.btnModalCloseX = document.getElementById('btn-close-modal-x');
         this.btnModalDone = document.getElementById('btn-modal-done');
         this.btnResetStorage = document.getElementById('btn-reset-storage');
+
+        // Views
+        this.viewHub = document.getElementById('view-hub');
+        this.viewUcMath = document.getElementById('view-ucmath');
+        this.viewSpelling = document.getElementById('view-spelling');
+
+        // Hub launch buttons
+        this.btnLaunchUcMath = document.getElementById('btn-launch-ucmath');
+        this.btnLaunchSpelling = document.getElementById('btn-launch-spelling');
+
+        // Shared Feedback Popup
+        this.feedbackOverlay = document.getElementById('feedback-popup-overlay');
+        this.feedbackCard = document.getElementById('feedback-popup-card');
+        this.feedbackIcon = document.getElementById('feedback-popup-icon');
+        this.feedbackText = document.getElementById('feedback-popup-text');
+        this.feedbackEquation = document.getElementById('feedback-popup-equation');
       }
 
-      syncUIWithState() {
-        this.scoreCounter.textContent = this.score;
-
-        // Active Level in Modal
-        document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
-          if (parseInt(btn.dataset.level, 10) === this.currentLevel) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-
-        // Active Speed in Modal
-        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
-          if (parseFloat(btn.dataset.speed) === this.speechRate) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-
-        // Active Popup Duration in Modal
-        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
-          if (parseFloat(btn.dataset.popup) === this.popupDuration) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-
-        // Parent Peek Toggle
-        if (this.parentPeekWrapper) {
-          this.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
-        }
-        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
-          const isShow = btn.dataset.showpeek === 'true';
-          if (isShow === this.showParentPeek) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-      }
-
-      attachEventListeners() {
-        // Replay Question Audio
-        this.btnReplay.addEventListener('click', () => {
-          this.sound.playTap();
-          this.speakQuestion();
-        });
-
-        this.mascotBox.addEventListener('click', () => {
-          this.sound.playTap();
-          this.speakQuestion();
-        });
-
-        // Input Focus
-        this.inputTens.addEventListener('click', () => {
-          if (this.boxTens.style.display !== 'none') {
-            this.setActiveField('tens');
-          }
-        });
-        this.inputUnits.addEventListener('click', () => this.setActiveField('units'));
-
-        // Keypad button taps
-        this.keypad.addEventListener('click', (e) => {
-          const btn = e.target.closest('.key-btn');
-          if (!btn) return;
-          const key = btn.dataset.key;
-          this.handleKeyInput(key);
-        });
-
-        // Physical Keyboard Support
-        window.addEventListener('keydown', (e) => {
-          if (e.key >= '0' && e.key <= '9') {
-            this.handleKeyInput(e.key);
-          } else if (e.key === 'Backspace' || e.key === 'Delete') {
-            this.handleKeyInput('del');
-          } else if (e.key === 'r' || e.key === 'R') {
-            this.handleKeyInput('reset');
-          } else if (e.key === 'Enter') {
-            if (this.btnNext.style.display === 'flex') {
-              this.btnNext.click();
-            } else if (this.btnRetry.style.display === 'flex') {
-              this.btnRetry.click();
-            } else {
-              this.checkAnswer();
-            }
-          }
-        });
-
-        // Check Button
-        this.btnCheck.addEventListener('click', () => this.checkAnswer());
-
-        // Next Question Button
-        this.btnNext.addEventListener('click', () => {
-          this.sound.playTap();
-          this.generateNewQuestion();
-        });
-
-        // Retry Question Button
-        this.btnRetry.addEventListener('click', () => {
-          this.sound.playTap();
-          this.retryQuestion();
-        });
-
-        // Peek Question (Toggle for parents)
-        this.btnPeek.addEventListener('click', () => {
-          this.sound.playTap();
-          const isVisible = this.peekContent.style.display === 'block';
-          this.peekContent.style.display = isVisible ? 'none' : 'block';
-        });
-
-        // Settings Modal
-        this.btnSettingsOpen.addEventListener('click', () => {
-          this.sound.playTap();
-          this.settingsModal.style.display = 'flex';
-        });
-
-        const closeModal = () => {
-          this.sound.playTap();
-          this.settingsModal.style.display = 'none';
-          this.generateNewQuestion();
-        };
-
-        this.btnModalDone.addEventListener('click', closeModal);
-        this.btnModalCloseX.addEventListener('click', closeModal);
-
-        // Reset progress in LocalStorage
-        this.btnResetStorage.addEventListener('click', () => {
-          this.sound.playTap();
-          if (confirm('Do you want to reset your stars to 0 and start over?')) {
-            this.score = 0;
-            this.saveProgress();
-            this.syncUIWithState();
-            this.showFeedback('warning', 'Stars have been reset to 0! ⭐');
-          }
-        });
-
-        // Level selection in modal
-        document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            this.sound.playTap();
-            document.querySelectorAll('.level-btn[data-level]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.currentLevel = parseInt(btn.dataset.level, 10);
-            this.saveProgress();
-          });
-        });
-
-        // Speed selection in modal
-        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            this.sound.playTap();
-            document.querySelectorAll('.level-btn[data-speed]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.speechRate = parseFloat(btn.dataset.speed);
-            this.saveProgress();
-          });
-        });
-
-        // Popup Duration selection in modal
-        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            this.sound.playTap();
-            document.querySelectorAll('.level-btn[data-popup]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.popupDuration = parseFloat(btn.dataset.popup);
-            this.saveProgress();
-          });
-        });
-
-        // Parent peek toggle in modal
-        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            this.sound.playTap();
-            document.querySelectorAll('.level-btn[data-showpeek]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.showParentPeek = (btn.dataset.showpeek === 'true');
-            if (this.parentPeekWrapper) {
-              this.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
-            }
-            this.saveProgress();
-          });
-        });
-
-        // Feedback Popup click to dismiss immediately
-        this.feedbackOverlay.addEventListener('click', () => {
-          this.hideFeedback();
-        });
-      }
-
-      setActiveField(field, playSound = false) {
-        if (this.isAnswerLocked) return;
-        this.activeField = field;
-        if (playSound) this.sound.playTap();
-
-        if (field === 'tens') {
-          this.inputTens.classList.add('active');
-          this.inputUnits.classList.remove('active');
-        } else {
-          this.inputUnits.classList.add('active');
-          this.inputTens.classList.remove('active');
-        }
-      }
-
-      handleKeyInput(key) {
-        if (key === 'reset') {
-          this.sound.playTap();
-          this.retryQuestion();
-          return;
-        }
-
-        if (this.isAnswerLocked) return;
-        this.sound.playTap();
-
-        if (key === 'del') {
-          if (this.question.isSingleDigit) {
-            this.inputUnits.textContent = '_';
-            return;
-          }
-
-          if (this.activeField === 'units') {
-            if (this.inputUnits.textContent !== '_') {
-              this.inputUnits.textContent = '_';
-            } else {
-              // Units is already empty, move back to tens and clear it
-              this.inputTens.textContent = '_';
-              this.setActiveField('tens', true);
-            }
-          } else {
-            this.inputTens.textContent = '_';
-          }
-          return;
-        }
-
-        // If Single Digit problem (only units field visible)
-        if (this.question.isSingleDigit) {
-          this.inputUnits.textContent = key;
-          return;
-        }
-
-        // Two digits problem:
-        if (this.activeField === 'tens') {
-          this.inputTens.textContent = key;
-          // Automatically advance to units field!
-          this.setActiveField('units', true);
-        } else {
-          this.inputUnits.textContent = key;
-        }
-      }
-
-      setupSpeechSynthesis() {
+      setupSpeech() {
         if ('speechSynthesis' in window) {
           const updateVoices = () => {
             this.voices = window.speechSynthesis.getVoices();
@@ -1705,7 +2011,6 @@
         }
       }
 
-      // Best Female English Voice Selector
       getBestFemaleVoice() {
         if (!this.voices || this.voices.length === 0) {
           this.voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
@@ -1718,220 +2023,14 @@
         return match || enVoices[0] || this.voices[0] || null;
       }
 
-      // Generate New Question (Strict UC Math rules)
-      generateNewQuestion(shouldSpeak = true) {
-        let numSteps = this.currentLevel === 4 ? 3 : 2;
-        let isTwoDigits = (this.currentLevel === 3 || this.currentLevel === 4);
-
-        let steps = [];
-        let currentTotal = 0;
-
-        if (isTwoDigits) {
-          // Both addition and subtraction MUST use 2-digit numbers (10 to 99)
-          // AND Tens sum <= 9, Units sum <= 9 (No carry in units, No carry in tens, No borrowing in subtraction!)
-          let curT, curU;
-
-          for (let i = 0; i < numSteps; i++) {
-            if (i === 0) {
-              let minT = numSteps === 3 ? 3 : 2;
-              let maxT = numSteps === 3 ? 7 : 8;
-              let minU = numSteps === 3 ? 2 : 1;
-              let maxU = numSteps === 3 ? 7 : 8;
-
-              curT = Math.floor(Math.random() * (maxT - minT + 1)) + minT;
-              curU = Math.floor(Math.random() * (maxU - minU + 1)) + minU;
-
-              const val = curT * 10 + curU;
-              steps.push({ op: '+', val });
-              currentTotal = val;
-            } else {
-              const canAdd = (9 - curT) >= 1 && (9 - curU) >= 0;
-              const canSubtract = (curT - 1) >= 1 && curU >= 0;
-
-              let op;
-              if (canAdd && canSubtract) {
-                op = Math.random() > 0.5 ? '+' : '-';
-              } else if (canAdd) {
-                op = '+';
-              } else {
-                op = '-';
-              }
-
-              let t, u;
-              if (op === '+') {
-                const maxT = 9 - curT;
-                t = Math.floor(Math.random() * maxT) + 1;
-
-                const maxU = 9 - curU;
-                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
-
-                curT += t;
-                curU += u;
-              } else {
-                const maxT = curT - 1;
-                t = Math.floor(Math.random() * maxT) + 1;
-
-                const maxU = curU;
-                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
-
-                curT -= t;
-                curU -= u;
-              }
-
-              const val = t * 10 + u;
-              currentTotal = curT * 10 + curU;
-              steps.push({ op, val });
-            }
-          }
-        } else if (this.currentLevel === 1) {
-          // Single digit only (1 to 9) - Units sum <= 9
-          for (let i = 0; i < numSteps; i++) {
-            if (i === 0) {
-              const val = Math.floor(Math.random() * 8) + 1;
-              steps.push({ op: '+', val });
-              currentTotal = val;
-            } else {
-              const canAdd = (9 - currentTotal) >= 1;
-              const canSubtract = currentTotal > 1;
-
-              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
-              let val;
-              if (op === '-') {
-                val = Math.floor(Math.random() * (currentTotal - 1)) + 1;
-                currentTotal -= val;
-              } else {
-                val = Math.floor(Math.random() * (9 - currentTotal)) + 1;
-                currentTotal += val;
-              }
-              steps.push({ op, val });
-            }
-          }
-        } else {
-          // Level 2: Up to 20 - Units sum <= 9
-          for (let i = 0; i < numSteps; i++) {
-            if (i === 0) {
-              const u0 = Math.floor(Math.random() * 6) + 1;
-              const val = 10 + u0; // e.g. 11 to 16
-              steps.push({ op: '+', val });
-              currentTotal = val;
-            } else {
-              const curU = currentTotal % 10;
-              const canAdd = (9 - curU) >= 1 && (20 - currentTotal) >= 1;
-              const canSubtract = curU >= 1;
-
-              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
-              let val;
-              if (op === '-') {
-                val = Math.floor(Math.random() * curU) + 1;
-                currentTotal -= val;
-              } else {
-                val = Math.floor(Math.random() * (9 - curU)) + 1;
-                currentTotal += val;
-              }
-              steps.push({ op, val });
-            }
-          }
-        }
-
-        const isSingleDigit = currentTotal < 10;
-
-        this.question = {
-          steps,
-          correctAnswer: currentTotal,
-          displayText: steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ?',
-          isSingleDigit: isSingleDigit
-        };
-
-        this.peekContent.textContent = this.question.displayText;
-        this.peekContent.style.display = 'none';
-
-        // Adapt fields dynamically: 1 field if answer < 10, 2 fields if answer >= 10
-        this.updateInputFieldsLayout();
-
-        // Speak immediately when requested
-        if (shouldSpeak) {
-          setTimeout(() => {
-            this.speakQuestion();
-          }, 200);
-        } else {
-          this.statusText.textContent = 'Click listen to start! 👂';
-        }
-      }
-
-      updateInputFieldsLayout() {
-        this.resetUIStates();
-
-        if (this.question.isSingleDigit) {
-          // Single field only!
-          this.boxTens.style.display = 'none';
-          this.labelUnits.textContent = 'Answer';
-          this.setActiveField('units');
-        } else {
-          // Two fields: Tens on Left, Units on Right
-          this.boxTens.style.display = 'flex';
-          this.labelTens.textContent = 'Tens';
-          this.labelUnits.textContent = 'Ones';
-          this.setActiveField('tens');
-        }
-      }
-
-      // Stop any currently playing speech
-      stopAllSpeech() {
-        if ('speechSynthesis' in window) {
-          try {
-            window.speechSynthesis.cancel();
-          } catch (e) {}
-        }
-        this.isSpeaking = false;
-        this.mascotAvatar.classList.remove('speaking');
-        this.btnReplay.classList.remove('speaking');
-      }
-
-      // Clear, friendly English Speech Synthesis
-      speakQuestion() {
-        this.stopAllSpeech();
-
-        // 1. Prepare English Text
-        let textToSpeak = '';
-        this.question.steps.forEach((step, idx) => {
-          if (idx === 0) {
-            textToSpeak += `${step.val} , `;
-          } else {
-            const opWord = step.op === '+' ? 'plus' : 'minus';
-            textToSpeak += `${opWord} ${step.val} , `;
-          }
-        });
-
-        const cleanText = textToSpeak.trim();
-
-        // Update UI to speaking state
-        this.isSpeaking = true;
-        this.mascotAvatar.classList.add('speaking');
-        this.btnReplay.classList.add('speaking');
-        this.statusText.textContent = 'Listen carefully... 🎧';
-
-        const onFinished = () => {
-          this.isSpeaking = false;
-          this.mascotAvatar.classList.remove('speaking');
-          this.btnReplay.classList.remove('speaking');
-          this.statusText.textContent = 'What is your answer? Enter below 👇';
-          window._activeUtterance = null;
-        };
-
-        if (!('speechSynthesis' in window)) {
-          console.warn('SpeechSynthesis is not supported in this browser.');
-          onFinished();
-          return;
-        }
-
+      speak(text, onStart, onEnd) {
+        if (!('speechSynthesis' in window)) return;
         try {
-          if (window.speechSynthesis.paused) {
-            window.speechSynthesis.resume();
-          }
+          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
           window.speechSynthesis.cancel();
         } catch (e) {}
 
-        const utter = new SpeechSynthesisUtterance(cleanText);
+        const utter = new SpeechSynthesisUtterance(text);
         utter.rate = this.speechRate || 0.75;
         utter.pitch = 1.15;
         utter.lang = 'en-US';
@@ -1942,149 +2041,24 @@
           if (voice.lang) utter.lang = voice.lang;
         }
 
-        utter.onstart = () => {
-          this.isSpeaking = true;
-          this.mascotAvatar.classList.add('speaking');
-          this.btnReplay.classList.add('speaking');
-        };
-
-        utter.onend = () => {
-          onFinished();
-        };
-
-        utter.onerror = (e) => {
-          console.warn('Speech error:', e);
-          onFinished();
-          if (e.error === 'not-allowed') {
-            this.statusText.textContent = 'Click Listen 🔊 to start!';
-          }
-        };
+        if (onStart) utter.onstart = onStart;
+        utter.onend = () => { if (onEnd) onEnd(); };
+        utter.onerror = () => { if (onEnd) onEnd(); };
 
         window._activeUtterance = utter;
-
         try {
           window.speechSynthesis.speak(utter);
         } catch (e) {
-          console.error('Speech speak failed:', e);
-          onFinished();
+          if (onEnd) onEnd();
         }
       }
 
-      checkAnswer() {
-        let userVal;
-
-        if (this.question.isSingleDigit) {
-          const uVal = this.inputUnits.textContent.trim();
-          if (uVal === '_') {
-            this.showFeedback('warning', 'Please enter your answer first! ✍️');
-            return;
-          }
-          userVal = parseInt(uVal, 10);
-        } else {
-          const tVal = this.inputTens.textContent.trim();
-          const uVal = this.inputUnits.textContent.trim();
-
-          if (tVal === '_' || uVal === '_') {
-            this.showFeedback('warning', 'Please enter both digits! ✍️');
-            return;
-          }
-          userVal = parseInt(tVal, 10) * 10 + parseInt(uVal, 10);
-        }
-
-        if (userVal === this.question.correctAnswer) {
-          this.handleCorrect();
-        } else {
-          this.handleWrong();
+      stopSpeech() {
+        if ('speechSynthesis' in window) {
+          try { window.speechSynthesis.cancel(); } catch (e) {}
         }
       }
 
-      handleCorrect() {
-        this.isAnswerLocked = true;
-        if (this.inputsContainer) {
-          this.inputsContainer.style.pointerEvents = 'none';
-        }
-
-        this.sound.playFanfare();
-        this.confetti.fire();
-
-        this.score += 1;
-        this.scoreCounter.textContent = this.score;
-        this.saveProgress();
-
-        this.inputUnits.classList.add('success-pop');
-        if (!this.question.isSingleDigit) {
-          this.inputTens.classList.add('success-pop');
-        }
-
-        const equationText = this.question.steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ' + this.question.correctAnswer;
-
-        if (this.solvedProblemBadge) {
-          this.solvedProblemBadge.textContent = '🎯 Problem: ' + equationText + ' ✔️';
-          this.solvedProblemBadge.style.display = 'inline-flex';
-        }
-
-        this.showFeedback('success', 'Genius! Correct & Excellent! 🌟', equationText);
-        this.statusText.textContent = 'Awesome! You solved: ' + equationText + ' 🏆';
-
-        this.btnCheck.style.display = 'none';
-        this.btnRetry.style.display = 'none';
-        this.btnNext.style.display = 'flex';
-      }
-
-      handleWrong() {
-        this.sound.playComicalWrong();
-
-        this.inputUnits.classList.add('shake-error');
-        if (!this.question.isSingleDigit) {
-          this.inputTens.classList.add('shake-error');
-        }
-
-        setTimeout(() => {
-          this.inputUnits.classList.remove('shake-error');
-          this.inputTens.classList.remove('shake-error');
-        }, 600);
-
-        this.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
-        this.statusText.textContent = 'No worries, tap Try Again and solve it 💪';
-
-        this.btnCheck.style.display = 'none';
-        this.btnRetry.style.display = 'flex';
-        this.btnNext.style.display = 'none';
-      }
-
-      retryQuestion() {
-        this.resetUIStates();
-
-        if (this.question.isSingleDigit) {
-          this.setActiveField('units');
-        } else {
-          this.setActiveField('tens');
-        }
-
-        this.speakQuestion();
-      }
-
-      resetUIStates() {
-        this.isAnswerLocked = false;
-        if (this.inputsContainer) {
-          this.inputsContainer.style.pointerEvents = 'auto';
-        }
-
-        this.inputTens.textContent = '_';
-        this.inputUnits.textContent = '_';
-        this.inputTens.classList.remove('shake-error', 'success-pop');
-        this.inputUnits.classList.remove('shake-error', 'success-pop');
-        if (this.solvedProblemBadge) {
-          this.solvedProblemBadge.style.display = 'none';
-        }
-        this.hideFeedback();
-
-        this.btnCheck.style.display = 'flex';
-        this.btnNext.style.display = 'none';
-        this.btnRetry.style.display = 'none';
-      }
-
-      // Auto-Dismissing Popup Modal
       showFeedback(type, message, equation = '') {
         if (this._feedbackTimer) {
           clearTimeout(this._feedbackTimer);
@@ -2106,7 +2080,6 @@
 
         this.feedbackOverlay.classList.add('show');
 
-        // Auto-dismiss after user-configured duration
         const durationMs = (this.popupDuration || 2) * 1000;
         this._feedbackTimer = setTimeout(() => {
           this.hideFeedback();
@@ -2122,11 +2095,872 @@
           this.feedbackOverlay.classList.remove('show');
         }
       }
+
+      showView(viewName) {
+        this.stopSpeech();
+        this.hideFeedback();
+        this.currentView = viewName;
+
+        this.viewHub.style.display = 'none';
+        this.viewUcMath.style.display = 'none';
+        this.viewSpelling.style.display = 'none';
+
+        if (viewName === 'hub') {
+          this.viewHub.style.display = 'flex';
+          this.btnHome.style.display = 'none';
+        } else if (viewName === 'ucmath') {
+          this.viewUcMath.style.display = 'flex';
+          this.btnHome.style.display = 'flex';
+          this.ucMathController.onEnter();
+        } else if (viewName === 'spelling') {
+          this.viewSpelling.style.display = 'flex';
+          this.btnHome.style.display = 'flex';
+          this.spellingController.onEnter();
+        }
+      }
+
+      syncSharedUI() {
+        this.scoreCounter.textContent = this.score;
+
+        // Active UC Math Level
+        document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
+          btn.classList.toggle('active', parseInt(btn.dataset.mathlevel, 10) === this.ucMathLevel);
+        });
+
+        // Active Spelling Level
+        document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
+          btn.classList.toggle('active', parseInt(btn.dataset.spelllevel, 10) === this.spellingLevel);
+        });
+
+        // Active Speed
+        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
+          btn.classList.toggle('active', parseFloat(btn.dataset.speed) === this.speechRate);
+        });
+
+        // Active Popup Duration
+        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
+          btn.classList.toggle('active', parseFloat(btn.dataset.popup) === this.popupDuration);
+        });
+
+        // Parent Peek
+        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
+          btn.classList.toggle('active', (btn.dataset.showpeek === 'true') === this.showParentPeek);
+        });
+      }
+
+      attachGlobalListeners() {
+        // Navigation
+        this.btnLaunchUcMath.addEventListener('click', () => {
+          this.sound.playTap();
+          this.showView('ucmath');
+        });
+
+        this.btnLaunchSpelling.addEventListener('click', () => {
+          this.sound.playTap();
+          this.showView('spelling');
+        });
+
+        this.btnHome.addEventListener('click', () => {
+          this.sound.playTap();
+          this.showView('hub');
+        });
+
+        // Feedback Popup click to dismiss
+        this.feedbackOverlay.addEventListener('click', () => {
+          this.hideFeedback();
+        });
+
+        // Settings Modal
+        this.btnSettingsOpen.addEventListener('click', () => {
+          this.sound.playTap();
+          this.settingsModal.style.display = 'flex';
+        });
+
+        const closeModal = () => {
+          this.sound.playTap();
+          this.settingsModal.style.display = 'none';
+          if (this.currentView === 'ucmath') {
+            this.ucMathController.generateNewQuestion();
+          } else if (this.currentView === 'spelling') {
+            this.spellingController.generateNewQuestion();
+          }
+        };
+
+        this.btnModalDone.addEventListener('click', closeModal);
+        this.btnModalCloseX.addEventListener('click', closeModal);
+
+        // Reset progress in LocalStorage
+        this.btnResetStorage.addEventListener('click', () => {
+          this.sound.playTap();
+          if (confirm('Do you want to reset your stars to 0 and start over?')) {
+            this.score = 0;
+            this.saveProgress();
+            this.syncSharedUI();
+            this.showFeedback('warning', 'Stars have been reset to 0! ⭐');
+          }
+        });
+
+        // Level selection: UC Math
+        document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-mathlevel]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.ucMathLevel = parseInt(btn.dataset.mathlevel, 10);
+            this.saveProgress();
+          });
+        });
+
+        // Level selection: Spelling
+        document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-spelllevel]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.spellingLevel = parseInt(btn.dataset.spelllevel, 10);
+            this.saveProgress();
+          });
+        });
+
+        // Speed selection
+        document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-speed]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.speechRate = parseFloat(btn.dataset.speed);
+            this.saveProgress();
+          });
+        });
+
+        // Popup Duration selection
+        document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-popup]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.popupDuration = parseFloat(btn.dataset.popup);
+            this.saveProgress();
+          });
+        });
+
+        // Parent peek toggle
+        document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-showpeek]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.showParentPeek = (btn.dataset.showpeek === 'true');
+            if (this.ucMathController && this.ucMathController.parentPeekWrapper) {
+              this.ucMathController.parentPeekWrapper.style.display = this.showParentPeek ? 'flex' : 'none';
+            }
+            this.saveProgress();
+          });
+        });
+      }
     }
 
-    // Launch App when DOM is loaded
+    /* ==========================================================================
+       GAME 1: UC MATH CONTROLLER (Mental Math)
+       ========================================================================== */
+    class UCMathController {
+      constructor(app) {
+        this.app = app;
+        this.activeField = 'tens';
+        this.isAnswerLocked = false;
+        this.isSpeaking = false;
+
+        this.question = {
+          steps: [],
+          correctAnswer: 0,
+          displayText: '',
+          isSingleDigit: false
+        };
+
+        this.initDOM();
+        this.attachEvents();
+      }
+
+      initDOM() {
+        this.mascotAvatar = document.getElementById('mascot-avatar-math');
+        this.mascotBox = document.getElementById('mascot-box-math');
+        this.btnReplay = document.getElementById('btn-replay-math');
+        this.statusText = document.getElementById('status-text-math');
+        this.solvedBadge = document.getElementById('solved-badge-math');
+        this.inputsContainer = document.getElementById('inputs-container');
+        this.boxTens = document.getElementById('box-tens');
+        this.boxUnits = document.getElementById('box-units');
+        this.labelTens = document.getElementById('label-tens');
+        this.labelUnits = document.getElementById('label-units');
+        this.inputTens = document.getElementById('input-tens');
+        this.inputUnits = document.getElementById('input-units');
+        this.keypad = document.getElementById('keypad');
+        this.btnKeyReset = document.getElementById('btn-key-reset');
+        this.btnCheck = document.getElementById('btn-check-math');
+        this.btnNext = document.getElementById('btn-next-math');
+        this.btnRetry = document.getElementById('btn-retry-math');
+        this.parentPeekWrapper = document.getElementById('parent-peek-wrapper');
+        this.btnPeek = document.getElementById('btn-peek');
+        this.peekContent = document.getElementById('peek-content');
+      }
+
+      onEnter() {
+        if (this.parentPeekWrapper) {
+          this.parentPeekWrapper.style.display = this.app.showParentPeek ? 'flex' : 'none';
+        }
+        if (!this.question.steps || this.question.steps.length === 0) {
+          this.generateNewQuestion(false);
+        }
+      }
+
+      attachEvents() {
+        this.btnReplay.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakQuestion();
+        });
+
+        this.mascotBox.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakQuestion();
+        });
+
+        this.inputTens.addEventListener('click', () => {
+          if (this.boxTens.style.display !== 'none') {
+            this.setActiveField('tens');
+          }
+        });
+        this.inputUnits.addEventListener('click', () => this.setActiveField('units'));
+
+        this.keypad.addEventListener('click', (e) => {
+          const btn = e.target.closest('.key-btn');
+          if (!btn) return;
+          this.handleKeyInput(btn.dataset.key);
+        });
+
+        window.addEventListener('keydown', (e) => {
+          if (this.app.currentView !== 'ucmath') return;
+          if (e.key >= '0' && e.key <= '9') {
+            this.handleKeyInput(e.key);
+          } else if (e.key === 'Backspace' || e.key === 'Delete') {
+            this.handleKeyInput('del');
+          } else if (e.key === 'r' || e.key === 'R') {
+            this.handleKeyInput('reset');
+          } else if (e.key === 'Enter') {
+            if (this.btnNext.style.display === 'flex') {
+              this.btnNext.click();
+            } else if (this.btnRetry.style.display === 'flex') {
+              this.btnRetry.click();
+            } else {
+              this.checkAnswer();
+            }
+          }
+        });
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+
+        this.btnNext.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.generateNewQuestion();
+        });
+
+        this.btnRetry.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.retryQuestion();
+        });
+
+        this.btnPeek.addEventListener('click', () => {
+          this.app.sound.playTap();
+          const isVisible = this.peekContent.style.display === 'block';
+          this.peekContent.style.display = isVisible ? 'none' : 'block';
+        });
+      }
+
+      setActiveField(field, playSound = false) {
+        if (this.isAnswerLocked) return;
+        this.activeField = field;
+        if (playSound) this.app.sound.playTap();
+
+        if (field === 'tens') {
+          this.inputTens.classList.add('active');
+          this.inputUnits.classList.remove('active');
+        } else {
+          this.inputUnits.classList.add('active');
+          this.inputTens.classList.remove('active');
+        }
+      }
+
+      handleKeyInput(key) {
+        if (key === 'reset') {
+          this.app.sound.playTap();
+          this.retryQuestion();
+          return;
+        }
+
+        if (this.isAnswerLocked) return;
+        this.app.sound.playTap();
+
+        if (key === 'del') {
+          if (this.question.isSingleDigit) {
+            this.inputUnits.textContent = '_';
+            return;
+          }
+
+          if (this.activeField === 'units') {
+            if (this.inputUnits.textContent !== '_') {
+              this.inputUnits.textContent = '_';
+            } else {
+              this.inputTens.textContent = '_';
+              this.setActiveField('tens', true);
+            }
+          } else {
+            this.inputTens.textContent = '_';
+          }
+          return;
+        }
+
+        if (this.question.isSingleDigit) {
+          this.inputUnits.textContent = key;
+          return;
+        }
+
+        if (this.activeField === 'tens') {
+          this.inputTens.textContent = key;
+          this.setActiveField('units', true);
+        } else {
+          this.inputUnits.textContent = key;
+        }
+      }
+
+      generateNewQuestion(shouldSpeak = true) {
+        let numSteps = this.app.ucMathLevel === 4 ? 3 : 2;
+        let isTwoDigits = (this.app.ucMathLevel === 3 || this.app.ucMathLevel === 4);
+
+        let steps = [];
+        let currentTotal = 0;
+
+        if (isTwoDigits) {
+          let curT, curU;
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              let minT = numSteps === 3 ? 3 : 2;
+              let maxT = numSteps === 3 ? 7 : 8;
+              let minU = numSteps === 3 ? 2 : 1;
+              let maxU = numSteps === 3 ? 7 : 8;
+
+              curT = Math.floor(Math.random() * (maxT - minT + 1)) + minT;
+              curU = Math.floor(Math.random() * (maxU - minU + 1)) + minU;
+
+              const val = curT * 10 + curU;
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const canAdd = (9 - curT) >= 1 && (9 - curU) >= 0;
+              const canSubtract = (curT - 1) >= 1 && curU >= 0;
+
+              let op = (canAdd && canSubtract) ? (Math.random() > 0.5 ? '+' : '-') : (canAdd ? '+' : '-');
+              let t, u;
+              if (op === '+') {
+                const maxT = 9 - curT;
+                t = Math.floor(Math.random() * maxT) + 1;
+                const maxU = 9 - curU;
+                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
+                curT += t;
+                curU += u;
+              } else {
+                const maxT = curT - 1;
+                t = Math.floor(Math.random() * maxT) + 1;
+                const maxU = curU;
+                u = maxU > 0 ? (Math.floor(Math.random() * (maxU + 1))) : 0;
+                curT -= t;
+                curU -= u;
+              }
+              const val = t * 10 + u;
+              currentTotal = curT * 10 + curU;
+              steps.push({ op, val });
+            }
+          }
+        } else if (this.app.ucMathLevel === 1) {
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              const val = Math.floor(Math.random() * 8) + 1;
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const canAdd = (9 - currentTotal) >= 1;
+              const canSubtract = currentTotal > 1;
+              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
+              let val = op === '-' ? Math.floor(Math.random() * (currentTotal - 1)) + 1 : Math.floor(Math.random() * (9 - currentTotal)) + 1;
+              if (op === '-') currentTotal -= val; else currentTotal += val;
+              steps.push({ op, val });
+            }
+          }
+        } else {
+          // Level 2: Up to 20
+          for (let i = 0; i < numSteps; i++) {
+            if (i === 0) {
+              const u0 = Math.floor(Math.random() * 6) + 1;
+              const val = 10 + u0;
+              steps.push({ op: '+', val });
+              currentTotal = val;
+            } else {
+              const curU = currentTotal % 10;
+              const canAdd = (9 - curU) >= 1 && (20 - currentTotal) >= 1;
+              const canSubtract = curU >= 1;
+              let op = (canSubtract && (!canAdd || Math.random() > 0.5)) ? '-' : '+';
+              let val = op === '-' ? Math.floor(Math.random() * curU) + 1 : Math.floor(Math.random() * (9 - curU)) + 1;
+              if (op === '-') currentTotal -= val; else currentTotal += val;
+              steps.push({ op, val });
+            }
+          }
+        }
+
+        const isSingleDigit = currentTotal < 10;
+        this.question = {
+          steps,
+          correctAnswer: currentTotal,
+          displayText: steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ?',
+          isSingleDigit
+        };
+
+        this.peekContent.textContent = this.question.displayText;
+        this.peekContent.style.display = 'none';
+
+        this.updateLayout();
+
+        if (shouldSpeak) {
+          setTimeout(() => this.speakQuestion(), 200);
+        } else {
+          this.statusText.textContent = 'Click listen to start! 👂';
+        }
+      }
+
+      updateLayout() {
+        this.resetUI();
+
+        if (this.question.isSingleDigit) {
+          this.boxTens.style.display = 'none';
+          this.labelUnits.textContent = 'Answer';
+          this.setActiveField('units');
+        } else {
+          this.boxTens.style.display = 'flex';
+          this.labelTens.textContent = 'Tens';
+          this.labelUnits.textContent = 'Ones';
+          this.setActiveField('tens');
+        }
+      }
+
+      speakQuestion() {
+        let text = '';
+        this.question.steps.forEach((step, idx) => {
+          if (idx === 0) {
+            text += `${step.val} , `;
+          } else {
+            text += `${step.op === '+' ? 'plus' : 'minus'} ${step.val} , `;
+          }
+        });
+
+        this.app.speak(
+          text.trim(),
+          () => {
+            this.isSpeaking = true;
+            this.mascotAvatar.classList.add('speaking');
+            this.btnReplay.classList.add('speaking');
+            this.statusText.textContent = 'Listen carefully... 🎧';
+          },
+          () => {
+            this.isSpeaking = false;
+            this.mascotAvatar.classList.remove('speaking');
+            this.btnReplay.classList.remove('speaking');
+            this.statusText.textContent = 'What is your answer? Enter below 👇';
+          }
+        );
+      }
+
+      checkAnswer() {
+        let userVal;
+        if (this.question.isSingleDigit) {
+          const uVal = this.inputUnits.textContent.trim();
+          if (uVal === '_') {
+            this.app.showFeedback('warning', 'Please enter your answer first! ✍️');
+            return;
+          }
+          userVal = parseInt(uVal, 10);
+        } else {
+          const tVal = this.inputTens.textContent.trim();
+          const uVal = this.inputUnits.textContent.trim();
+          if (tVal === '_' || uVal === '_') {
+            this.app.showFeedback('warning', 'Please enter both digits! ✍️');
+            return;
+          }
+          userVal = parseInt(tVal, 10) * 10 + parseInt(uVal, 10);
+        }
+
+        if (userVal === this.question.correctAnswer) {
+          this.handleCorrect();
+        } else {
+          this.handleWrong();
+        }
+      }
+
+      handleCorrect() {
+        this.isAnswerLocked = true;
+        if (this.inputsContainer) this.inputsContainer.style.pointerEvents = 'none';
+
+        this.app.sound.playFanfare();
+        this.app.confetti.fire();
+        this.app.addScore(1);
+
+        this.inputUnits.classList.add('success-pop');
+        if (!this.question.isSingleDigit) this.inputTens.classList.add('success-pop');
+
+        const equationText = this.question.steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ' + this.question.correctAnswer;
+
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = '🎯 Problem: ' + equationText + ' ✔️';
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+
+        this.app.showFeedback('success', 'Genius! Correct & Excellent! 🌟', equationText);
+        this.statusText.textContent = 'Awesome! Problem solved 🏆';
+
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+        this.btnNext.style.display = 'flex';
+      }
+
+      handleWrong() {
+        this.app.sound.playComicalWrong();
+
+        this.inputUnits.classList.add('shake-error');
+        if (!this.question.isSingleDigit) this.inputTens.classList.add('shake-error');
+
+        setTimeout(() => {
+          this.inputUnits.classList.remove('shake-error');
+          this.inputTens.classList.remove('shake-error');
+        }, 600);
+
+        this.app.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+        this.statusText.textContent = 'No worries, tap Try Again and solve it 💪';
+
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+      }
+
+      retryQuestion() {
+        this.resetUI();
+        this.setActiveField(this.question.isSingleDigit ? 'units' : 'tens');
+        this.speakQuestion();
+      }
+
+      resetUI() {
+        this.isAnswerLocked = false;
+        if (this.inputsContainer) this.inputsContainer.style.pointerEvents = 'auto';
+
+        this.inputTens.textContent = '_';
+        this.inputUnits.textContent = '_';
+        this.inputTens.classList.remove('shake-error', 'success-pop');
+        this.inputUnits.classList.remove('shake-error', 'success-pop');
+        if (this.solvedBadge) this.solvedBadge.style.display = 'none';
+        this.app.hideFeedback();
+
+        this.btnCheck.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       GAME 2: NUMBER WORDS CONTROLLER (Spelling Game)
+       ========================================================================== */
+    class NumberWordsController {
+      constructor(app) {
+        this.app = app;
+        this.currentNumber = 1;
+        this.targetWord = 'ONE';
+        this.enteredLetters = [];
+        this.isAnswerLocked = false;
+
+        this.initDOM();
+        this.attachEvents();
+      }
+
+      initDOM() {
+        this.mascotAvatar = document.getElementById('mascot-avatar-spelling');
+        this.mascotBox = document.getElementById('mascot-box-spelling');
+        this.btnReplay = document.getElementById('btn-replay-spelling');
+        this.statusText = document.getElementById('status-text-spelling');
+        this.solvedBadge = document.getElementById('solved-badge-spelling');
+        this.numberDisplay = document.getElementById('spelling-number-display');
+        this.slotsContainer = document.getElementById('word-slots-container');
+        this.alphabetKeypad = document.getElementById('alphabet-keypad');
+        this.btnCheck = document.getElementById('btn-check-spelling');
+        this.btnNext = document.getElementById('btn-next-spelling');
+        this.btnRetry = document.getElementById('btn-retry-spelling');
+      }
+
+      onEnter() {
+        if (!this.targetWord) {
+          this.generateNewQuestion(false);
+        } else {
+          this.renderSlots();
+        }
+      }
+
+      attachEvents() {
+        this.btnReplay.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakNumber();
+        });
+
+        this.mascotBox.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakNumber();
+        });
+
+        // Alphabet keypad tap
+        this.alphabetKeypad.addEventListener('click', (e) => {
+          const keyBtn = e.target.closest('.alpha-key');
+          if (!keyBtn) return;
+          const char = keyBtn.dataset.char;
+          const action = keyBtn.dataset.action;
+
+          if (action === 'reset') {
+            this.app.sound.playTap();
+            this.retryQuestion();
+          } else if (action === 'del') {
+            this.handleDelete();
+          } else if (char) {
+            this.handleLetter(char);
+          }
+        });
+
+        // Physical Keyboard Support
+        window.addEventListener('keydown', (e) => {
+          if (this.app.currentView !== 'spelling') return;
+          const key = e.key.toUpperCase();
+
+          if (key >= 'A' && key <= 'Z' && key.length === 1) {
+            this.handleLetter(key);
+          } else if (e.key === 'Backspace' || e.key === 'Delete') {
+            this.handleDelete();
+          } else if (e.key === 'r' || e.key === 'R') {
+            this.retryQuestion();
+          } else if (e.key === 'Enter') {
+            if (this.btnNext.style.display === 'flex') {
+              this.btnNext.click();
+            } else if (this.btnRetry.style.display === 'flex') {
+              this.btnRetry.click();
+            } else {
+              this.checkAnswer();
+            }
+          }
+        });
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+
+        this.btnNext.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.generateNewQuestion();
+        });
+
+        this.btnRetry.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.retryQuestion();
+        });
+      }
+
+      generateNewQuestion(shouldSpeak = true) {
+        let min = 1, max = 10;
+        const lvl = this.app.spellingLevel || 1;
+
+        if (lvl === 1) {
+          // Numbers 1 to 10
+          min = 1; max = 10;
+          this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        } else if (lvl === 2) {
+          // Numbers 11 to 20
+          min = 11; max = 20;
+          this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        } else if (lvl === 3) {
+          // Tens: 10, 20, 30, 40, 50, 60, 70, 80, 90
+          const tensList = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+          this.currentNumber = tensList[Math.floor(Math.random() * tensList.length)];
+        } else {
+          // Numbers 1 to 99
+          min = 1; max = 99;
+          this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        this.targetWord = getNumberWord(this.currentNumber);
+        this.numberDisplay.textContent = this.currentNumber;
+        this.enteredLetters = [];
+        this.isAnswerLocked = false;
+
+        this.resetUI();
+        this.renderSlots();
+
+        if (shouldSpeak) {
+          setTimeout(() => this.speakNumber(), 200);
+        } else {
+          this.statusText.textContent = 'Spell the word for this number! ✍️';
+        }
+      }
+
+      // Characters that child needs to type (excluding hyphens which are automatically placed)
+      getTargetLetters() {
+        return this.targetWord.replace(/[^A-Z]/g, '').split('');
+      }
+
+      renderSlots() {
+        this.slotsContainer.innerHTML = '';
+        const targetClean = this.getTargetLetters();
+        let letterIdx = 0;
+
+        for (let i = 0; i < this.targetWord.length; i++) {
+          const char = this.targetWord[i];
+          const slot = document.createElement('div');
+
+          if (char === '-') {
+            slot.className = 'letter-slot hyphen';
+            slot.textContent = '-';
+          } else {
+            slot.className = 'letter-slot';
+            const entered = this.enteredLetters[letterIdx];
+
+            if (entered) {
+              slot.textContent = entered;
+              slot.classList.add('filled');
+            } else {
+              slot.textContent = '';
+            }
+
+            if (!this.isAnswerLocked && letterIdx === this.enteredLetters.length) {
+              slot.classList.add('active-cursor');
+            }
+            letterIdx++;
+          }
+          this.slotsContainer.appendChild(slot);
+        }
+      }
+
+      handleLetter(char) {
+        if (this.isAnswerLocked) return;
+        const targetClean = this.getTargetLetters();
+        if (this.enteredLetters.length < targetClean.length) {
+          this.app.sound.playTap();
+          this.enteredLetters.push(char);
+          this.renderSlots();
+        }
+      }
+
+      handleDelete() {
+        if (this.isAnswerLocked) return;
+        if (this.enteredLetters.length > 0) {
+          this.app.sound.playTap();
+          this.enteredLetters.pop();
+          this.renderSlots();
+        }
+      }
+
+      speakNumber() {
+        this.app.speak(
+          this.targetWord.toLowerCase(),
+          () => {
+            this.mascotAvatar.classList.add('speaking');
+            this.btnReplay.classList.add('speaking');
+            this.statusText.textContent = 'Listen carefully to the word... 🎧';
+          },
+          () => {
+            this.mascotAvatar.classList.remove('speaking');
+            this.btnReplay.classList.remove('speaking');
+            this.statusText.textContent = `Spell "${this.currentNumber}" in words below 👇`;
+          }
+        );
+      }
+
+      checkAnswer() {
+        const targetClean = this.getTargetLetters().join('');
+        const userClean = this.enteredLetters.join('');
+
+        if (userClean.length === 0) {
+          this.app.showFeedback('warning', 'Please type your answer first! ✍️');
+          return;
+        }
+
+        if (userClean.length < targetClean.length) {
+          this.app.showFeedback('warning', 'Type all the letters of the word! 🔤');
+          return;
+        }
+
+        if (userClean === targetClean) {
+          this.handleCorrect();
+        } else {
+          this.handleWrong();
+        }
+      }
+
+      handleCorrect() {
+        this.isAnswerLocked = true;
+        this.app.sound.playFanfare();
+        this.app.confetti.fire();
+        this.app.addScore(1);
+
+        const fullSolved = `${this.currentNumber} = ${this.targetWord}`;
+
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = '🎯 ' + fullSolved + ' ✔️';
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+
+        this.app.showFeedback('success', 'Genius! Perfect Spelling! 🌟', fullSolved);
+        this.statusText.textContent = 'Awesome! Word spelled correctly 🏆';
+
+        this.renderSlots();
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+        this.btnNext.style.display = 'flex';
+      }
+
+      handleWrong() {
+        this.app.sound.playComicalWrong();
+
+        this.slotsContainer.classList.add('shake-error');
+        setTimeout(() => {
+          this.slotsContainer.classList.remove('shake-error');
+        }, 600);
+
+        this.app.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+        this.statusText.textContent = 'No worries, tap Try Again and fix the letters 💪';
+
+        this.btnCheck.style.display = 'none';
+        this.btnRetry.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+      }
+
+      retryQuestion() {
+        this.resetUI();
+        this.enteredLetters = [];
+        this.renderSlots();
+        this.speakNumber();
+      }
+
+      resetUI() {
+        this.isAnswerLocked = false;
+        if (this.solvedBadge) this.solvedBadge.style.display = 'none';
+        this.app.hideFeedback();
+
+        this.btnCheck.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+        this.btnRetry.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       APP LAUNCH
+       ========================================================================== */
     window.addEventListener('DOMContentLoaded', () => {
-      window.app = new UCMathApp();
+      window.arenaApp = new KidsArenaApp();
     });
   </script>
 </body>
