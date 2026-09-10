@@ -120,6 +120,78 @@
     @keyframes spinStars {
       0%, 100% { transform: rotate(0deg) scale(1); }
       50% { transform: rotate(18deg) scale(1.15); }
+    /* Countdown Timer Pill in Top Bar */
+    .game-timer-pill {
+      background: white;
+      border: 2.5px solid #67e8f9;
+      border-radius: 50px;
+      padding: 6px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 16px rgba(6, 182, 212, 0.16);
+      position: relative;
+      overflow: hidden;
+      font-family: var(--font-nums);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #0891b2;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+    }
+
+    .timer-sand-icon {
+      font-size: 1.2rem;
+      display: inline-block;
+      animation: timerSandRotate 3s infinite ease-in-out;
+    }
+
+    @keyframes timerSandRotate {
+      0%, 40% { transform: rotate(0deg); }
+      50%, 90% { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .timer-num {
+      min-width: 22px;
+      text-align: center;
+      font-weight: 800;
+      display: inline-block;
+    }
+
+    .timer-unit {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-left: -2px;
+    }
+
+    .timer-ring-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+      transition: width 0.3s linear, background 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Warning state when <= 3s */
+    .game-timer-pill.timer-warning {
+      border-color: #f87171;
+      color: #dc2626;
+      background: #fef2f2;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.45);
+      animation: timerAlertPulse 0.5s infinite alternate;
+    }
+
+    .game-timer-pill.timer-warning .timer-ring-bar {
+      background: #ef4444;
+    }
+
+    @keyframes timerAlertPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
     }
 
     .mode-settings {
@@ -1298,19 +1370,19 @@
 
     .modal-card {
       background: white;
-      border-radius: 26px;
-      padding: 20px 18px;
+      border-radius: 28px;
+      padding: 24px 20px;
       width: 100%;
-      max-width: 440px;
-      max-height: 90vh;
+      max-width: 560px;
+      max-height: 88vh;
       overflow-y: auto;
       overscroll-behavior: contain;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.25);
       text-align: left;
     }
 
     .modal-card::-webkit-scrollbar {
-      width: 5px;
+      width: 6px;
     }
     .modal-card::-webkit-scrollbar-thumb {
       background: #cbd5e1;
@@ -1320,21 +1392,149 @@
     .modal-title {
       font-size: 1.25rem;
       font-weight: 800;
-      margin-bottom: 14px;
-      color: #2f3542;
+      margin-bottom: 12px;
+      color: #1e293b;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
+    /* Modal Quick Navigation Tabs */
+    .modal-nav-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 2px 10px 2px;
+      margin-bottom: 14px;
+      border-bottom: 1.5px solid #f1f5f9;
+      scrollbar-width: none;
+    }
+    .modal-nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 50px;
+      padding: 6px 13px;
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-tab:hover {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .nav-tab.active {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Categorized Settings Sections */
+    .settings-sections-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .settings-section {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 22px;
+      padding: 16px 14px;
+      transition: all 0.2s;
+    }
+
+    .settings-section:focus-within {
+      border-color: #3b82f6;
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.1);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid #e2e8f0;
+    }
+
+    .section-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .badge-timer { background: #cffafe; }
+    .badge-audio { background: #fef3c7; }
+    .badge-ucmath { background: #dbeafe; }
+    .badge-spelling { background: #dcfce7; }
+    .badge-colors { background: #f3e8ff; }
+    .badge-compare { background: #ffedd5; }
+    .badge-sequence { background: #cffafe; }
+    .badge-clock { background: #ede9fe; }
+    .badge-shapes { background: #fce7f3; }
+    .badge-data { background: #fee2e2; }
+
+    .section-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: -6px;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .custom-sec-input {
+      padding: 9px 12px;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      font-family: var(--font-nums);
+      font-size: 0.95rem;
+      font-weight: 700;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 6px;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.2s;
+      background: white;
+    }
+
+    .custom-sec-input:focus {
+      border-color: #06b6d4;
+    }
+
     .setting-group {
-      margin-bottom: 13px;
+      margin-bottom: 12px;
     }
 
     .setting-label {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
-      color: #57606f;
+      color: #475569;
       margin-bottom: 6px;
       display: block;
     }
@@ -2638,6 +2838,13 @@
       </div>
     </div>
 
+    <!-- Center/Right: Timer Badge (Visible only during games when timer is active) -->
+    <div class="game-timer-pill" id="game-timer-pill" style="display: none;">
+      <span class="timer-sand-icon" id="timer-icon">⏳</span>
+      <span class="timer-num" id="timer-val">15</span><span class="timer-unit">s</span>
+      <div class="timer-ring-bar" id="timer-bar" style="width: 100%;"></div>
+    </div>
+
     <div class="mode-settings">
       <button class="icon-btn" id="btn-settings-open" title="Settings & Difficulty">
         ⚙️ Settings
@@ -3414,98 +3621,228 @@
   <div class="settings-modal" id="settings-modal">
     <div class="modal-card">
       <div class="modal-title">
-        <span>⚙️ Training & Settings</span>
-        <span id="btn-close-modal-x" style="cursor: pointer; font-size: 1.5rem;">✖️</span>
-      </div>
-
-      <!-- UC Math Level -->
-      <div class="setting-group">
-        <label class="setting-label">UC Math Difficulty Level:</label>
-        <div class="level-options">
-          <button class="level-btn" data-mathlevel="1">Single (1-9)</button>
-          <button class="level-btn" data-mathlevel="2">Up to 20 (Simple)</button>
-          <button class="level-btn" data-mathlevel="3">2-Digits (2 Steps)</button>
-          <button class="level-btn" data-mathlevel="4">2-Digits (3 Steps)</button>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.5rem;">⚙️</span>
+          <div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #1e293b;">Settings & Options</div>
+            <div style="font-size: 0.8rem; font-weight: 600; color: #64748b;">Customize your games and countdown timer</div>
+          </div>
         </div>
+        <span id="btn-close-modal-x" style="cursor: pointer; font-size: 1.4rem; padding: 4px;" title="Close">✖️</span>
       </div>
 
-      <!-- Number Words Level -->
-      <div class="setting-group">
-        <label class="setting-label">Number Words Difficulty Level:</label>
-        <div class="level-options">
-          <button class="level-btn" data-spelllevel="1">Numbers 1 to 10</button>
-          <button class="level-btn" data-spelllevel="2">Numbers 11 to 20</button>
-          <button class="level-btn" data-spelllevel="3">Tens (10 to 90)</button>
-          <button class="level-btn" data-spelllevel="4">Numbers 1 to 99</button>
+      <!-- Quick Navigation Tabs -->
+      <div class="modal-nav-tabs" id="modal-nav-tabs">
+        <button class="nav-tab active" data-target="sec-timer">⏱️ Timer</button>
+        <button class="nav-tab" data-target="sec-audio">🔊 Audio</button>
+        <button class="nav-tab" data-target="sec-ucmath">🧠 Math</button>
+        <button class="nav-tab" data-target="sec-spelling">🔤 Words</button>
+        <button class="nav-tab" data-target="sec-colors">🎨 Colors</button>
+        <button class="nav-tab" data-target="sec-compare">⚖️ Compare</button>
+        <button class="nav-tab" data-target="sec-sequence">🚂 Train</button>
+        <button class="nav-tab" data-target="sec-clock">⏰ Clock</button>
+        <button class="nav-tab" data-target="sec-shapes">🔺 Shapes</button>
+        <button class="nav-tab" data-target="sec-data">🔄 Reset</button>
+      </div>
+
+      <div class="settings-sections-container">
+        <!-- 1. Countdown Timer Section -->
+        <div class="settings-section" id="sec-timer">
+          <div class="section-header">
+            <span class="section-icon-badge badge-timer">⏱️</span>
+            <span>Countdown Timer (المؤقت التنازلي)</span>
+          </div>
+          <div class="section-desc">Starts counting down automatically after the child listens to the question.</div>
+
+          <div class="setting-group">
+            <label class="setting-label">Timer Status:</label>
+            <div class="level-options">
+              <button class="level-btn" id="btn-timer-enable" data-timerenabled="true">Timer ON ✅</button>
+              <button class="level-btn" id="btn-timer-disable" data-timerenabled="false">Timer OFF ⏸️</button>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Duration (Seconds):</label>
+            <div class="level-options popup-duration-options">
+              <button class="level-btn" data-timersec="5">5s ⚡</button>
+              <button class="level-btn" data-timersec="10">10s 🐇</button>
+              <button class="level-btn active" data-timersec="15">15s 👍</button>
+              <button class="level-btn" data-timersec="20">20s ⏱️</button>
+            </div>
+            <div class="level-options" style="margin-top: 6px;">
+              <button class="level-btn" data-timersec="30">30s 🐢</button>
+              <button class="level-btn" data-timersec="45">45s 🌟</button>
+            </div>
+            <input type="number" class="custom-sec-input" id="input-timer-custom" min="3" max="120" placeholder="Or enter custom seconds (e.g. 12)..." />
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Timer Ticking Sound (صوت دقات الوقت):</label>
+            <div class="level-options">
+              <button class="level-btn active" id="btn-tick-on" data-ticksound="true">Tick-Tock Sound 🔊</button>
+              <button class="level-btn" id="btn-tick-off" data-ticksound="false">Mute Ticks 🔇</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Bigger or Smaller Level -->
-      <div class="setting-group">
-        <label class="setting-label">Bigger or Smaller Difficulty Level:</label>
-        <div class="level-options">
-          <button class="level-btn" data-comparelevel="1">Single (1 - 9)</button>
-          <button class="level-btn active" data-comparelevel="2">2-Digits (10 - 99)</button>
-          <button class="level-btn" data-comparelevel="3">3-Digits (100 - 999)</button>
-          <button class="level-btn" data-comparelevel="4">Mixed (1 - 999)</button>
+        <!-- 2. Voice & Audio Settings -->
+        <div class="settings-section" id="sec-audio">
+          <div class="section-header">
+            <span class="section-icon-badge badge-audio">🔊</span>
+            <span>Voice & Audio Speed (الصوت وسرعة النطق)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Voice Speech Speed:</label>
+            <div class="level-options">
+              <button class="level-btn" id="speed-slow" data-speed="0.75">Slow 🐢 (Recommended)</button>
+              <button class="level-btn" id="speed-normal" data-speed="0.95">Normal 🐇</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Celebration Popup Duration:</label>
+            <div class="level-options popup-duration-options">
+              <button class="level-btn" data-popup="1.5">1.5s ⚡</button>
+              <button class="level-btn active" data-popup="2">2s 👍</button>
+              <button class="level-btn" data-popup="3">3s ⏱️</button>
+              <button class="level-btn" data-popup="4">4s 🐢</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Sequence Train Level -->
-      <div class="setting-group">
-        <label class="setting-label">Missing Number Difficulty Level:</label>
-        <div class="level-options">
-          <button class="level-btn active" data-seqlevel="1">Count 1s (1-20)</button>
-          <button class="level-btn" data-seqlevel="2">Count 1s (1-100)</button>
-          <button class="level-btn" data-seqlevel="3">Skip 2s, 5s, 10s</button>
-          <button class="level-btn" data-seqlevel="4">Mixed Challenge</button>
+        <!-- 3. UC Math Hero -->
+        <div class="settings-section" id="sec-ucmath">
+          <div class="section-header">
+            <span class="section-icon-badge badge-ucmath">🧠</span>
+            <span>UC Math Hero (الحساب الذهني)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Difficulty Level:</label>
+            <div class="level-options">
+              <button class="level-btn" data-mathlevel="1">Single (1-9)</button>
+              <button class="level-btn" data-mathlevel="2">Up to 20 (Simple)</button>
+              <button class="level-btn" data-mathlevel="3">2-Digits (2 Steps)</button>
+              <button class="level-btn" data-mathlevel="4">2-Digits (3 Steps)</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Parent Peek Button (UC Math):</label>
+            <div class="level-options">
+              <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show 👁️</button>
+              <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide 🙈</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Clock Hero Level -->
-      <div class="setting-group">
-        <label class="setting-label">Clock Hero Difficulty Level:</label>
-        <div class="level-options">
-          <button class="level-btn active" data-clocklevel="1">Exact Hours (3:00)</button>
-          <button class="level-btn" data-clocklevel="2">Half Hours (3:30)</button>
-          <button class="level-btn" data-clocklevel="3">Quarter Hours (3:15)</button>
-          <button class="level-btn" data-clocklevel="4">5-Min Steps (3:25)</button>
+        <!-- 4. Spell Numbers -->
+        <div class="settings-section" id="sec-spelling">
+          <div class="section-header">
+            <span class="section-icon-badge badge-spelling">🔤</span>
+            <span>Spell Numbers (كتابة الأرقام بالحروف)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Number Words Difficulty Level:</label>
+            <div class="level-options">
+              <button class="level-btn" data-spelllevel="1">Numbers 1 to 10</button>
+              <button class="level-btn" data-spelllevel="2">Numbers 11 to 20</button>
+              <button class="level-btn" data-spelllevel="3">Tens (10 to 90)</button>
+              <button class="level-btn" data-spelllevel="4">Numbers 1 to 99</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Speech Speed -->
-      <div class="setting-group">
-        <label class="setting-label">Voice Speech Speed:</label>
-        <div class="level-options">
-          <button class="level-btn" id="speed-slow" data-speed="0.75">Slow 🐢 (Recommended)</button>
-          <button class="level-btn" id="speed-normal" data-speed="0.95">Normal 🐇</button>
+        <!-- 5. Color Magic -->
+        <div class="settings-section" id="sec-colors">
+          <div class="section-header">
+            <span class="section-icon-badge badge-colors">🎨</span>
+            <span>Color Magic (سحر الألوان)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Color Set:</label>
+            <div class="level-options">
+              <button class="level-btn active" data-colormode="basic">Basic 4 Colors 🔴</button>
+              <button class="level-btn" data-colormode="all">Rainbow 8 Colors 🌈</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Celebration Popup Duration -->
-      <div class="setting-group">
-        <label class="setting-label">Celebration Popup Duration:</label>
-        <div class="level-options popup-duration-options">
-          <button class="level-btn" data-popup="1.5">1.5s ⚡</button>
-          <button class="level-btn active" data-popup="2">2s 👍</button>
-          <button class="level-btn" data-popup="3">3s ⏱️</button>
-          <button class="level-btn" data-popup="4">4s 🐢</button>
+        <!-- 6. Bigger or Smaller -->
+        <div class="settings-section" id="sec-compare">
+          <div class="section-header">
+            <span class="section-icon-badge badge-compare">⚖️</span>
+            <span>Bigger or Smaller (الأكبر والأصغر)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Difficulty Level:</label>
+            <div class="level-options">
+              <button class="level-btn" data-comparelevel="1">Single (1 - 9)</button>
+              <button class="level-btn active" data-comparelevel="2">2-Digits (10 - 99)</button>
+              <button class="level-btn" data-comparelevel="3">3-Digits (100 - 999)</button>
+              <button class="level-btn" data-comparelevel="4">Mixed (1 - 999)</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Parent Peek Button -->
-      <div class="setting-group">
-        <label class="setting-label">Parent Peek Button (UC Math):</label>
-        <div class="level-options">
-          <button class="level-btn" id="peek-toggle-show" data-showpeek="true">Show 👁️</button>
-          <button class="level-btn active" id="peek-toggle-hide" data-showpeek="false">Hide 🙈</button>
+        <!-- 7. Sequence Train -->
+        <div class="settings-section" id="sec-sequence">
+          <div class="section-header">
+            <span class="section-icon-badge badge-sequence">🚂</span>
+            <span>Missing Number (قطار الأرقام الناقصة)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Difficulty Level:</label>
+            <div class="level-options">
+              <button class="level-btn active" data-seqlevel="1">Count 1s (1-20)</button>
+              <button class="level-btn" data-seqlevel="2">Count 1s (1-100)</button>
+              <button class="level-btn" data-seqlevel="3">Skip 2s, 5s, 10s</button>
+              <button class="level-btn" data-seqlevel="4">Mixed Challenge</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Progress Management -->
-      <div class="setting-group">
-        <label class="setting-label">Saved Progress:</label>
-        <button class="btn-reset-storage" id="btn-reset-storage">🔄 Reset Stars & Start Over</button>
+        <!-- 8. Clock Hero -->
+        <div class="settings-section" id="sec-clock">
+          <div class="section-header">
+            <span class="section-icon-badge badge-clock">⏰</span>
+            <span>Clock Hero (بطل الوقت والساعة)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Difficulty Level:</label>
+            <div class="level-options">
+              <button class="level-btn active" data-clocklevel="1">Exact Hours (3:00)</button>
+              <button class="level-btn" data-clocklevel="2">Half Hours (3:30)</button>
+              <button class="level-btn" data-clocklevel="3">Quarter Hours (3:15)</button>
+              <button class="level-btn" data-clocklevel="4">5-Min Steps (3:25)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Shapes Quest -->
+        <div class="settings-section" id="sec-shapes">
+          <div class="section-header">
+            <span class="section-icon-badge badge-shapes">🔺</span>
+            <span>Shapes Quest (مغامرة الأشكال الهندسية)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Shapes Palette:</label>
+            <div class="level-options">
+              <button class="level-btn active" data-shapesmode="basic">Basic 4 Shapes ⭕</button>
+              <button class="level-btn" data-shapesmode="all">All 8 Shapes 💎</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Data & Progress -->
+        <div class="settings-section" id="sec-data">
+          <div class="section-header">
+            <span class="section-icon-badge badge-data">🔄</span>
+            <span>Saved Progress & Stars (إعادة ضبط)</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Reset Progress:</label>
+            <button class="btn-reset-storage" id="btn-reset-storage">🔄 Reset All Stars & Start Over</button>
+          </div>
+        </div>
       </div>
 
       <button class="btn-close-modal" id="btn-modal-done">Save & Continue 👍</button>
@@ -3648,6 +3985,48 @@
 
         osc.start();
         osc.stop(this.ctx.currentTime + 0.35);
+      }
+
+      playTick(isWarning = false) {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = isWarning ? 'triangle' : 'sine';
+        const freq = isWarning ? 1500 : 950;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(isWarning ? 1100 : 650, this.ctx.currentTime + 0.05);
+
+        gain.gain.setValueAtTime(isWarning ? 0.22 : 0.14, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.05);
+      }
+
+      playTimeout() {
+        this.init();
+        if (!this.ctx) return;
+        const notes = [440, 370, 311, 261];
+        notes.forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.12);
+
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime + idx * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + idx * 0.12 + 0.18);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(this.ctx.currentTime + idx * 0.12);
+          osc.stop(this.ctx.currentTime + idx * 0.12 + 0.18);
+        });
       }
     }
 
@@ -3897,6 +4276,114 @@
     ];
 
     /* ==========================================================================
+       COUNTDOWN TIMER ENGINE (With Web Audio Ticks and Smooth Animation)
+       ========================================================================== */
+    class CountdownTimerEngine {
+      constructor(app) {
+        this.app = app;
+        this.enabled = true;
+        this.duration = 15;
+        this.tickSound = true;
+        this.remaining = 15;
+        this.timerInterval = null;
+        this.isActive = false;
+        this.onTimeoutCallback = null;
+
+        this.pillEl = null;
+        this.valEl = null;
+        this.barEl = null;
+      }
+
+      init() {
+        this.pillEl = document.getElementById('game-timer-pill');
+        this.valEl = document.getElementById('timer-val');
+        this.barEl = document.getElementById('timer-bar');
+      }
+
+      start(onTimeout) {
+        this.stop();
+        if (!this.enabled || this.duration <= 0) {
+          if (this.pillEl) this.pillEl.style.display = 'none';
+          return;
+        }
+
+        // Never run in hub
+        if (this.app.currentView === 'hub') {
+          if (this.pillEl) this.pillEl.style.display = 'none';
+          return;
+        }
+
+        if (!this.pillEl) this.init();
+
+        this.onTimeoutCallback = onTimeout;
+        this.remaining = Math.max(3, parseInt(this.duration, 10) || 15);
+        this.isActive = true;
+
+        if (this.pillEl) {
+          this.pillEl.style.display = 'inline-flex';
+          this.pillEl.classList.remove('timer-warning');
+        }
+        this.updateUI();
+
+        this.timerInterval = setInterval(() => {
+          this.remaining--;
+          this.updateUI();
+
+          if (this.remaining > 0) {
+            if (this.tickSound && this.app.sound) {
+              this.app.sound.playTick(this.remaining <= 3);
+            }
+          } else {
+            // Time's up!
+            this.stop();
+            if (this.app.sound) {
+              this.app.sound.playTimeout();
+            }
+            if (this.onTimeoutCallback) {
+              this.onTimeoutCallback();
+            }
+          }
+        }, 1000);
+      }
+
+      stop() {
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+        this.isActive = false;
+        if (this.pillEl) {
+          this.pillEl.style.display = 'none';
+          this.pillEl.classList.remove('timer-warning');
+        }
+      }
+
+      pause() {
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+      }
+
+      updateUI() {
+        if (!this.pillEl) this.init();
+        if (!this.valEl) return;
+        this.valEl.textContent = this.remaining;
+        const total = Math.max(1, this.duration);
+        const pct = Math.max(0, Math.min(100, (this.remaining / total) * 100));
+        if (this.barEl) {
+          this.barEl.style.width = `${pct}%`;
+        }
+
+        if (this.remaining <= 3) {
+          this.pillEl.classList.add('timer-warning');
+        } else {
+          this.pillEl.classList.remove('timer-warning');
+        }
+      }
+    }
+
+    /* ==========================================================================
        CENTRAL APP COORDINATOR (Kids Arena)
        ========================================================================== */
     class KidsArenaApp {
@@ -3916,10 +4403,15 @@
         };
 
         this.score = 0;
-            this.gameScores = { ucmath: 0, spelling: 0, colors: 0, compare: 0, sequence: 0, clock: 0, shapes: 0 };
         this.speechRate = 0.75;
         this.popupDuration = 2;
         this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling' | 'colors' | 'compare' | 'sequence' | 'clock' | 'shapes'
+
+        // Countdown Timer
+        this.timer = new CountdownTimerEngine(this);
+        this.timerEnabled = true;
+        this.timerSeconds = 15;
+        this.timerTickSound = true;
 
         // Game 1: UC Math State
         this.ucMathLevel = 3;
@@ -3929,17 +4421,20 @@
         this.spellingLevel = 1;
 
         // Game 3: Color Magic State
-        this.colorMode = 'match'; // 'match' | 'spell'
+        this.colorMode = 'basic'; // 'basic' | 'all'
 
         // Game 4: Number Duel State
         this.compareLevel = 2;
         this.compareMode = 'bigger'; // 'bigger' | 'smaller' | 'signs'
 
-          // Game 5: Sequence Train State
-          this.sequenceLevel = 1;
+        // Game 5: Sequence Train State
+        this.sequenceLevel = 1;
 
-          // Game 6: Clock Hero State
-          this.clockLevel = 1;
+        // Game 6: Clock Hero State
+        this.clockLevel = 1;
+
+        // Game 7: Shapes Quest State
+        this.shapesMode = 'basic'; // 'basic' | 'all'
 
         this.voices = [];
         this._feedbackTimer = null;
@@ -3977,11 +4472,19 @@
             if (data.ucMathLevel) this.ucMathLevel = parseInt(data.ucMathLevel, 10);
             if (data.spellingLevel) this.spellingLevel = parseInt(data.spellingLevel, 10);
             if (data.colorMode) this.colorMode = data.colorMode;
-              if (data.compareLevel) this.compareLevel = parseInt(data.compareLevel, 10);
-              if (data.compareMode) this.compareMode = data.compareMode;
-              if (data.sequenceLevel) this.sequenceLevel = parseInt(data.sequenceLevel, 10);
-              if (data.clockLevel) this.clockLevel = parseInt(data.clockLevel, 10);
+            if (data.compareLevel) this.compareLevel = parseInt(data.compareLevel, 10);
+            if (data.compareMode) this.compareMode = data.compareMode;
+            if (data.sequenceLevel) this.sequenceLevel = parseInt(data.sequenceLevel, 10);
+            if (data.clockLevel) this.clockLevel = parseInt(data.clockLevel, 10);
+            if (data.shapesMode) this.shapesMode = data.shapesMode;
             if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
+            if (typeof data.timerEnabled === 'boolean') this.timerEnabled = data.timerEnabled;
+            if (typeof data.timerSeconds === 'number') this.timerSeconds = data.timerSeconds;
+            if (typeof data.timerTickSound === 'boolean') this.timerTickSound = data.timerTickSound;
+
+            this.timer.enabled = this.timerEnabled;
+            this.timer.duration = this.timerSeconds;
+            this.timer.tickSound = this.timerTickSound;
           }
         } catch (e) {
           console.warn('Could not load localStorage:', e);
@@ -4002,7 +4505,11 @@
             compareMode: this.compareMode,
             sequenceLevel: this.sequenceLevel,
             clockLevel: this.clockLevel,
-            showParentPeek: this.showParentPeek
+            shapesMode: this.shapesMode,
+            showParentPeek: this.showParentPeek,
+            timerEnabled: this.timerEnabled,
+            timerSeconds: this.timerSeconds,
+            timerTickSound: this.timerTickSound
           };
           localStorage.setItem('kids_arena_math_progress', JSON.stringify(data));
         } catch (e) {
@@ -4058,6 +4565,7 @@
         this.btnModalCloseX = document.getElementById('btn-close-modal-x');
         this.btnModalDone = document.getElementById('btn-modal-done');
         this.btnResetStorage = document.getElementById('btn-reset-storage');
+        this.timer.init();
 
         // Views
         this.viewHub = document.getElementById('view-hub');
@@ -4186,6 +4694,7 @@
       showView(viewName) {
         this.stopSpeech();
         this.hideFeedback();
+        if (this.timer) this.timer.stop();
         this.currentView = viewName;
         this.syncScoreUI();
 
@@ -4241,12 +4750,44 @@
       syncSharedUI() {
         this.syncScoreUI();
 
+        // 1. Timer UI
+        const btnTimerEn = document.getElementById('btn-timer-enable');
+        const btnTimerDis = document.getElementById('btn-timer-disable');
+        if (btnTimerEn && btnTimerDis) {
+          btnTimerEn.classList.toggle('active', this.timerEnabled);
+          btnTimerDis.classList.toggle('active', !this.timerEnabled);
+        }
+
+        document.querySelectorAll('.level-btn[data-timersec]').forEach(btn => {
+          btn.classList.toggle('active', parseInt(btn.dataset.timersec, 10) === this.timerSeconds);
+        });
+
+        const customTimerInp = document.getElementById('input-timer-custom');
+        if (customTimerInp) {
+          const quickSecs = [5, 10, 15, 20, 30, 45];
+          if (!quickSecs.includes(this.timerSeconds)) {
+            customTimerInp.value = this.timerSeconds;
+          }
+        }
+
+        const btnTickOn = document.getElementById('btn-tick-on');
+        const btnTickOff = document.getElementById('btn-tick-off');
+        if (btnTickOn && btnTickOff) {
+          btnTickOn.classList.toggle('active', this.timerTickSound);
+          btnTickOff.classList.toggle('active', !this.timerTickSound);
+        }
+
+        // 2. Games Settings UI
         document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.mathlevel, 10) === this.ucMathLevel);
         });
 
         document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.spelllevel, 10) === this.spellingLevel);
+        });
+
+        document.querySelectorAll('.level-btn[data-colormode]').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.colormode === this.colorMode);
         });
 
         document.querySelectorAll('.level-btn[data-comparelevel]').forEach(btn => {
@@ -4259,6 +4800,10 @@
 
         document.querySelectorAll('.level-btn[data-clocklevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.clocklevel, 10) === this.clockLevel);
+        });
+
+        document.querySelectorAll('.level-btn[data-shapesmode]').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.shapesmode === this.shapesMode);
         });
 
         document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
@@ -4275,6 +4820,87 @@
       }
 
       attachGlobalListeners() {
+        // Navigation Tabs in Settings Modal
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const targetId = tab.dataset.target;
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+
+        // Timer Settings Listeners
+        const btnTimerEn = document.getElementById('btn-timer-enable');
+        const btnTimerDis = document.getElementById('btn-timer-disable');
+        if (btnTimerEn && btnTimerDis) {
+          btnTimerEn.addEventListener('click', () => {
+            this.sound.playTap();
+            this.timerEnabled = true;
+            this.timer.enabled = true;
+            this.saveProgress();
+            this.syncSharedUI();
+          });
+          btnTimerDis.addEventListener('click', () => {
+            this.sound.playTap();
+            this.timerEnabled = false;
+            this.timer.enabled = false;
+            this.timer.stop();
+            this.saveProgress();
+            this.syncSharedUI();
+          });
+        }
+
+        document.querySelectorAll('.level-btn[data-timersec]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            const sec = parseInt(btn.dataset.timersec, 10);
+            this.timerSeconds = sec;
+            this.timer.duration = sec;
+            const customTimerInp = document.getElementById('input-timer-custom');
+            if (customTimerInp) customTimerInp.value = '';
+            this.saveProgress();
+            this.syncSharedUI();
+          });
+        });
+
+        const customTimerInp = document.getElementById('input-timer-custom');
+        if (customTimerInp) {
+          customTimerInp.addEventListener('input', () => {
+            const val = parseInt(customTimerInp.value, 10);
+            if (val >= 3 && val <= 120) {
+              this.timerSeconds = val;
+              this.timer.duration = val;
+              this.saveProgress();
+              this.syncSharedUI();
+            }
+          });
+        }
+
+        const btnTickOn = document.getElementById('btn-tick-on');
+        const btnTickOff = document.getElementById('btn-tick-off');
+        if (btnTickOn && btnTickOff) {
+          btnTickOn.addEventListener('click', () => {
+            this.sound.playTap();
+            this.timerTickSound = true;
+            this.timer.tickSound = true;
+            this.saveProgress();
+            this.syncSharedUI();
+          });
+          btnTickOff.addEventListener('click', () => {
+            this.sound.playTap();
+            this.timerTickSound = false;
+            this.timer.tickSound = false;
+            this.saveProgress();
+            this.syncSharedUI();
+          });
+        }
+
+        // Launch Game Buttons
         this.btnLaunchUcMath.addEventListener('click', () => {
           this.sound.playTap();
           this.showView('ucmath');
@@ -4349,11 +4975,12 @@
 
         this.btnResetStorage.addEventListener('click', () => {
           this.sound.playTap();
-          if (confirm('Do you want to reset your stars to 0 and start over?')) {
+          if (confirm('Do you want to reset all stars and progress to 0 and start over?')) {
+            Object.keys(this.gameScores).forEach(k => { this.gameScores[k] = 0; });
             this.score = 0;
             this.saveProgress();
-            this.syncSharedUI();
-            this.showFeedback('warning', 'Stars have been reset to 0! ⭐');
+            this.syncScoreUI();
+            this.showFeedback('warning', 'All stars have been reset to 0! ⭐');
           }
         });
 
@@ -4373,6 +5000,16 @@
             document.querySelectorAll('.level-btn[data-spelllevel]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             this.spellingLevel = parseInt(btn.dataset.spelllevel, 10);
+            this.saveProgress();
+          });
+        });
+
+        document.querySelectorAll('.level-btn[data-colormode]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-colormode]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.colorMode = btn.dataset.colormode;
             this.saveProgress();
           });
         });
@@ -4403,6 +5040,16 @@
             document.querySelectorAll('.level-btn[data-clocklevel]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             this.clockLevel = parseInt(btn.dataset.clocklevel, 10);
+            this.saveProgress();
+          });
+        });
+
+        document.querySelectorAll('.level-btn[data-shapesmode]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-shapesmode]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.shapesMode = btn.dataset.shapesmode;
             this.saveProgress();
           });
         });
@@ -4731,6 +5378,7 @@
       }
 
       speakQuestion() {
+        if (this.app.timer) this.app.timer.stop();
         let text = '';
         this.question.steps.forEach((step, idx) => {
           if (idx === 0) {
@@ -4753,8 +5401,30 @@
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
             this.statusText.textContent = 'What is your answer? Enter below 👇';
+            if (this.app.currentView === 'ucmath' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
+      }
+
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'ucmath') return;
+        this.isAnswerLocked = true;
+        if (this.inputsContainer) this.inputsContainer.style.pointerEvents = 'none';
+        const ans = this.question.correctAnswer;
+        const equationText = this.question.steps.map((s, idx) => (idx === 0 ? `${s.val}` : `${s.op} ${s.val}`)).join(' ') + ' = ' + ans;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + equationText;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Answer: ${ans}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! The answer was ${ans}`, equationText);
+        setTimeout(() => {
+          if (this.app.currentView === 'ucmath') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
       }
 
       checkAnswer() {
@@ -4775,6 +5445,8 @@
           }
           userVal = parseInt(tVal, 10) * 10 + parseInt(uVal, 10);
         }
+
+        if (this.app.timer) this.app.timer.stop();
 
         if (userVal === this.question.correctAnswer) {
           this.handleCorrect();
@@ -5037,6 +5709,7 @@
       }
 
       speakNumber() {
+        if (this.app.timer) this.app.timer.stop();
         this.app.speak(
           this.targetWord.toLowerCase(),
           () => {
@@ -5048,8 +5721,28 @@
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
             this.statusText.textContent = `Spell "${this.currentNumber}" in words below 👇`;
+            if (this.app.currentView === 'spelling' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
+      }
+
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'spelling') return;
+        this.isAnswerLocked = true;
+        const fullSolved = `${this.currentNumber} = ${this.targetWord}`;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + fullSolved;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Word: ${this.targetWord}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! The word was "${this.targetWord}"`, fullSolved);
+        setTimeout(() => {
+          if (this.app.currentView === 'spelling') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
       }
 
       checkAnswer() {
@@ -5065,6 +5758,8 @@
           this.app.showFeedback('warning', 'Type all the letters of the word! 🔤');
           return;
         }
+
+        if (this.app.timer) this.app.timer.stop();
 
         if (userClean === targetClean) {
           this.handleCorrect();
@@ -5340,6 +6035,8 @@
       }
 
       checkMatchPick(pickedName, card) {
+        if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         if (pickedName === this.targetColor.name) {
           this.isAnswerLocked = true;
           card.classList.add('correct-pick');
@@ -5411,6 +6108,7 @@
       }
 
       speakColor() {
+        if (this.app.timer) this.app.timer.stop();
         const textToSay = this.mode === 'match' ? `Find ${this.targetColor.sound}` : this.targetColor.sound;
         this.app.speak(
           textToSay,
@@ -5423,8 +6121,28 @@
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
             this.statusText.textContent = this.mode === 'match' ? `Tap the ${this.targetColor.name} color! 🎨` : `Spell the color in letters below 👇`;
+            if (this.app.currentView === 'colors' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
+      }
+
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'colors') return;
+        this.isAnswerLocked = true;
+        const fullSolved = `${this.targetColor.name} ${this.targetColor.emoji}`;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + fullSolved;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Color: ${this.targetColor.name}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! That color was ${this.targetColor.name} ${this.targetColor.emoji}`, fullSolved);
+        setTimeout(() => {
+          if (this.app.currentView === 'colors') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
       }
 
       checkSpelling() {
@@ -5440,6 +6158,8 @@
           this.app.showFeedback('warning', 'Type all the letters of the color! 🔤');
           return;
         }
+
+        if (this.app.timer) this.app.timer.stop();
 
         if (userClean === targetClean) {
           this.handleSpellingCorrect();
@@ -5731,6 +6451,7 @@
       }
 
       speakDuel() {
+        if (this.app.timer) this.app.timer.stop();
         let text = '';
         if (this.mode === 'bigger') {
           text = `Which is bigger: ${this.numA} or ${this.numB}?`;
@@ -5749,12 +6470,34 @@
           () => {
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
+            if (this.app.currentView === 'compare' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
       }
 
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'compare') return;
+        this.isAnswerLocked = true;
+        const winner = this.mode === 'bigger' ? (this.numA > this.numB ? this.numA : this.numB) : (this.numA < this.numB ? this.numA : this.numB);
+        const solvedText = `${this.numA} ${this.numA > this.numB ? '>' : '<'} ${this.numB}`;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + solvedText;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Winner: ${winner}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! Correct answer was ${winner}`, solvedText);
+        setTimeout(() => {
+          if (this.app.currentView === 'compare') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
+      }
+
       handlePick(side) {
         if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         this.app.sound.playTap();
 
         const pickedNum = side === 'left' ? this.numA : this.numB;
@@ -6074,6 +6817,7 @@
       speakSequence() {
         const spokenParts = this.sequence.map((n, idx) => idx === this.missingIndex ? 'mystery' : n);
         const text = spokenParts.join(', ');
+        if (this.app.timer) this.app.timer.stop();
         const prompt = `Train sequence: ${text}. What is the missing number?`;
 
         this.app.speak(
@@ -6085,12 +6829,37 @@
           () => {
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
+            if (this.app.currentView === 'sequence' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
       }
 
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'sequence') return;
+        this.isAnswerLocked = true;
+        if (this.carElements && this.carElements[this.missingIndex]) {
+          this.carElements[this.missingIndex].className = 'train-car solved-car';
+          this.carNumElements[this.missingIndex].textContent = this.missingNumber;
+        }
+        const fullSeq = this.sequence.join(', ');
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + fullSeq;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Missing: ${this.missingNumber}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! The missing number was ${this.missingNumber}`, fullSeq);
+        setTimeout(() => {
+          if (this.app.currentView === 'sequence') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
+      }
+
       handleChoicePick(pickedIndex) {
         if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         this.app.sound.playTap();
 
         const chosenVal = this.options[pickedIndex];
@@ -6331,6 +7100,7 @@
       }
 
       speakClock() {
+        if (this.app.timer) this.app.timer.stop();
         let spoken = '';
         if (this.targetMinutes === 0) {
           spoken = `${this.targetHours} o'clock`;
@@ -6353,12 +7123,33 @@
           () => {
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
+            if (this.app.currentView === 'clock' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
       }
 
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'clock') return;
+        this.isAnswerLocked = true;
+        const correctTime = this.formatTime(this.targetHours, this.targetMinutes);
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + correctTime;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Time: ${correctTime}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! The clock was showing ${correctTime}`, correctTime);
+        setTimeout(() => {
+          if (this.app.currentView === 'clock') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
+      }
+
       handleChoice(pickedIndex) {
         if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         this.app.sound.playTap();
 
         const pickedTime = this.options[pickedIndex];
@@ -6376,7 +7167,7 @@
         this.isAnswerLocked = true;
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore('compare', 1);
+        this.app.addScore('clock', 1);
 
         btn.classList.add('correct-pick');
 
@@ -6683,6 +7474,7 @@
       }
 
       speakShape() {
+        if (this.app.timer) this.app.timer.stop();
         let text = '';
         if (this.mode === 'match') {
           text = `Find the ${this.targetShape.name}!`;
@@ -6699,19 +7491,40 @@
           () => {
             this.mascotAvatar.classList.remove('speaking');
             this.btnReplay.classList.remove('speaking');
+            if (this.app.currentView === 'shapes' && !this.isAnswerLocked) {
+              this.app.timer.start(() => this.handleTimeout());
+            }
           }
         );
       }
 
+      handleTimeout() {
+        if (this.isAnswerLocked || this.app.currentView !== 'shapes') return;
+        this.isAnswerLocked = true;
+        const fullSolved = `${this.targetShape.name} ${this.targetShape.emoji}`;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = "⏰ Time's up! " + fullSolved;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+        this.statusText.textContent = `⏰ Time's up! Shape: ${this.targetShape.name}`;
+        this.app.showFeedback('wrong', `⏰ Time's Up! The shape was ${this.targetShape.name} ${this.targetShape.emoji}`, fullSolved);
+        setTimeout(() => {
+          if (this.app.currentView === 'shapes') {
+            this.generateNewQuestion();
+          }
+        }, (this.app.popupDuration || 2) * 1000);
+      }
+
       handleMatchPick(cardEl, pickedShape) {
         if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         this.app.sound.playTap();
 
         if (pickedShape.name === this.targetShape.name) {
           this.isAnswerLocked = true;
           this.app.sound.playFanfare();
           this.app.confetti.fire();
-          this.app.addScore(1);
+          this.app.addScore('shapes', 1);
 
           cardEl.classList.add('correct-pick');
 
@@ -6743,6 +7556,7 @@
 
       handleSideChoice(idx) {
         if (this.isAnswerLocked) return;
+        if (this.app.timer) this.app.timer.stop();
         this.app.sound.playTap();
 
         const pickedSides = this.sideChoices[idx];
@@ -6752,7 +7566,7 @@
           this.isAnswerLocked = true;
           this.app.sound.playFanfare();
           this.app.confetti.fire();
-          this.app.addScore(1);
+          this.app.addScore('shapes', 1);
 
           btn.classList.add('correct-pick');
 
