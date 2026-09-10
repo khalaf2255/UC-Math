@@ -254,6 +254,11 @@
     }
     .card-colors:hover { border-color: #a855f7; }
 
+    .game-choice-card.card-compare {
+      border-left: 6px solid #f97316;
+    }
+    .card-compare:hover { border-color: #f97316; }
+
     .game-icon-box {
       width: 60px;
       height: 60px;
@@ -269,6 +274,7 @@
     .card-math .game-icon-box { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
     .card-spelling .game-icon-box { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
     .card-colors .game-icon-box { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
+    .card-compare .game-icon-box { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); }
 
     .game-details {
       flex: 1;
@@ -288,6 +294,7 @@
     .card-math .game-badge { background: #eff6ff; color: #1d4ed8; }
     .card-spelling .game-badge { background: #f0fdf4; color: #15803d; }
     .card-colors .game-badge { background: #faf5ff; color: #9333ea; }
+    .card-compare .game-badge { background: #fff7ed; color: #ea580c; }
 
     .game-name {
       font-size: 1.25rem;
@@ -1785,17 +1792,17 @@
             <div class="game-desc">Match vibrant color splashes and learn how to spell their names!</div>
           </div>
           <div class="game-play-arrow">▶</div>
+        </div>
 
         <!-- Game 4: Bigger or Smaller -->
         <div class="game-choice-card card-compare" id="btn-launch-compare">
-          <div class="game-icon-box" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">⚖️🔢</div>
+          <div class="game-icon-box">⚖️🔢</div>
           <div class="game-details">
-            <span class="game-badge" style="background: #fffbeb; color: #b45309;">Number Duel</span>
+            <span class="game-badge">Number Duel</span>
             <div class="game-name">Bigger or Smaller?</div>
             <div class="game-desc">Compare numbers, choose the greater or lesser, and master &lt; = &gt; signs!</div>
           </div>
           <div class="game-play-arrow">▶</div>
-        </div>
         </div>
       </div>
     </div>
@@ -2536,6 +2543,10 @@
 
         // Game 3: Color Magic State
         this.colorMode = 'match'; // 'match' | 'spell'
+
+        // Game 4: Number Duel State
+        this.compareLevel = 2;
+        this.compareMode = 'bigger'; // 'bigger' | 'smaller' | 'signs'
 
         this.voices = [];
         this._feedbackTimer = null;
