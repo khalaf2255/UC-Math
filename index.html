@@ -378,6 +378,8 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      font-size: 3.4rem;
+      user-select: none;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       animation: mascotHover 3.5s ease-in-out infinite;
     }
@@ -417,6 +419,137 @@
       font-size: 0.95rem;
       border: 3px solid white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Mascot Speech Bubble & Status Header */
+    .mascot-bubble {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .mascot-status {
+      font-family: var(--font-main);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-align: center;
+      line-height: 1.35;
+      padding: 0 8px;
+    }
+
+    /* Speech Controls Row */
+    .speech-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .speech-replay-btn {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+      border-bottom: 3.5px solid #1e40af;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .speech-replay-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
+    }
+
+    .speech-replay-btn:active {
+      transform: translateY(2px);
+      border-bottom-width: 1.5px;
+    }
+
+    .speech-replay-btn.speaking {
+      background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+      border-bottom-color: #166534;
+      animation: pulseBtn 0.8s infinite alternate;
+    }
+
+    .speech-reset-btn {
+      background: #f8fafc;
+      color: #475569;
+      border: 2px solid #cbd5e1;
+      border-bottom: 3.5px solid #94a3b8;
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+      transition: all 0.2s;
+    }
+
+    .speech-reset-btn:hover {
+      transform: translateY(-2px);
+      background: #ffffff;
+      border-color: #94a3b8;
+      color: #1e293b;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .speech-reset-btn:active {
+      transform: translateY(2px);
+      border-bottom-width: 1.5px;
+    }
+
+    /* Soundwaves in Speech Replay Button */
+    .soundwaves {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 14px;
+      margin-left: 2px;
+    }
+
+    .soundwave-bar {
+      width: 3px;
+      height: 6px;
+      background: white;
+      border-radius: 2px;
+      transition: height 0.2s;
+    }
+
+    .speech-replay-btn.speaking .soundwave-bar {
+      animation: soundwaveAnim 0.5s infinite alternate ease-in-out;
+    }
+
+    .speech-replay-btn.speaking .soundwave-bar:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .speech-replay-btn.speaking .soundwave-bar:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes soundwaveAnim {
+      0% { height: 4px; }
+      100% { height: 14px; }
     }
 
     /* Audio Replay Button */
@@ -1794,14 +1927,18 @@
     }
 
     .shape-display-hero {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
+      background: white;
+      border: 4px solid #fbcfe8;
+      border-radius: 28px;
+      box-shadow: 0 10px 24px rgba(236, 72, 153, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 10px 0 14px 0;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.14));
-      animation: pulseBtn 2.2s infinite alternate;
+      padding: 14px;
+      margin: 10px 0 16px 0;
+      animation: pulseBtn 2.5s infinite alternate;
     }
 
     .shape-display-hero svg {
@@ -1882,20 +2019,37 @@
     }
 
     .shape-side-choice-btn {
-      height: 60px;
-      background: white;
+      height: 68px;
+      background: linear-gradient(to bottom, #ffffff, #fdf2f8);
       border: 3.5px solid #cbd5e1;
       border-bottom: 5px solid #94a3b8;
-      border-radius: 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      transition: all 0.15s;
+      padding: 4px;
+    }
+
+    .shape-side-num {
       font-family: var(--font-nums);
       font-size: 2.2rem;
       font-weight: 900;
       color: #1e293b;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .shape-side-label {
+      font-family: var(--font-main);
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #64748b;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .shape-side-choice-btn:hover {
@@ -2645,7 +2799,7 @@
 
       <!-- Mascot & Question Area -->
       <div class="mascot-container">
-        <div class="mascot-avatar" id="compare-mascot">🦁</div>
+        <div class="mascot-avatar" id="compare-mascot" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); box-shadow: 0 10px 24px rgba(249, 115, 22, 0.35);">🦁</div>
         <div class="mascot-bubble">
           <div class="mascot-status" id="compare-status-text">Which number is BIGGER? 🔥</div>
           <div class="speech-controls-row">
@@ -2724,7 +2878,7 @@
 
       <!-- Mascot & Question Area -->
       <div class="mascot-container">
-        <div class="mascot-avatar" id="sequence-mascot">👨‍✈️</div>
+        <div class="mascot-avatar" id="sequence-mascot" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); box-shadow: 0 10px 24px rgba(6, 182, 212, 0.35);">👨‍✈️</div>
         <div class="mascot-bubble">
           <div class="mascot-status" id="sequence-status-text">What number is missing from the train? 🚂</div>
           <div class="speech-controls-row">
@@ -2800,7 +2954,7 @@
 
       <!-- Mascot & Question Area -->
       <div class="mascot-container">
-        <div class="mascot-avatar" id="clock-mascot">⏰</div>
+        <div class="mascot-avatar" id="clock-mascot" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); box-shadow: 0 10px 24px rgba(139, 92, 246, 0.35);">⏰</div>
         <div class="mascot-bubble">
           <div class="mascot-status" id="clock-status-text">What time is it? 🕒</div>
           <div class="speech-controls-row">
@@ -2887,7 +3041,7 @@
 
       <!-- Mascot & Question Area -->
       <div class="mascot-container">
-        <div class="mascot-avatar" id="shapes-mascot">📐</div>
+        <div class="mascot-avatar" id="shapes-mascot" style="background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); box-shadow: 0 10px 24px rgba(236, 72, 153, 0.35);">📐</div>
         <div class="mascot-bubble">
           <div class="mascot-status" id="shapes-status-text">Find the matching shape! 🔺</div>
           <div class="speech-controls-row">
@@ -5997,7 +6151,11 @@
 
         this.sideButtons.forEach((btn, idx) => {
           const val = this.sideChoices[idx];
-          btn.textContent = val === 0 ? '0 (Curved)' : val;
+          if (val === 0) {
+            btn.innerHTML = '<span class="shape-side-num">0</span><span class="shape-side-label">Curved</span>';
+          } else {
+            btn.innerHTML = `<span class="shape-side-num">${val}</span><span class="shape-side-label">Sides</span>`;
+          }
           btn.className = 'shape-side-choice-btn';
         });
       }
