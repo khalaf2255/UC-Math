@@ -83,12 +83,13 @@
     /* Top Navigation Bar */
     .top-bar {
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
       z-index: 10;
+      transition: max-width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15), margin-bottom 0.2s ease;
     }
 
     .top-bar-left {
@@ -188,6 +189,7 @@
       position: relative;
       z-index: 5;
       text-align: center;
+      transition: max-width 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15), padding 0.3s ease;
     }
 
     .hub-header {
@@ -2328,17 +2330,10 @@
       margin-top: 8px;
     }
 
-    @media (min-width: 520px) {
+    @media (min-width: 520px) and (max-width: 767px) {
       .games-app-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
-      }
-    }
-
-    @media (min-width: 820px) {
-      .games-app-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
       }
     }
 
@@ -2505,9 +2500,119 @@
       70% { transform: scale(0.95) rotate(4deg); }
       100% { transform: scale(1) rotate(0deg); }
     }
+
+    /* ==========================================================================
+       DESKTOP & LARGE SCREEN RESPONSIVE STYLES (>= 768px)
+       ========================================================================== */
+    @media (min-width: 768px) {
+      body {
+        padding: 24px 20px;
+      }
+
+      body.view-is-hub .top-bar {
+        max-width: 980px;
+        margin-bottom: 20px;
+      }
+
+      .stars-badge {
+        font-size: 1.35rem;
+        padding: 8px 24px;
+        gap: 8px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
+      }
+
+      .icon-btn {
+        font-size: 1.05rem;
+        padding: 10px 22px;
+        gap: 8px;
+      }
+
+      .hub-card {
+        max-width: 980px;
+        padding: 38px 36px 42px 36px;
+        border-radius: 36px;
+        border-width: 6px;
+      }
+
+      .hub-header {
+        margin-bottom: 26px;
+      }
+
+      .hub-title {
+        font-size: 2.35rem;
+        margin-bottom: 8px;
+      }
+
+      .hub-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+
+      .games-app-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 22px;
+        margin-top: 16px;
+        width: 100%;
+      }
+
+      .game-app-tile {
+        flex: 0 1 205px;
+        width: 205px;
+        min-height: 225px;
+        padding: 24px 14px 20px 14px;
+        border-radius: 30px;
+        border-width: 4px;
+        border-bottom-width: 6px;
+      }
+
+      .game-app-tile:hover {
+        transform: translateY(-8px) scale(1.035);
+        box-shadow: 0 22px 38px rgba(0, 0, 0, 0.14);
+      }
+
+      .tile-icon-box {
+        width: 88px;
+        height: 88px;
+        font-size: 3.2rem;
+        border-radius: 26px;
+        margin-bottom: 12px;
+      }
+
+      .tile-title {
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+      }
+
+      .tile-badge {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+
+      .tile-stars-pill {
+        padding: 5px 16px;
+        font-size: 1.05rem;
+      }
+
+      .tile-star-icon {
+        font-size: 1.15rem;
+      }
+
+      /* Game Card on Desktop */
+      .game-card {
+        max-width: 540px;
+        padding: 30px 28px 32px 28px;
+        border-radius: 36px;
+      }
+
+      body.view-is-game .top-bar {
+        max-width: 540px;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="view-is-hub">
 
   <!-- Floating Bubbles -->
   <div class="bubble"></div>
@@ -4094,36 +4199,42 @@
         if (this.viewShapes) this.viewShapes.style.display = 'none';
 
         if (viewName === 'hub') {
+          document.body.classList.add('view-is-hub');
+          document.body.classList.remove('view-is-game');
           this.viewHub.style.display = 'flex';
           this.btnHome.style.display = 'none';
-        } else if (viewName === 'ucmath') {
-          this.viewUcMath.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.ucMathController.onEnter();
-        } else if (viewName === 'spelling') {
-          this.viewSpelling.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.spellingController.onEnter();
-        } else if (viewName === 'colors') {
-          this.viewColors.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.colorsController.onEnter();
-        } else if (viewName === 'compare') {
-          this.viewCompare.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.compareController.onEnter();
-        } else if (viewName === 'sequence') {
-          this.viewSequence.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.sequenceController.onEnter();
-        } else if (viewName === 'clock') {
-          this.viewClock.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.clockController.onEnter();
-        } else if (viewName === 'shapes') {
-          this.viewShapes.style.display = 'flex';
-          this.btnHome.style.display = 'flex';
-          this.shapesController.onEnter();
+        } else {
+          document.body.classList.remove('view-is-hub');
+          document.body.classList.add('view-is-game');
+          if (viewName === 'ucmath') {
+            this.viewUcMath.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.ucMathController.onEnter();
+          } else if (viewName === 'spelling') {
+            this.viewSpelling.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.spellingController.onEnter();
+          } else if (viewName === 'colors') {
+            this.viewColors.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.colorsController.onEnter();
+          } else if (viewName === 'compare') {
+            this.viewCompare.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.compareController.onEnter();
+          } else if (viewName === 'sequence') {
+            this.viewSequence.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.sequenceController.onEnter();
+          } else if (viewName === 'clock') {
+            this.viewClock.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.clockController.onEnter();
+          } else if (viewName === 'shapes') {
+            this.viewShapes.style.display = 'flex';
+            this.btnHome.style.display = 'flex';
+            this.shapesController.onEnter();
+          }
         }
       }
 
