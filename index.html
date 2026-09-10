@@ -1253,7 +1253,240 @@
       flex-shrink: 0;
     }
 
-    /* Mobile Responsive */
+        /* Game 4: Number Duel / Bigger or Smaller */
+    .compare-mode-toggle {
+      display: flex;
+      background: #f1f5f9;
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .compare-mode-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      background: transparent;
+      border-radius: 50px;
+      font-family: var(--font-main);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .compare-mode-btn.active {
+      background: white;
+      color: #ea580c;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+    }
+
+    /* Comparison Arena (Cards & VS) */
+    .compare-arena {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px 0 16px 0;
+      position: relative;
+    }
+
+    .compare-card {
+      flex: 1;
+      min-height: 130px;
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
+      border: 4px solid #cbd5e1;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      user-select: none;
+      padding: 10px;
+    }
+
+    .compare-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      border-color: #f97316;
+      box-shadow: 0 16px 30px rgba(249, 115, 22, 0.22);
+    }
+
+    .compare-card:active {
+      transform: translateY(2px) scale(0.97);
+    }
+
+    .compare-card.correct-pick {
+      border-color: #22c55e !important;
+      background: linear-gradient(to bottom, #ffffff, #f0fdf4) !important;
+      box-shadow: 0 0 0 6px #22c55e, 0 16px 32px rgba(34, 197, 94, 0.35) !important;
+      animation: popWin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .compare-card.wrong-pick {
+      border-color: #ef4444 !important;
+      background: linear-gradient(to bottom, #ffffff, #fef2f2) !important;
+      box-shadow: 0 0 0 6px #ef4444, 0 16px 32px rgba(239, 68, 68, 0.35) !important;
+      animation: shakeAnim 0.5s both;
+    }
+
+    .compare-card-number {
+      font-family: var(--font-nums);
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1;
+    }
+
+    .compare-card-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .compare-vs-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      color: white;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    /* Signs Mode Middle Slot & Controls */
+    .compare-signs-arena {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 10px 0 16px 0;
+    }
+
+    .compare-equation-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .sign-num-box {
+      flex: 1;
+      height: 96px;
+      background: white;
+      border: 4px solid #cbd5e1;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-nums);
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1e293b;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    .sign-operator-slot {
+      width: 72px;
+      height: 86px;
+      border-radius: 18px;
+      border: 3px dashed #f59e0b;
+      background: #fffbeb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-nums);
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #d97706;
+      box-shadow: inset 0 2px 6px rgba(245, 158, 11, 0.15);
+      transition: all 0.25s;
+    }
+
+    .sign-operator-slot.filled {
+      border-style: solid;
+      border-color: #22c55e;
+      background: #f0fdf4;
+      color: #15803d;
+      animation: popWin 0.4s ease-out;
+    }
+
+    .sign-operator-slot.wrong-pick {
+      border-style: solid;
+      border-color: #ef4444;
+      background: #fef2f2;
+      color: #b91c1c;
+      animation: shakeAnim 0.5s both;
+    }
+
+    .signs-button-group {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      max-width: 360px;
+      justify-content: center;
+    }
+
+    .btn-sign-choice {
+      flex: 1;
+      height: 60px;
+      background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+      border: 3px solid #cbd5e1;
+      border-bottom: 5px solid #94a3b8;
+      border-radius: 18px;
+      font-family: var(--font-nums);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #334155;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: all 0.15s;
+    }
+
+    .btn-sign-choice:hover {
+      transform: translateY(-2px);
+      border-color: #f59e0b;
+      color: #d97706;
+      box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+    }
+
+    .btn-sign-choice:active {
+      transform: translateY(3px);
+      border-bottom-width: 2px;
+    }
+
+/* Mobile Responsive */
     @media (max-width: 480px) {
       body {
         padding: 8px 6px;
@@ -1387,9 +1620,67 @@
         font-size: 0.78rem;
         padding: 7px 2px;
       }
+      .compare-card {
+        min-height: 110px;
+        border-radius: 20px;
+        padding: 8px;
+      }
+      .compare-card-number {
+        font-size: 2.7rem;
+      }
+      .compare-vs-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 0.85rem;
+      }
+      .sign-num-box {
+        height: 80px;
+        font-size: 2.5rem;
+        border-radius: 16px;
+      }
+      .sign-operator-slot {
+        width: 60px;
+        height: 72px;
+        font-size: 2.5rem;
+        border-radius: 14px;
+      }
+      .btn-sign-choice {
+        height: 52px;
+        font-size: 2rem;
+        border-radius: 14px;
+      }
     }
 
     @media (max-width: 360px) {
+      .compare-card {
+        min-height: 95px;
+        border-radius: 16px;
+        padding: 6px;
+      }
+      .compare-card-number {
+        font-size: 2.3rem;
+      }
+      .compare-card-tag {
+        font-size: 0.75rem;
+      }
+      .compare-vs-badge {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+      }
+      .sign-num-box {
+        height: 70px;
+        font-size: 2.1rem;
+      }
+      .sign-operator-slot {
+        width: 52px;
+        height: 64px;
+        font-size: 2.1rem;
+      }
+      .btn-sign-choice {
+        height: 46px;
+        font-size: 1.7rem;
+      }
       .letter-slot {
         width: 30px;
         height: 40px;
@@ -1494,6 +1785,17 @@
             <div class="game-desc">Match vibrant color splashes and learn how to spell their names!</div>
           </div>
           <div class="game-play-arrow">▶</div>
+
+        <!-- Game 4: Bigger or Smaller -->
+        <div class="game-choice-card card-compare" id="btn-launch-compare">
+          <div class="game-icon-box" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">⚖️🔢</div>
+          <div class="game-details">
+            <span class="game-badge" style="background: #fffbeb; color: #b45309;">Number Duel</span>
+            <div class="game-name">Bigger or Smaller?</div>
+            <div class="game-desc">Compare numbers, choose the greater or lesser, and master &lt; = &gt; signs!</div>
+          </div>
+          <div class="game-play-arrow">▶</div>
+        </div>
         </div>
       </div>
     </div>
@@ -1849,6 +2151,85 @@
   </div>
 
   <!-- =========================================================================
+       VIEW 5: NUMBER DUEL (BIGGER OR SMALLER)
+       ========================================================================= -->
+  <div class="app-view" id="view-compare" style="display: none;">
+    <div class="game-card">
+
+      <!-- Mascot & Question Area -->
+      <div class="mascot-container">
+        <div class="mascot-avatar" id="compare-mascot">🦁</div>
+        <div class="mascot-bubble">
+          <div class="mascot-status" id="compare-status-text">Which number is BIGGER? 🔥</div>
+          <div class="speech-controls-row">
+            <button class="speech-replay-btn" id="btn-replay-compare" title="Hear question again">
+              <span>🔊 Replay</span>
+              <div class="soundwaves">
+                <span class="soundwave-bar"></span>
+                <span class="soundwave-bar"></span>
+                <span class="soundwave-bar"></span>
+              </div>
+            </button>
+            <button class="speech-reset-btn" id="btn-reset-compare" title="Reset this question">
+              <span>🔄 Reset</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode Switcher -->
+      <div class="compare-mode-toggle">
+        <button class="compare-mode-btn active" id="btn-comparemode-bigger">🔥 Bigger</button>
+        <button class="compare-mode-btn" id="btn-comparemode-smaller">❄️ Smaller</button>
+        <button class="compare-mode-btn" id="btn-comparemode-signs">🔀 Signs (&lt; = &gt;)</button>
+      </div>
+
+      <!-- Solved Problem Display Badge -->
+      <div class="solved-problem-badge" id="compare-solved-badge" style="display: none;"></div>
+
+      <!-- Mode A & B: Direct Pick Arena (Bigger / Smaller) -->
+      <div class="compare-arena" id="compare-pick-arena">
+        <div class="compare-card" id="card-compare-left" data-side="left">
+          <div class="compare-card-number" id="compare-num-left">--</div>
+          <div class="compare-card-tag" id="compare-tag-left">Card A</div>
+        </div>
+        <div class="compare-vs-badge" id="compare-badge-middle">VS</div>
+        <div class="compare-card" id="card-compare-right" data-side="right">
+          <div class="compare-card-number" id="compare-num-right">--</div>
+          <div class="compare-card-tag" id="compare-tag-right">Card B</div>
+        </div>
+      </div>
+
+      <!-- Mode C: Comparison Signs Arena (< = >) -->
+      <div class="compare-signs-arena" id="compare-signs-arena" style="display: none;">
+        <div class="compare-equation-row">
+          <div class="sign-num-box" id="sign-num-left">--</div>
+          <div class="sign-operator-slot" id="sign-operator-slot">?</div>
+          <div class="sign-num-box" id="sign-num-right">--</div>
+        </div>
+        <div class="signs-button-group">
+          <button class="btn-sign-choice" data-sign="<" title="Less than">&lt;</button>
+          <button class="btn-sign-choice" data-sign="=" title="Equal to">=</button>
+          <button class="btn-sign-choice" data-sign=">" title="Greater than">&gt;</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions-area">
+        <button class="btn-action btn-next" id="btn-next-compare">
+          <span>Next Duel!</span>
+          <span style="font-size: 1.5rem;">🚀</span>
+        </button>
+        <button class="btn-action btn-retry" id="btn-retry-compare">
+          <span>Try Again</span>
+          <span style="font-size: 1.5rem;">🔄</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
        SHARED CELEBRATION POPUP MODAL
        ========================================================================= -->
   <div class="feedback-popup-overlay" id="feedback-popup-overlay">
@@ -1889,6 +2270,17 @@
           <button class="level-btn" data-spelllevel="2">Numbers 11 to 20</button>
           <button class="level-btn" data-spelllevel="3">Tens (10 to 90)</button>
           <button class="level-btn" data-spelllevel="4">Numbers 1 to 99</button>
+        </div>
+      </div>
+
+      <!-- Bigger or Smaller Level -->
+      <div class="setting-group">
+        <label class="setting-label">Bigger or Smaller Difficulty Level:</label>
+        <div class="level-options">
+          <button class="level-btn" data-comparelevel="1">Single (1 - 9)</button>
+          <button class="level-btn active" data-comparelevel="2">2-Digits (10 - 99)</button>
+          <button class="level-btn" data-comparelevel="3">3-Digits (100 - 999)</button>
+          <button class="level-btn" data-comparelevel="4">Mixed (1 - 999)</button>
         </div>
       </div>
 
@@ -2133,7 +2525,7 @@
         this.score = 0;
         this.speechRate = 0.75;
         this.popupDuration = 2;
-        this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling' | 'colors'
+        this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling' | 'colors' | 'compare'
 
         // Game 1: UC Math State
         this.ucMathLevel = 3;
@@ -2157,6 +2549,7 @@
         this.ucMathController = new UCMathController(this);
         this.spellingController = new NumberWordsController(this);
         this.colorsController = new ColorMagicController(this);
+          this.compareController = new NumberDuelController(this);
 
         this.attachGlobalListeners();
         this.showView('hub');
@@ -2173,6 +2566,8 @@
             if (data.ucMathLevel) this.ucMathLevel = parseInt(data.ucMathLevel, 10);
             if (data.spellingLevel) this.spellingLevel = parseInt(data.spellingLevel, 10);
             if (data.colorMode) this.colorMode = data.colorMode;
+              if (data.compareLevel) this.compareLevel = parseInt(data.compareLevel, 10);
+              if (data.compareMode) this.compareMode = data.compareMode;
             if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
           }
         } catch (e) {
@@ -2189,6 +2584,8 @@
             ucMathLevel: this.ucMathLevel,
             spellingLevel: this.spellingLevel,
             colorMode: this.colorMode,
+            compareLevel: this.compareLevel,
+            compareMode: this.compareMode,
             showParentPeek: this.showParentPeek
           };
           localStorage.setItem('kids_arena_math_progress', JSON.stringify(data));
@@ -2217,11 +2614,13 @@
         this.viewUcMath = document.getElementById('view-ucmath');
         this.viewSpelling = document.getElementById('view-spelling');
         this.viewColors = document.getElementById('view-colors');
+        this.viewCompare = document.getElementById('view-compare');
 
         // Hub launch buttons
         this.btnLaunchUcMath = document.getElementById('btn-launch-ucmath');
         this.btnLaunchSpelling = document.getElementById('btn-launch-spelling');
         this.btnLaunchColors = document.getElementById('btn-launch-colors');
+        this.btnLaunchCompare = document.getElementById('btn-launch-compare');
 
         // Feedback Popup
         this.feedbackOverlay = document.getElementById('feedback-popup-overlay');
@@ -2337,6 +2736,7 @@
         this.viewUcMath.style.display = 'none';
         this.viewSpelling.style.display = 'none';
         this.viewColors.style.display = 'none';
+        if (this.viewCompare) this.viewCompare.style.display = 'none';
 
         if (viewName === 'hub') {
           this.viewHub.style.display = 'flex';
@@ -2353,6 +2753,10 @@
           this.viewColors.style.display = 'flex';
           this.btnHome.style.display = 'flex';
           this.colorsController.onEnter();
+        } else if (viewName === 'compare') {
+          this.viewCompare.style.display = 'flex';
+          this.btnHome.style.display = 'flex';
+          this.compareController.onEnter();
         }
       }
 
@@ -2365,6 +2769,10 @@
 
         document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.spelllevel, 10) === this.spellingLevel);
+        });
+
+        document.querySelectorAll('.level-btn[data-comparelevel]').forEach(btn => {
+          btn.classList.toggle('active', parseInt(btn.dataset.comparelevel, 10) === this.compareLevel);
         });
 
         document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
@@ -2396,6 +2804,11 @@
           this.showView('colors');
         });
 
+        this.btnLaunchCompare.addEventListener('click', () => {
+          this.sound.playTap();
+          this.showView('compare');
+        });
+
         this.btnHome.addEventListener('click', () => {
           this.sound.playTap();
           this.showView('hub');
@@ -2419,6 +2832,8 @@
             this.spellingController.generateNewQuestion();
           } else if (this.currentView === 'colors') {
             this.colorsController.generateNewQuestion();
+          } else if (this.currentView === 'compare') {
+            this.compareController.generateNewQuestion();
           }
         };
 
@@ -2451,6 +2866,16 @@
             document.querySelectorAll('.level-btn[data-spelllevel]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             this.spellingLevel = parseInt(btn.dataset.spelllevel, 10);
+            this.saveProgress();
+          });
+        });
+
+        document.querySelectorAll('.level-btn[data-comparelevel]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.sound.playTap();
+            document.querySelectorAll('.level-btn[data-comparelevel]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.compareLevel = parseInt(btn.dataset.comparelevel, 10);
             this.saveProgress();
           });
         });
@@ -3551,6 +3976,383 @@
         this.btnCheckSpell.style.display = 'flex';
         this.btnNextSpell.style.display = 'none';
         this.btnRetrySpell.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       CONTROLLER: GAME 4 - NUMBER DUEL (BIGGER OR SMALLER)
+       ========================================================================== */
+    class NumberDuelController {
+      constructor(app) {
+        this.app = app;
+        this.mode = 'bigger'; // 'bigger' | 'smaller' | 'signs'
+        this.numA = 0;
+        this.numB = 0;
+        this.isAnswerLocked = false;
+
+        this.initDOMElements();
+        this.attachListeners();
+      }
+
+      initDOMElements() {
+        this.mascotAvatar = document.getElementById('compare-mascot');
+        this.statusText = document.getElementById('compare-status-text');
+        this.btnReplay = document.getElementById('btn-replay-compare');
+        this.btnReset = document.getElementById('btn-reset-compare');
+        this.solvedBadge = document.getElementById('compare-solved-badge');
+
+        // Mode buttons
+        this.btnModeBigger = document.getElementById('btn-comparemode-bigger');
+        this.btnModeSmaller = document.getElementById('btn-comparemode-smaller');
+        this.btnModeSigns = document.getElementById('btn-comparemode-signs');
+
+        // Arenas
+        this.pickArena = document.getElementById('compare-pick-arena');
+        this.signsArena = document.getElementById('compare-signs-arena');
+
+        // Pick mode elements
+        this.cardLeft = document.getElementById('card-compare-left');
+        this.cardRight = document.getElementById('card-compare-right');
+        this.numLeft = document.getElementById('compare-num-left');
+        this.numRight = document.getElementById('compare-num-right');
+        this.tagLeft = document.getElementById('compare-tag-left');
+        this.tagRight = document.getElementById('compare-tag-right');
+        this.badgeMiddle = document.getElementById('compare-badge-middle');
+
+        // Signs mode elements
+        this.signNumLeft = document.getElementById('sign-num-left');
+        this.signNumRight = document.getElementById('sign-num-right');
+        this.signSlot = document.getElementById('sign-operator-slot');
+        this.signButtons = document.querySelectorAll('.btn-sign-choice');
+
+        // Action buttons
+        this.btnNext = document.getElementById('btn-next-compare');
+        this.btnRetry = document.getElementById('btn-retry-compare');
+      }
+
+      attachListeners() {
+        // Mode switching
+        this.btnModeBigger.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.setMode('bigger');
+        });
+        this.btnModeSmaller.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.setMode('smaller');
+        });
+        this.btnModeSigns.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.setMode('signs');
+        });
+
+        // Replay and Reset
+        this.btnReplay.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakDuel();
+        });
+        this.btnReset.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.retryQuestion();
+        });
+
+        // Card picks (Bigger / Smaller)
+        this.cardLeft.addEventListener('click', () => this.handlePick('left'));
+        this.cardRight.addEventListener('click', () => this.handlePick('right'));
+
+        // Sign buttons (< = >)
+        this.signButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const sign = btn.dataset.sign;
+            this.handleSignPick(sign);
+          });
+        });
+
+        // Action buttons
+        this.btnNext.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.generateNewQuestion();
+        });
+        this.btnRetry.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.retryQuestion();
+        });
+
+        // Physical Keyboard listener
+        window.addEventListener('keydown', (e) => {
+          if (this.app.currentView !== 'compare') return;
+
+          const key = e.key;
+          if (key === 'r' || key === 'R') {
+            e.preventDefault();
+            this.retryQuestion();
+            return;
+          }
+
+          if (this.btnNext.style.display !== 'none' && (key === 'Enter' || key === ' ')) {
+            e.preventDefault();
+            this.generateNewQuestion();
+            return;
+          }
+
+          if (this.isAnswerLocked) return;
+
+          if (this.mode === 'signs') {
+            if (key === '<' || key === ',') {
+              e.preventDefault();
+              this.handleSignPick('<');
+            } else if (key === '=' || key === '+') {
+              e.preventDefault();
+              this.handleSignPick('=');
+            } else if (key === '>' || key === '.') {
+              e.preventDefault();
+              this.handleSignPick('>');
+            }
+          } else {
+            if (key === 'ArrowLeft' || key === '1' || key === 'a' || key === 'A') {
+              e.preventDefault();
+              this.handlePick('left');
+            } else if (key === 'ArrowRight' || key === '2' || key === 'd' || key === 'D') {
+              e.preventDefault();
+              this.handlePick('right');
+            }
+          }
+        });
+      }
+
+      onEnter() {
+        this.setMode(this.app.compareMode || 'bigger');
+      }
+
+      setMode(newMode) {
+        this.mode = newMode;
+        this.app.compareMode = newMode;
+        this.app.saveProgress();
+
+        this.btnModeBigger.classList.toggle('active', newMode === 'bigger');
+        this.btnModeSmaller.classList.toggle('active', newMode === 'smaller');
+        this.btnModeSigns.classList.toggle('active', newMode === 'signs');
+
+        if (newMode === 'signs') {
+          this.pickArena.style.display = 'none';
+          this.signsArena.style.display = 'flex';
+          this.statusText.textContent = 'Choose the correct sign (< = >) 🔀';
+        } else {
+          this.pickArena.style.display = 'flex';
+          this.signsArena.style.display = 'none';
+          this.statusText.textContent = newMode === 'bigger' ? 'Which number is BIGGER? 🔥' : 'Which number is SMALLER? ❄️';
+        }
+
+        this.generateNewQuestion();
+      }
+
+      getRandomNumber() {
+        const level = this.app.compareLevel || 2;
+        let min = 1, max = 9;
+
+        if (level === 1) {
+          min = 1; max = 9;
+        } else if (level === 2) {
+          min = 10; max = 99;
+        } else if (level === 3) {
+          min = 100; max = 999;
+        } else if (level === 4) {
+          // Mixed
+          const coin = Math.random();
+          if (coin < 0.3) { min = 1; max = 9; }
+          else if (coin < 0.7) { min = 10; max = 99; }
+          else { min = 100; max = 999; }
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      generateNewQuestion() {
+        this.resetUI();
+
+        // In signs mode, allow a 15% chance of equal numbers to teach '='
+        const allowEqual = (this.mode === 'signs' && Math.random() < 0.15);
+
+        this.numA = this.getRandomNumber();
+        if (allowEqual) {
+          this.numB = this.numA;
+        } else {
+          let attempts = 0;
+          do {
+            this.numB = this.getRandomNumber();
+            attempts++;
+          } while (this.numB === this.numA && attempts < 10);
+          if (this.numB === this.numA) this.numB = this.numA + 1;
+        }
+
+        // Render numbers
+        this.numLeft.textContent = this.numA;
+        this.numRight.textContent = this.numB;
+        this.signNumLeft.textContent = this.numA;
+        this.signNumRight.textContent = this.numB;
+        this.signSlot.textContent = '?';
+        this.signSlot.className = 'sign-operator-slot';
+
+        if (this.mode === 'bigger') {
+          this.statusText.textContent = 'Which number is BIGGER? 🔥';
+        } else if (this.mode === 'smaller') {
+          this.statusText.textContent = 'Which number is SMALLER? ❄️';
+        } else {
+          this.statusText.textContent = 'Compare the two numbers (< = >) 🔀';
+        }
+
+        this.speakDuel();
+      }
+
+      speakDuel() {
+        let text = '';
+        if (this.mode === 'bigger') {
+          text = `Which is bigger: ${this.numA} or ${this.numB}?`;
+        } else if (this.mode === 'smaller') {
+          text = `Which is smaller: ${this.numA} or ${this.numB}?`;
+        } else {
+          text = `Compare ${this.numA} and ${this.numB}`;
+        }
+
+        this.app.speak(
+          text,
+          () => {
+            this.mascotAvatar.classList.add('speaking');
+            this.btnReplay.classList.add('speaking');
+          },
+          () => {
+            this.mascotAvatar.classList.remove('speaking');
+            this.btnReplay.classList.remove('speaking');
+          }
+        );
+      }
+
+      handlePick(side) {
+        if (this.isAnswerLocked) return;
+        this.app.sound.playTap();
+
+        const pickedNum = side === 'left' ? this.numA : this.numB;
+        const otherNum = side === 'left' ? this.numB : this.numA;
+        const pickedCard = side === 'left' ? this.cardLeft : this.cardRight;
+
+        let isCorrect = false;
+        if (this.mode === 'bigger') {
+          isCorrect = pickedNum > otherNum;
+        } else if (this.mode === 'smaller') {
+          isCorrect = pickedNum < otherNum;
+        }
+
+        if (isCorrect) {
+          this.handleCorrectPick(pickedCard, pickedNum, otherNum);
+        } else {
+          this.handleWrongPick(pickedCard);
+        }
+      }
+
+      handleCorrectPick(cardElement, winnerNum, loserNum) {
+        this.isAnswerLocked = true;
+        this.app.sound.playFanfare();
+        this.app.confetti.fire();
+        this.app.addScore(1);
+
+        cardElement.classList.add('correct-pick');
+
+        const relWord = this.mode === 'bigger' ? 'is BIGGER than' : 'is SMALLER than';
+        const symbol = this.mode === 'bigger' ? '>' : '<';
+        const solvedText = `${winnerNum} ${symbol} ${loserNum}`;
+
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = `🎯 ${solvedText} (${winnerNum} ${relWord} ${loserNum}) ✔️`;
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+
+        this.app.showFeedback(
+          'success',
+          `Superstar! ${winnerNum} ${relWord} ${loserNum}! 🌟`,
+          `${this.numA} ${symbol} ${this.numB}`
+        );
+
+        this.statusText.textContent = `Awesome! ${winnerNum} ${relWord} ${loserNum} 🏆`;
+        this.btnNext.style.display = 'flex';
+        this.btnRetry.style.display = 'none';
+      }
+
+      handleWrongPick(cardElement) {
+        this.app.sound.playComicalWrong();
+        cardElement.classList.add('wrong-pick');
+
+        setTimeout(() => {
+          cardElement.classList.remove('wrong-pick');
+        }, 600);
+
+        this.app.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+        this.statusText.textContent = 'Give it another try! Tap Try Again 💪';
+
+        this.btnRetry.style.display = 'flex';
+        this.btnNext.style.display = 'none';
+      }
+
+      handleSignPick(chosenSign) {
+        if (this.isAnswerLocked) return;
+        this.app.sound.playTap();
+
+        let correctSign = '=';
+        if (this.numA > this.numB) correctSign = '>';
+        else if (this.numA < this.numB) correctSign = '<';
+
+        this.signSlot.textContent = chosenSign;
+
+        if (chosenSign === correctSign) {
+          this.isAnswerLocked = true;
+          this.app.sound.playFanfare();
+          this.app.confetti.fire();
+          this.app.addScore(1);
+
+          this.signSlot.className = 'sign-operator-slot filled';
+
+          const solvedText = `${this.numA} ${chosenSign} ${this.numB}`;
+          if (this.solvedBadge) {
+            this.solvedBadge.textContent = `🎯 ${solvedText} ✔️`;
+            this.solvedBadge.style.display = 'inline-flex';
+          }
+
+          this.app.showFeedback('success', 'Genius! Perfect comparison! 🌟', solvedText);
+          this.statusText.textContent = `Awesome! ${solvedText} 🏆`;
+
+          this.btnNext.style.display = 'flex';
+          this.btnRetry.style.display = 'none';
+        } else {
+          this.app.sound.playComicalWrong();
+          this.signSlot.className = 'sign-operator-slot wrong-pick';
+
+          setTimeout(() => {
+            this.signSlot.className = 'sign-operator-slot';
+            this.signSlot.textContent = '?';
+          }, 600);
+
+          this.app.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+          this.statusText.textContent = 'Try another sign! You can do it 💪';
+
+          this.btnRetry.style.display = 'flex';
+          this.btnNext.style.display = 'none';
+        }
+      }
+
+      retryQuestion() {
+        this.resetUI();
+        this.signSlot.textContent = '?';
+        this.signSlot.className = 'sign-operator-slot';
+        this.speakDuel();
+      }
+
+      resetUI() {
+        this.isAnswerLocked = false;
+        this.cardLeft.className = 'compare-card';
+        this.cardRight.className = 'compare-card';
+        if (this.solvedBadge) this.solvedBadge.style.display = 'none';
+        this.app.hideFeedback();
+
+        this.btnNext.style.display = 'none';
+        this.btnRetry.style.display = 'none';
       }
     }
 
