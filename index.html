@@ -180,7 +180,7 @@
       box-shadow: var(--shadow);
       border: 5px solid rgba(255, 255, 255, 0.9);
       width: 100%;
-      max-width: 480px;
+      max-width: 560px;
       padding: 24px 20px;
       display: flex;
       flex-direction: column;
@@ -2316,6 +2316,195 @@
         height: 72px;
       }
     }
+  
+    /* ==========================================================================
+       APP-ICON GRID & FLYING STAR STYLES
+       ========================================================================== */
+    .games-app-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 520px) {
+      .games-app-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 820px) {
+      .games-app-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+    }
+
+    .game-app-tile {
+      background: white;
+      border-radius: 26px;
+      padding: 18px 10px 14px 10px;
+      border: 3.5px solid #e2e8f0;
+      border-bottom: 5.5px solid #cbd5e1;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .game-app-tile:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .game-app-tile:active {
+      transform: translateY(3px) scale(0.97);
+      border-bottom-width: 2.5px;
+    }
+
+    /* Individual Tile Identity Colors */
+    .tile-ucmath {
+      border-color: #bfdbfe;
+      border-bottom-color: #93c5fd;
+    }
+    .tile-ucmath:hover { border-color: #3b82f6; }
+    .tile-ucmath .tile-icon-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.25);
+    }
+
+    .tile-spelling {
+      border-color: #bbf7d0;
+      border-bottom-color: #86efac;
+    }
+    .tile-spelling:hover { border-color: #22c55e; }
+    .tile-spelling .tile-icon-box {
+      background: linear-gradient(135deg, #dcfce7 0%, #86efac 100%);
+      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.25);
+    }
+
+    .tile-colors {
+      border-color: #e9d5ff;
+      border-bottom-color: #d8b4fe;
+    }
+    .tile-colors:hover { border-color: #a855f7; }
+    .tile-colors .tile-icon-box {
+      background: linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 100%);
+      box-shadow: 0 8px 18px rgba(168, 85, 247, 0.25);
+    }
+
+    .tile-compare {
+      border-color: #fed7aa;
+      border-bottom-color: #fdba74;
+    }
+    .tile-compare:hover { border-color: #f97316; }
+    .tile-compare .tile-icon-box {
+      background: linear-gradient(135deg, #ffedd5 0%, #fdba74 100%);
+      box-shadow: 0 8px 18px rgba(249, 115, 22, 0.25);
+    }
+
+    .tile-sequence {
+      border-color: #a5f3fc;
+      border-bottom-color: #67e8f9;
+    }
+    .tile-sequence:hover { border-color: #06b6d4; }
+    .tile-sequence .tile-icon-box {
+      background: linear-gradient(135deg, #cffafe 0%, #67e8f9 100%);
+      box-shadow: 0 8px 18px rgba(6, 182, 212, 0.25);
+    }
+
+    .tile-clock {
+      border-color: #ddd6fe;
+      border-bottom-color: #c4b5fd;
+    }
+    .tile-clock:hover { border-color: #8b5cf6; }
+    .tile-clock .tile-icon-box {
+      background: linear-gradient(135deg, #ede9fe 0%, #c4b5fd 100%);
+      box-shadow: 0 8px 18px rgba(139, 92, 246, 0.25);
+    }
+
+    .tile-shapes {
+      border-color: #fbcfe8;
+      border-bottom-color: #f472b6;
+    }
+    .tile-shapes:hover { border-color: #ec4899; }
+    .tile-shapes .tile-icon-box {
+      background: linear-gradient(135deg, #fce7f3 0%, #f472b6 100%);
+      box-shadow: 0 8px 18px rgba(236, 72, 153, 0.25);
+    }
+
+    .tile-icon-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .game-app-tile:hover .tile-icon-box {
+      transform: scale(1.12) rotate(4deg);
+    }
+
+    .tile-title {
+      font-family: var(--font-main);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .tile-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .tile-stars-pill {
+      background: #fffbeb;
+      border: 2px solid #fde68a;
+      border-radius: 50px;
+      padding: 3px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-nums);
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #b45309;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.12);
+    }
+
+    .tile-star-icon {
+      font-size: 1rem;
+    }
+
+    /* Star Counter Burst Animation */
+    .star-burst-pop {
+      animation: starBurstPopAnim 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes starBurstPopAnim {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.45) rotate(-8deg); }
+      70% { transform: scale(0.95) rotate(4deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
   </style>
 </head>
 <body>
@@ -2361,82 +2550,82 @@
         <div class="hub-subtitle">Choose your favorite game and become a superstar champion!</div>
       </div>
 
-      <div class="games-grid">
+      <div class="games-app-grid">
         <!-- Game 1: UC Math -->
-        <div class="game-choice-card card-math" id="btn-launch-ucmath">
-          <div class="game-icon-box">🧠⚡</div>
-          <div class="game-details">
-            <span class="game-badge">Mental Math</span>
-            <div class="game-name">UC Math Hero</div>
-            <div class="game-desc">Listen to fast addition & subtraction, then enter Tens & Ones!</div>
+        <div class="game-app-tile tile-ucmath" id="btn-launch-ucmath">
+          <div class="tile-icon-box">🧠⚡</div>
+          <div class="tile-title">UC Math Hero</div>
+          <div class="tile-badge">Mental Math</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-ucmath">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 2: Number Words -->
-        <div class="game-choice-card card-spelling" id="btn-launch-spelling">
-          <div class="game-icon-box">🔤🔢</div>
-          <div class="game-details">
-            <span class="game-badge">Number Words</span>
-            <div class="game-name">Spell Numbers</div>
-            <div class="game-desc">See the number, listen to its sound, and spell it out in letters!</div>
+        <div class="game-app-tile tile-spelling" id="btn-launch-spelling">
+          <div class="tile-icon-box">🔤🔢</div>
+          <div class="tile-title">Spell Numbers</div>
+          <div class="tile-badge">Number Words</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-spelling">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 3: Color Magic -->
-        <div class="game-choice-card card-colors" id="btn-launch-colors">
-          <div class="game-icon-box">🎨🌈</div>
-          <div class="game-details">
-            <span class="game-badge">Color Magic</span>
-            <div class="game-name">Colors Champion</div>
-            <div class="game-desc">Match vibrant color splashes and learn how to spell their names!</div>
+        <div class="game-app-tile tile-colors" id="btn-launch-colors">
+          <div class="tile-icon-box">🎨🌈</div>
+          <div class="tile-title">Color Magic</div>
+          <div class="tile-badge">Colors Champion</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-colors">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 4: Bigger or Smaller -->
-        <div class="game-choice-card card-compare" id="btn-launch-compare">
-          <div class="game-icon-box">⚖️🔢</div>
-          <div class="game-details">
-            <span class="game-badge">Number Duel</span>
-            <div class="game-name">Bigger or Smaller?</div>
-            <div class="game-desc">Compare numbers, choose the greater or lesser, and master &lt; = &gt; signs!</div>
+        <div class="game-app-tile tile-compare" id="btn-launch-compare">
+          <div class="tile-icon-box">⚖️🔥</div>
+          <div class="tile-title">Number Duel</div>
+          <div class="tile-badge">Bigger / Smaller</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-compare">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 5: Sequence Train -->
-        <div class="game-choice-card card-sequence" id="btn-launch-sequence">
-          <div class="game-icon-box">🚂🔍</div>
-          <div class="game-details">
-            <span class="game-badge">Number Train</span>
-            <div class="game-name">Missing Number</div>
-            <div class="game-desc">Find the missing number in the train carriages and toot the whistle!</div>
+        <div class="game-app-tile tile-sequence" id="btn-launch-sequence">
+          <div class="tile-icon-box">🚂🔍</div>
+          <div class="tile-title">Missing Number</div>
+          <div class="tile-badge">Sequence Train</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-sequence">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 6: Clock Hero -->
-        <div class="game-choice-card card-clock" id="btn-launch-clock">
-          <div class="game-icon-box">⏰🕒</div>
-          <div class="game-details">
-            <span class="game-badge">Clock Master</span>
-            <div class="game-name">Clock Hero</div>
-            <div class="game-desc">Read the analog clock hands and tell the time like a champ!</div>
+        <div class="game-app-tile tile-clock" id="btn-launch-clock">
+          <div class="tile-icon-box">⏰🕒</div>
+          <div class="tile-title">Clock Hero</div>
+          <div class="tile-badge">Time Master</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-clock">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
 
         <!-- Game 7: Shapes Quest -->
-        <div class="game-choice-card card-shapes" id="btn-launch-shapes">
-          <div class="game-icon-box">🔺🔷</div>
-          <div class="game-details">
-            <span class="game-badge">Shapes Quest</span>
-            <div class="game-name">Geometry Explorer</div>
-            <div class="game-desc">Discover geometric shapes, count their sides, and match them all!</div>
+        <div class="game-app-tile tile-shapes" id="btn-launch-shapes">
+          <div class="tile-icon-box">🔺🔷</div>
+          <div class="tile-title">Shapes Quest</div>
+          <div class="tile-badge">Geometry Explorer</div>
+          <div class="tile-stars-pill">
+            <span class="tile-star-icon">⭐</span>
+            <span class="tile-star-count" id="count-stars-shapes">0</span>
           </div>
-          <div class="game-play-arrow">▶</div>
         </div>
       </div>
     </div>
@@ -3302,6 +3491,40 @@
         });
       }
 
+      playStarGiggle() {
+        this.init();
+        if (!this.ctx) return;
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+        notes.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, this.ctx.currentTime + idx * 0.05);
+          gain.gain.setValueAtTime(0.18, this.ctx.currentTime + idx * 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + idx * 0.05 + 0.22);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(this.ctx.currentTime + idx * 0.05);
+          osc.stop(this.ctx.currentTime + idx * 0.05 + 0.22);
+        });
+      }
+
+      playStarDing() {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1760, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(2093, this.ctx.currentTime + 0.06);
+        gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.005, this.ctx.currentTime + 0.45);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.45);
+      }
+
       playComicalWrong() {
         this.init();
         if (!this.ctx) return;
@@ -3320,6 +3543,142 @@
 
         osc.start();
         osc.stop(this.ctx.currentTime + 0.35);
+      }
+    }
+
+    /* ==========================================================================
+       FLYING SMILING STAR CELEBRATION EFFECT (FlyingStarFX)
+       ========================================================================== */
+    class FlyingStarFX {
+      constructor(app) {
+        this.app = app;
+        this.container = document.createElement('div');
+        this.container.id = 'flying-star-container';
+        this.container.style.position = 'fixed';
+        this.container.style.top = '0';
+        this.container.style.left = '0';
+        this.container.style.width = '100vw';
+        this.container.style.height = '100vh';
+        this.container.style.pointerEvents = 'none';
+        this.container.style.zIndex = '999999';
+        document.body.appendChild(this.container);
+      }
+
+      playStarCelebration(onArrive) {
+        // 1. Play giggle chime
+        if (this.app.sound && this.app.sound.playStarGiggle) {
+          this.app.sound.playStarGiggle();
+        }
+
+        // 2. Create the smiling star SVG element
+        const starEl = document.createElement('div');
+        starEl.className = 'flying-smiling-star';
+        starEl.innerHTML = `
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <defs>
+              <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fffbeb"/>
+                <stop offset="40%" stop-color="#fde047"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+              <filter id="starGlowFx" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.65"/>
+              </filter>
+            </defs>
+            <polygon points="60,6 76,42 115,44 84,69 94,108 60,86 26,108 36,69 5,44 44,42"
+                     fill="url(#starGrad)" stroke="#d97706" stroke-width="4.5" stroke-linejoin="round" filter="url(#starGlowFx)"/>
+            <circle cx="36" cy="68" r="6.5" fill="#f43f5e" opacity="0.7"/>
+            <circle cx="84" cy="68" r="6.5" fill="#f43f5e" opacity="0.7"/>
+            <ellipse cx="44" cy="54" rx="4.5" ry="6.5" fill="#1e293b"/>
+            <circle cx="42" cy="51" r="2.2" fill="#ffffff"/>
+            <ellipse cx="76" cy="54" rx="4.5" ry="6.5" fill="#1e293b"/>
+            <circle cx="74" cy="51" r="2.2" fill="#ffffff"/>
+            <path d="M47,64 Q60,80 73,64" fill="#991b1b" stroke="#7f1d1d" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M53,72 Q60,78 67,72" fill="#f472b6"/>
+          </svg>
+        `;
+
+        // Position exactly in the center of the screen
+        const startX = window.innerWidth / 2;
+        const startY = window.innerHeight / 2;
+
+        starEl.style.position = 'fixed';
+        starEl.style.left = `${startX}px`;
+        starEl.style.top = `${startY}px`;
+        starEl.style.transform = 'translate(-50%, -50%) scale(0) rotate(-180deg)';
+        starEl.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        starEl.style.pointerEvents = 'none';
+
+        this.container.appendChild(starEl);
+
+        // Stage 1: Pop in and giggle
+        requestAnimationFrame(() => {
+          starEl.style.transform = 'translate(-50%, -50%) scale(1.3) rotate(15deg)';
+          setTimeout(() => {
+            starEl.style.transform = 'translate(-50%, -50%) scale(1.0) rotate(0deg)';
+          }, 300);
+        });
+
+        // Stage 2: 360 Spin in center
+        setTimeout(() => {
+          starEl.style.transition = 'transform 0.45s ease-in-out';
+          starEl.style.transform = 'translate(-50%, -50%) scale(1.15) rotate(360deg)';
+        }, 450);
+
+        // Stage 3: Swoop / Fly up to the top stars counter
+        setTimeout(() => {
+          const badge = document.querySelector('.stars-badge');
+          const targetRect = badge ? badge.getBoundingClientRect() : { left: 80, top: 20, width: 80, height: 40 };
+          const endX = targetRect.left + targetRect.width / 2;
+          const endY = targetRect.top + targetRect.height / 2;
+
+          // Animate flight
+          const duration = 650;
+          const startTime = performance.now();
+
+          // Control point for quadratic curve (arcs outward and then shoots into counter)
+          const cpX = (startX + endX) / 2 + (startX < endX ? -60 : 60);
+          const cpY = Math.min(startY, endY) - 80;
+
+          const stepFlight = (now) => {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+            // Ease in out
+            const easeT = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+            // Bezier curve point
+            const curX = (1 - easeT) * (1 - easeT) * startX + 2 * (1 - easeT) * easeT * cpX + easeT * easeT * endX;
+            const curY = (1 - easeT) * (1 - easeT) * startY + 2 * (1 - easeT) * easeT * cpY + easeT * easeT * endY;
+            const scale = 1.0 - (easeT * 0.7); // Shrink to 0.3
+            const rotate = 360 + easeT * 360;
+
+            starEl.style.left = `${curX}px`;
+            starEl.style.top = `${curY}px`;
+            starEl.style.transform = `translate(-50%, -50%) scale(${scale}) rotate(${rotate}deg)`;
+
+            if (t < 1) {
+              requestAnimationFrame(stepFlight);
+            } else {
+              // Reached target!
+              starEl.remove();
+
+              // Impact effect on counter
+              if (this.app.sound && this.app.sound.playStarDing) {
+                this.app.sound.playStarDing();
+              }
+
+              if (badge) {
+                badge.classList.remove('star-burst-pop');
+                void badge.offsetWidth; // trigger reflow
+                badge.classList.add('star-burst-pop');
+              }
+
+              if (onArrive) onArrive();
+            }
+          };
+
+          requestAnimationFrame(stepFlight);
+        }, 950);
       }
     }
 
@@ -3439,8 +3798,20 @@
       constructor() {
         this.sound = new SoundEngine();
         this.confetti = new ConfettiCannon(document.getElementById('celebration-canvas'));
+        this.flyingStarFX = new FlyingStarFX(this);
+
+        this.gameScores = {
+          ucmath: 0,
+          spelling: 0,
+          colors: 0,
+          compare: 0,
+          sequence: 0,
+          clock: 0,
+          shapes: 0
+        };
 
         this.score = 0;
+            this.gameScores = { ucmath: 0, spelling: 0, colors: 0, compare: 0, sequence: 0, clock: 0, shapes: 0 };
         this.speechRate = 0.75;
         this.popupDuration = 2;
         this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling' | 'colors' | 'compare' | 'sequence' | 'clock' | 'shapes'
@@ -3491,7 +3862,11 @@
           const saved = localStorage.getItem('kids_arena_math_progress');
           if (saved) {
             const data = JSON.parse(saved);
-            if (typeof data.score === 'number') this.score = data.score;
+            if (data.gameScores && typeof data.gameScores === 'object') {
+              this.gameScores = { ...this.gameScores, ...data.gameScores };
+            } else if (typeof data.score === 'number') {
+              this.gameScores.ucmath = data.score;
+            }
             if (data.speechRate) this.speechRate = parseFloat(data.speechRate);
             if (typeof data.popupDuration === 'number') this.popupDuration = data.popupDuration;
             if (data.ucMathLevel) this.ucMathLevel = parseInt(data.ucMathLevel, 10);
@@ -3511,7 +3886,8 @@
       saveProgress() {
         try {
           const data = {
-            score: this.score,
+            score: this.getTotalScore(),
+            gameScores: this.gameScores,
             speechRate: this.speechRate,
             popupDuration: this.popupDuration,
             ucMathLevel: this.ucMathLevel,
@@ -3529,10 +3905,44 @@
         }
       }
 
-      addScore(points = 1) {
-        this.score += points;
-        this.scoreCounter.textContent = this.score;
+      getTotalScore() {
+        return Object.values(this.gameScores).reduce((a, b) => a + b, 0);
+      }
+
+      getCurrentGameScore() {
+        if (this.currentView && this.gameScores[this.currentView] !== undefined) {
+          return this.gameScores[this.currentView];
+        }
+        return this.getTotalScore();
+      }
+
+      addScore(gameKey, points = 1) {
+        const key = gameKey || this.currentView || 'ucmath';
+        if (this.gameScores[key] !== undefined) {
+          this.gameScores[key] += points;
+        } else {
+          this.gameScores.ucmath += points;
+        }
         this.saveProgress();
+
+        // Animate flying smiling star to top score counter!
+        this.flyingStarFX.playStarCelebration(() => {
+          this.syncScoreUI();
+        });
+      }
+
+      syncScoreUI() {
+        if (this.currentView === 'hub') {
+          this.scoreCounter.textContent = this.getTotalScore();
+        } else {
+          this.scoreCounter.textContent = this.getCurrentGameScore();
+        }
+
+        // Update Hub Tile Star Counts
+        Object.keys(this.gameScores).forEach(k => {
+          const el = document.getElementById(`count-stars-${k}`);
+          if (el) el.textContent = this.gameScores[k];
+        });
       }
 
       initSharedDOMElements() {
@@ -3672,6 +4082,7 @@
         this.stopSpeech();
         this.hideFeedback();
         this.currentView = viewName;
+        this.syncScoreUI();
 
         this.viewHub.style.display = 'none';
         this.viewUcMath.style.display = 'none';
@@ -3717,7 +4128,7 @@
       }
 
       syncSharedUI() {
-        this.scoreCounter.textContent = this.score;
+        this.syncScoreUI();
 
         document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.mathlevel, 10) === this.ucMathLevel);
@@ -4267,7 +4678,7 @@
 
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('ucmath', 1);
 
         this.inputUnits.classList.add('success-pop');
         if (!this.question.isSingleDigit) this.inputTens.classList.add('success-pop');
@@ -4555,7 +4966,7 @@
         this.isAnswerLocked = true;
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('spelling', 1);
 
         const fullSolved = `${this.currentNumber} = ${this.targetWord}`;
 
@@ -4930,7 +5341,7 @@
         this.isAnswerLocked = true;
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('colors', 1);
 
         const fullSolved = `${this.targetColor.name} ${this.targetColor.emoji}`;
         if (this.solvedBadge) {
@@ -5257,7 +5668,7 @@
         this.isAnswerLocked = true;
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('compare', 1);
 
         cardElement.classList.add('correct-pick');
 
@@ -5590,7 +6001,7 @@
         }
         setTimeout(() => this.app.sound.playFanfare(), 300);
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('sequence', 1);
 
         btn.classList.add('correct-pick');
 
@@ -5854,7 +6265,7 @@
         this.isAnswerLocked = true;
         this.app.sound.playFanfare();
         this.app.confetti.fire();
-        this.app.addScore(1);
+        this.app.addScore('compare', 1);
 
         btn.classList.add('correct-pick');
 
