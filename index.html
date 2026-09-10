@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kids Math & Words Arena 🌟 UC Math & Spelling Games</title>
+  <title>Kids Arena 🌟 Math, Spelling & Colors Games</title>
   <link rel="shortcut icon" href="" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -210,7 +210,7 @@
     .games-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       width: 100%;
     }
 
@@ -218,7 +218,7 @@
       background: white;
       border: 3px solid #e4e9f2;
       border-radius: 24px;
-      padding: 18px;
+      padding: 16px 18px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -233,7 +233,6 @@
     .game-choice-card:hover {
       transform: translateY(-4px) scale(1.02);
       box-shadow: 0 14px 28px rgba(74, 144, 226, 0.2);
-      border-color: #3b82f6;
     }
 
     .game-choice-card:active {
@@ -243,14 +242,21 @@
     .game-choice-card.card-math {
       border-left: 6px solid #4a90e2;
     }
+    .card-math:hover { border-color: #4a90e2; }
 
     .game-choice-card.card-spelling {
       border-left: 6px solid #2ed573;
     }
+    .card-spelling:hover { border-color: #2ed573; }
+
+    .game-choice-card.card-colors {
+      border-left: 6px solid #a855f7;
+    }
+    .card-colors:hover { border-color: #a855f7; }
 
     .game-icon-box {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -260,13 +266,9 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
 
-    .card-math .game-icon-box {
-      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    }
-
-    .card-spelling .game-icon-box {
-      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-    }
+    .card-math .game-icon-box { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+    .card-spelling .game-icon-box { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
+    .card-colors .game-icon-box { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
 
     .game-details {
       flex: 1;
@@ -283,15 +285,9 @@
       margin-bottom: 4px;
     }
 
-    .card-math .game-badge {
-      background: #eff6ff;
-      color: #1d4ed8;
-    }
-
-    .card-spelling .game-badge {
-      background: #f0fdf4;
-      color: #15803d;
-    }
+    .card-math .game-badge { background: #eff6ff; color: #1d4ed8; }
+    .card-spelling .game-badge { background: #f0fdf4; color: #15803d; }
+    .card-colors .game-badge { background: #faf5ff; color: #9333ea; }
 
     .game-name {
       font-size: 1.25rem;
@@ -308,7 +304,7 @@
     }
 
     .game-play-arrow {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #94a3b8;
       transition: transform 0.2s;
     }
@@ -474,7 +470,7 @@
       transition: all 0.3s;
     }
 
-    /* Solved Problem Badge on Main Card */
+    /* Solved Problem Badge */
     .solved-problem-badge {
       background: #f0fdf4;
       border: 2px solid #86efac;
@@ -527,7 +523,7 @@
     }
 
     /* ==========================================================================
-       3. UC MATH GAME SPECIFIC (INPUTS & KEYPAD)
+       3. UC MATH GAME (TENS & ONES KEYPAD)
        ========================================================================== */
     .answer-inputs-wrapper {
       display: flex;
@@ -541,7 +537,7 @@
       display: flex;
       justify-content: center;
       gap: 16px;
-      direction: ltr; /* Tens on Left, Ones on Right */
+      direction: ltr;
     }
 
     .digit-box {
@@ -598,7 +594,6 @@
       100% { opacity: 1; }
     }
 
-    /* Wrong Shake Animation */
     .shake-error {
       animation: shakeAnim 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       border-color: #ff4757 !important;
@@ -613,7 +608,6 @@
       40%, 60% { transform: translate3d(6px, 0, 0); }
     }
 
-    /* Success Pop Animation */
     .success-pop {
       animation: popWin 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
       border-color: #2ed573 !important;
@@ -627,7 +621,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Number Keypad */
     .keypad-container {
       width: 100%;
       max-width: 380px;
@@ -685,16 +678,6 @@
       gap: 4px;
     }
 
-    .key-btn.key-reset:hover {
-      background: #dbeafe;
-      border-color: #93c5fd;
-    }
-
-    .key-btn.key-reset:active {
-      transform: translateY(4px);
-      box-shadow: 0 1px 0 #93c5fd, 0 3px 8px rgba(59, 130, 246, 0.05);
-    }
-
     .key-btn.key-del {
       background: #ffecf0;
       border: 3px solid #ffccd5;
@@ -708,18 +691,8 @@
       gap: 4px;
     }
 
-    .key-btn.key-del:hover {
-      background: #ffe3e8;
-      border-color: #fca5a5;
-    }
-
-    .key-btn.key-del:active {
-      transform: translateY(4px);
-      box-shadow: 0 1px 0 #fca5a5, 0 3px 8px rgba(255, 71, 87, 0.05);
-    }
-
     /* ==========================================================================
-       4. NUMBER WORDS (SPELLING) GAME SPECIFIC
+       4. NUMBER WORDS (SPELLING) GAME
        ========================================================================== */
     .spelling-number-badge {
       background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
@@ -742,15 +715,14 @@
       line-height: 1;
     }
 
-    /* Word Letters Display Container */
     .word-slots-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
       max-width: 380px;
-      margin-bottom: 16px;
-      min-height: 60px;
+      margin-bottom: 14px;
+      min-height: 56px;
       align-items: center;
     }
 
@@ -804,7 +776,7 @@
       font-size: 2rem;
     }
 
-    /* Alphabet Keypad */
+    /* Alphabet Keypad (Shared by Spelling and Colors Game) */
     .alphabet-keypad {
       width: 100%;
       max-width: 440px;
@@ -870,6 +842,109 @@
       box-shadow: 0 4px 0 #fca5a5;
       font-size: 1.05rem;
       gap: 3px;
+    }
+
+    /* ==========================================================================
+       5. COLOR MAGIC GAME (MATCH & SPELLING)
+       ========================================================================== */
+    .color-mode-toggle {
+      display: flex;
+      background: #f1f5f9;
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .color-mode-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 50px;
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .color-mode-btn.active {
+      background: white;
+      color: #7c3aed;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.18);
+    }
+
+    /* Mode 1: Color Match Grid */
+    .color-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 12px;
+    }
+
+    .color-choice-card {
+      height: 94px;
+      border-radius: 24px;
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .color-choice-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    .color-choice-card:active {
+      transform: translateY(2px) scale(0.97);
+    }
+
+    .color-choice-card.correct-pick {
+      animation: popWin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+      box-shadow: 0 0 0 6px #22c55e, 0 12px 28px rgba(34, 197, 94, 0.35);
+    }
+
+    .color-choice-card.wrong-pick {
+      animation: shakeAnim 0.5s both;
+      box-shadow: 0 0 0 6px #ef4444, 0 12px 28px rgba(239, 68, 68, 0.35);
+    }
+
+    .color-pick-check {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.35));
+      display: none;
+    }
+
+    /* Mode 2: Color Spelling Splash */
+    .color-spelling-display {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      border: 6px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      animation: pulseBtn 2s infinite alternate;
+      transition: all 0.3s ease;
     }
 
     /* Action Buttons Area */
@@ -1208,9 +1283,9 @@
         gap: 12px;
       }
       .game-icon-box {
-        width: 54px;
-        height: 54px;
-        font-size: 1.7rem;
+        width: 52px;
+        height: 52px;
+        font-size: 1.65rem;
       }
       .game-name {
         font-size: 1.15rem;
@@ -1284,6 +1359,18 @@
         max-width: 66px;
         font-size: 0.85rem;
       }
+      .color-options-grid {
+        gap: 10px;
+      }
+      .color-choice-card {
+        height: 80px;
+        border-radius: 20px;
+      }
+      .color-spelling-display {
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+      }
       .btn-action {
         padding: 12px 18px;
         font-size: 1.2rem;
@@ -1325,6 +1412,9 @@
       .key-btn {
         height: 46px;
         font-size: 1.6rem;
+      }
+      .color-choice-card {
+        height: 72px;
       }
     }
   </style>
@@ -1369,7 +1459,7 @@
     <div class="hub-card">
       <div class="hub-header">
         <div class="hub-title">Kids Arena 🚀</div>
-        <div class="hub-subtitle">Choose your favorite game and become a math champion!</div>
+        <div class="hub-subtitle">Choose your favorite game and become a superstar champion!</div>
       </div>
 
       <div class="games-grid">
@@ -1394,6 +1484,17 @@
           </div>
           <div class="game-play-arrow">▶</div>
         </div>
+
+        <!-- Game 3: Color Magic -->
+        <div class="game-choice-card card-colors" id="btn-launch-colors">
+          <div class="game-icon-box">🎨🌈</div>
+          <div class="game-details">
+            <span class="game-badge">Color Magic</span>
+            <div class="game-name">Colors Champion</div>
+            <div class="game-desc">Match vibrant color splashes and learn how to spell their names!</div>
+          </div>
+          <div class="game-play-arrow">▶</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1404,7 +1505,6 @@
   <div class="app-view" id="view-ucmath" style="display: none;">
     <div class="game-card">
 
-      <!-- Mascot & Voice Speaker -->
       <div class="mascot-container" id="mascot-box-math" title="Click to hear problem">
         <div class="mascot-avatar" id="mascot-avatar-math">
           <svg class="mascot-svg" viewBox="0 0 100 100">
@@ -1432,7 +1532,6 @@
         <div class="headphones-badge">👧🎧</div>
       </div>
 
-      <!-- Audio Replay Button -->
       <button class="btn-audio-repeat" id="btn-replay-math">
         <span style="font-size: 1.5rem;">🔊</span>
         <span>Listen to Problem</span>
@@ -1443,10 +1542,8 @@
 
       <div class="status-text" id="status-text-math">Click listen to start! 👂</div>
 
-      <!-- Solved Problem Display Badge -->
       <div class="solved-problem-badge" id="solved-badge-math"></div>
 
-      <!-- Parent Peek -->
       <div id="parent-peek-wrapper" style="display: none; align-items: center; gap: 8px;">
         <button class="parent-peek" id="btn-peek">
           <span>👁️</span> <span>Show Problem (Parents)</span>
@@ -1454,16 +1551,12 @@
         <div class="peek-content" id="peek-content">24 + 13 = ?</div>
       </div>
 
-      <!-- Dynamic Answer Boxes (Tens & Ones) -->
       <div class="answer-inputs-wrapper">
         <div class="inputs-container" id="inputs-container">
-          <!-- Tens Box -->
           <div class="digit-box" id="box-tens">
             <div class="digit-label" id="label-tens">Tens</div>
             <div class="digit-input active" id="input-tens" data-field="tens" tabindex="0">_</div>
           </div>
-
-          <!-- Ones Box -->
           <div class="digit-box" id="box-units">
             <div class="digit-label" id="label-units">Ones</div>
             <div class="digit-input" id="input-units" data-field="units" tabindex="0">_</div>
@@ -1471,7 +1564,6 @@
         </div>
       </div>
 
-      <!-- Number Keypad -->
       <div class="keypad-container" id="keypad">
         <div class="keypad-row">
           <button class="key-btn" data-key="1">1</button>
@@ -1498,7 +1590,6 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
       <div class="actions-area">
         <button class="btn-action btn-check" id="btn-check-math">
           <span>Check Answer</span>
@@ -1525,7 +1616,6 @@
   <div class="app-view" id="view-spelling" style="display: none;">
     <div class="game-card">
 
-      <!-- Mascot Speaker -->
       <div class="mascot-container" id="mascot-box-spelling" title="Click to hear number">
         <div class="mascot-avatar" id="mascot-avatar-spelling">
           <svg class="mascot-svg" viewBox="0 0 100 100">
@@ -1534,7 +1624,6 @@
             <circle cx="28" cy="24" r="8" fill="#7bed9f"/>
             <circle cx="72" cy="24" r="14" fill="#2ed573"/>
             <circle cx="72" cy="24" r="8" fill="#7bed9f"/>
-            <!-- Cute Star on head -->
             <polygon points="70,12 73,19 80,19 74,23 76,30 70,25 64,30 66,23 60,19 67,19" fill="#ffd32a"/>
             <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
             <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
@@ -1552,7 +1641,6 @@
         <div class="headphones-badge" style="background: #2ed573;">🔤🎧</div>
       </div>
 
-      <!-- Audio Replay Button -->
       <button class="btn-audio-repeat" id="btn-replay-spelling" style="background: linear-gradient(135deg, #2ed573 0%, #10ac84 100%); border-bottom-color: #0e8062;">
         <span style="font-size: 1.5rem;">🔊</span>
         <span>Pronounce Number</span>
@@ -1563,21 +1651,15 @@
 
       <div class="status-text" id="status-text-spelling">Look at the number and spell the word! ✍️</div>
 
-      <!-- Solved Problem Display Badge -->
       <div class="solved-problem-badge" id="solved-badge-spelling"></div>
 
-      <!-- Big Number Badge -->
       <div class="spelling-number-badge">
         <span style="font-size: 1.4rem; color: #3b82f6;">Number:</span>
         <span class="spelling-number-val" id="spelling-number-display">1</span>
       </div>
 
-      <!-- Word Letter Slots -->
-      <div class="word-slots-container" id="word-slots-container">
-        <!-- Generated Dynamically: e.g. [ O ] [ N ] [ E ] -->
-      </div>
+      <div class="word-slots-container" id="word-slots-container"></div>
 
-      <!-- Alphabet Keypad (QWERTY with Reset and Del) -->
       <div class="alphabet-keypad" id="alphabet-keypad">
         <div class="alpha-row">
           <button class="alpha-key" data-char="Q">Q</button>
@@ -1615,7 +1697,6 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
       <div class="actions-area">
         <button class="btn-action btn-check" id="btn-check-spelling">
           <span>Check Spelling</span>
@@ -1637,7 +1718,138 @@
   </div>
 
   <!-- =========================================================================
-       SHARED AUTO-DISMISSING CELEBRATION POPUP MODAL
+       VIEW 4: COLOR MAGIC (COLORS GAME)
+       ========================================================================= -->
+  <div class="app-view" id="view-colors" style="display: none;">
+    <div class="game-card">
+
+      <div class="mascot-container" id="mascot-box-colors" title="Click to hear color">
+        <div class="mascot-avatar" id="mascot-avatar-colors" style="background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);">
+          <svg class="mascot-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="52" r="38" fill="#ffffff"/>
+            <circle cx="28" cy="24" r="14" fill="#a855f7"/>
+            <circle cx="28" cy="24" r="8" fill="#d8b4fe"/>
+            <circle cx="72" cy="24" r="14" fill="#a855f7"/>
+            <circle cx="72" cy="24" r="8" fill="#d8b4fe"/>
+            <polygon points="70,12 73,19 80,19 74,23 76,30 70,25 64,30 66,23 60,19 67,19" fill="#ff4757"/>
+            <circle cx="30" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="70" cy="58" r="8" fill="#ffccd5"/>
+            <circle cx="38" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="36" cy="44" r="2.2" fill="#ffffff"/>
+            <circle cx="62" cy="46" r="6.5" fill="#2f3542"/>
+            <circle cx="60" cy="44" r="2.2" fill="#ffffff"/>
+            <ellipse cx="50" cy="54" rx="5" ry="4" fill="#a855f7"/>
+            <path d="M44 60 Q50 68 56 60" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 52 C16 26 84 26 84 52" fill="none" stroke="#a855f7" stroke-width="6" stroke-linecap="round"/>
+            <rect x="10" y="44" width="12" height="18" rx="6" fill="#d8b4fe"/>
+            <rect x="78" y="44" width="12" height="18" rx="6" fill="#d8b4fe"/>
+          </svg>
+        </div>
+        <div class="headphones-badge" style="background: #a855f7;">🎨🎧</div>
+      </div>
+
+      <!-- Mode Toggle: Match vs Spell -->
+      <div class="color-mode-toggle">
+        <button class="color-mode-btn active" id="btn-colormode-match">🎯 Match Color</button>
+        <button class="color-mode-btn" id="btn-colormode-spell">🔤 Spell Color</button>
+      </div>
+
+      <!-- Audio Replay Button -->
+      <button class="btn-audio-repeat" id="btn-replay-colors" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); border-bottom-color: #6d28d9;">
+        <span style="font-size: 1.5rem;">🔊</span>
+        <span id="replay-colors-label">Listen to Color</span>
+        <div class="soundwave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <div class="status-text" id="status-text-colors">Listen and tap the matching color! 🎨</div>
+
+      <div class="solved-problem-badge" id="solved-badge-colors"></div>
+
+      <!-- MODE 1: COLOR MATCH CONTAINER -->
+      <div id="colors-match-container" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <div class="color-options-grid" id="color-options-grid">
+          <!-- 4 Color Cards dynamically rendered -->
+        </div>
+
+        <button class="btn-action btn-next" id="btn-next-colormatch">
+          <span>Next Color!</span>
+          <span style="font-size: 1.5rem;">🚀</span>
+        </button>
+      </div>
+
+      <!-- MODE 2: COLOR SPELLING CONTAINER -->
+      <div id="colors-spelling-container" style="width: 100%; display: none; flex-direction: column; align-items: center;">
+        <!-- Glowing Color Splash Circle -->
+        <div class="color-spelling-display" id="color-spelling-display">
+          <span>✨</span>
+        </div>
+
+        <!-- Word Letter Slots -->
+        <div class="word-slots-container" id="color-word-slots"></div>
+
+        <!-- Alphabet Keypad -->
+        <div class="alphabet-keypad" id="color-alphabet-keypad">
+          <div class="alpha-row">
+            <button class="alpha-key" data-char="Q">Q</button>
+            <button class="alpha-key" data-char="W">W</button>
+            <button class="alpha-key" data-char="E">E</button>
+            <button class="alpha-key" data-char="R">R</button>
+            <button class="alpha-key" data-char="T">T</button>
+            <button class="alpha-key" data-char="Y">Y</button>
+            <button class="alpha-key" data-char="U">U</button>
+            <button class="alpha-key" data-char="I">I</button>
+            <button class="alpha-key" data-char="O">O</button>
+            <button class="alpha-key" data-char="P">P</button>
+          </div>
+          <div class="alpha-row">
+            <button class="alpha-key" data-char="A">A</button>
+            <button class="alpha-key" data-char="S">S</button>
+            <button class="alpha-key" data-char="D">D</button>
+            <button class="alpha-key" data-char="F">F</button>
+            <button class="alpha-key" data-char="G">G</button>
+            <button class="alpha-key" data-char="H">H</button>
+            <button class="alpha-key" data-char="J">J</button>
+            <button class="alpha-key" data-char="K">K</button>
+            <button class="alpha-key" data-char="L">L</button>
+          </div>
+          <div class="alpha-row">
+            <button class="alpha-key key-wide-reset" data-action="reset">Reset 🔄</button>
+            <button class="alpha-key" data-char="Z">Z</button>
+            <button class="alpha-key" data-char="X">X</button>
+            <button class="alpha-key" data-char="C">C</button>
+            <button class="alpha-key" data-char="V">V</button>
+            <button class="alpha-key" data-char="B">B</button>
+            <button class="alpha-key" data-char="N">N</button>
+            <button class="alpha-key" data-char="M">M</button>
+            <button class="alpha-key key-wide-del" data-action="del">Del ⌫</button>
+          </div>
+        </div>
+
+        <div class="actions-area">
+          <button class="btn-action btn-check" id="btn-check-colorspell">
+            <span>Check Spelling</span>
+            <span style="font-size: 1.5rem;">✔️</span>
+          </button>
+
+          <button class="btn-action btn-next" id="btn-next-colorspell">
+            <span>Next Color!</span>
+            <span style="font-size: 1.5rem;">🚀</span>
+          </button>
+
+          <button class="btn-action btn-retry" id="btn-retry-colorspell">
+            <span>Try Again</span>
+            <span style="font-size: 1.5rem;">🔄</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SHARED CELEBRATION POPUP MODAL
        ========================================================================= -->
   <div class="feedback-popup-overlay" id="feedback-popup-overlay">
     <div class="feedback-popup-card" id="feedback-popup-card">
@@ -1761,7 +1973,7 @@
       playFanfare() {
         this.init();
         if (!this.ctx) return;
-        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        const notes = [523.25, 659.25, 783.99, 1046.50];
         notes.forEach((freq, idx) => {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
@@ -1879,7 +2091,7 @@
     }
 
     /* ==========================================================================
-       NUMBERS TO WORDS DICTIONARY HELPER
+       DICTIONARIES & PALETTES
        ========================================================================== */
     const WORDS_DICT = {
       1: 'ONE', 2: 'TWO', 3: 'THREE', 4: 'FOUR', 5: 'FIVE',
@@ -1897,26 +2109,41 @@
       return `${WORDS_DICT[ten]}-${WORDS_DICT[unit]}`;
     }
 
+    const COLORS_PALETTE = [
+      { name: 'RED', hex: '#ef4444', emoji: '🔴', sound: 'Red' },
+      { name: 'BLUE', hex: '#3b82f6', emoji: '🔵', sound: 'Blue' },
+      { name: 'GREEN', hex: '#22c55e', emoji: '🟢', sound: 'Green' },
+      { name: 'YELLOW', hex: '#eab308', emoji: '🟡', sound: 'Yellow' },
+      { name: 'ORANGE', hex: '#f97316', emoji: '🟠', sound: 'Orange' },
+      { name: 'PURPLE', hex: '#a855f7', emoji: '🟣', sound: 'Purple' },
+      { name: 'PINK', hex: '#ec4899', emoji: '🌸', sound: 'Pink' },
+      { name: 'BROWN', hex: '#78350f', emoji: '🟤', sound: 'Brown' },
+      { name: 'BLACK', hex: '#1e293b', emoji: '⚫', sound: 'Black' },
+      { name: 'WHITE', hex: '#f8fafc', emoji: '⚪', sound: 'White', isWhite: true }
+    ];
+
     /* ==========================================================================
-       CENTRAL APP COORDINATOR (Multi-Game Platform)
+       CENTRAL APP COORDINATOR (Kids Arena)
        ========================================================================== */
     class KidsArenaApp {
       constructor() {
         this.sound = new SoundEngine();
         this.confetti = new ConfettiCannon(document.getElementById('celebration-canvas'));
 
-        // Shared Global State
         this.score = 0;
         this.speechRate = 0.75;
         this.popupDuration = 2;
-        this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling'
+        this.currentView = 'hub'; // 'hub' | 'ucmath' | 'spelling' | 'colors'
 
         // Game 1: UC Math State
         this.ucMathLevel = 3;
         this.showParentPeek = false;
 
         // Game 2: Number Words State
-        this.spellingLevel = 1; // 1: 1-10, 2: 11-20, 3: Tens, 4: 1-99
+        this.spellingLevel = 1;
+
+        // Game 3: Color Magic State
+        this.colorMode = 'match'; // 'match' | 'spell'
 
         this.voices = [];
         this._feedbackTimer = null;
@@ -1926,9 +2153,10 @@
         this.setupSpeech();
         this.syncSharedUI();
 
-        // Initialize sub-game controllers
+        // Initialize sub-controllers
         this.ucMathController = new UCMathController(this);
         this.spellingController = new NumberWordsController(this);
+        this.colorsController = new ColorMagicController(this);
 
         this.attachGlobalListeners();
         this.showView('hub');
@@ -1944,6 +2172,7 @@
             if (typeof data.popupDuration === 'number') this.popupDuration = data.popupDuration;
             if (data.ucMathLevel) this.ucMathLevel = parseInt(data.ucMathLevel, 10);
             if (data.spellingLevel) this.spellingLevel = parseInt(data.spellingLevel, 10);
+            if (data.colorMode) this.colorMode = data.colorMode;
             if (typeof data.showParentPeek === 'boolean') this.showParentPeek = data.showParentPeek;
           }
         } catch (e) {
@@ -1959,6 +2188,7 @@
             popupDuration: this.popupDuration,
             ucMathLevel: this.ucMathLevel,
             spellingLevel: this.spellingLevel,
+            colorMode: this.colorMode,
             showParentPeek: this.showParentPeek
           };
           localStorage.setItem('kids_arena_math_progress', JSON.stringify(data));
@@ -1986,12 +2216,14 @@
         this.viewHub = document.getElementById('view-hub');
         this.viewUcMath = document.getElementById('view-ucmath');
         this.viewSpelling = document.getElementById('view-spelling');
+        this.viewColors = document.getElementById('view-colors');
 
         // Hub launch buttons
         this.btnLaunchUcMath = document.getElementById('btn-launch-ucmath');
         this.btnLaunchSpelling = document.getElementById('btn-launch-spelling');
+        this.btnLaunchColors = document.getElementById('btn-launch-colors');
 
-        // Shared Feedback Popup
+        // Feedback Popup
         this.feedbackOverlay = document.getElementById('feedback-popup-overlay');
         this.feedbackCard = document.getElementById('feedback-popup-card');
         this.feedbackIcon = document.getElementById('feedback-popup-icon');
@@ -2104,6 +2336,7 @@
         this.viewHub.style.display = 'none';
         this.viewUcMath.style.display = 'none';
         this.viewSpelling.style.display = 'none';
+        this.viewColors.style.display = 'none';
 
         if (viewName === 'hub') {
           this.viewHub.style.display = 'flex';
@@ -2116,40 +2349,38 @@
           this.viewSpelling.style.display = 'flex';
           this.btnHome.style.display = 'flex';
           this.spellingController.onEnter();
+        } else if (viewName === 'colors') {
+          this.viewColors.style.display = 'flex';
+          this.btnHome.style.display = 'flex';
+          this.colorsController.onEnter();
         }
       }
 
       syncSharedUI() {
         this.scoreCounter.textContent = this.score;
 
-        // Active UC Math Level
         document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.mathlevel, 10) === this.ucMathLevel);
         });
 
-        // Active Spelling Level
         document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
           btn.classList.toggle('active', parseInt(btn.dataset.spelllevel, 10) === this.spellingLevel);
         });
 
-        // Active Speed
         document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
           btn.classList.toggle('active', parseFloat(btn.dataset.speed) === this.speechRate);
         });
 
-        // Active Popup Duration
         document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
           btn.classList.toggle('active', parseFloat(btn.dataset.popup) === this.popupDuration);
         });
 
-        // Parent Peek
         document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
           btn.classList.toggle('active', (btn.dataset.showpeek === 'true') === this.showParentPeek);
         });
       }
 
       attachGlobalListeners() {
-        // Navigation
         this.btnLaunchUcMath.addEventListener('click', () => {
           this.sound.playTap();
           this.showView('ucmath');
@@ -2160,17 +2391,20 @@
           this.showView('spelling');
         });
 
+        this.btnLaunchColors.addEventListener('click', () => {
+          this.sound.playTap();
+          this.showView('colors');
+        });
+
         this.btnHome.addEventListener('click', () => {
           this.sound.playTap();
           this.showView('hub');
         });
 
-        // Feedback Popup click to dismiss
         this.feedbackOverlay.addEventListener('click', () => {
           this.hideFeedback();
         });
 
-        // Settings Modal
         this.btnSettingsOpen.addEventListener('click', () => {
           this.sound.playTap();
           this.settingsModal.style.display = 'flex';
@@ -2183,13 +2417,14 @@
             this.ucMathController.generateNewQuestion();
           } else if (this.currentView === 'spelling') {
             this.spellingController.generateNewQuestion();
+          } else if (this.currentView === 'colors') {
+            this.colorsController.generateNewQuestion();
           }
         };
 
         this.btnModalDone.addEventListener('click', closeModal);
         this.btnModalCloseX.addEventListener('click', closeModal);
 
-        // Reset progress in LocalStorage
         this.btnResetStorage.addEventListener('click', () => {
           this.sound.playTap();
           if (confirm('Do you want to reset your stars to 0 and start over?')) {
@@ -2200,7 +2435,6 @@
           }
         });
 
-        // Level selection: UC Math
         document.querySelectorAll('.level-btn[data-mathlevel]').forEach(btn => {
           btn.addEventListener('click', () => {
             this.sound.playTap();
@@ -2211,7 +2445,6 @@
           });
         });
 
-        // Level selection: Spelling
         document.querySelectorAll('.level-btn[data-spelllevel]').forEach(btn => {
           btn.addEventListener('click', () => {
             this.sound.playTap();
@@ -2222,7 +2455,6 @@
           });
         });
 
-        // Speed selection
         document.querySelectorAll('.level-btn[data-speed]').forEach(btn => {
           btn.addEventListener('click', () => {
             this.sound.playTap();
@@ -2233,7 +2465,6 @@
           });
         });
 
-        // Popup Duration selection
         document.querySelectorAll('.level-btn[data-popup]').forEach(btn => {
           btn.addEventListener('click', () => {
             this.sound.playTap();
@@ -2244,7 +2475,6 @@
           });
         });
 
-        // Parent peek toggle
         document.querySelectorAll('.level-btn[data-showpeek]').forEach(btn => {
           btn.addEventListener('click', () => {
             this.sound.playTap();
@@ -2495,7 +2725,6 @@
             }
           }
         } else {
-          // Level 2: Up to 20
           for (let i = 0; i < numSteps; i++) {
             if (i === 0) {
               const u0 = Math.floor(Math.random() * 6) + 1;
@@ -2718,7 +2947,6 @@
           this.speakNumber();
         });
 
-        // Alphabet keypad tap
         this.alphabetKeypad.addEventListener('click', (e) => {
           const keyBtn = e.target.closest('.alpha-key');
           if (!keyBtn) return;
@@ -2735,7 +2963,6 @@
           }
         });
 
-        // Physical Keyboard Support
         window.addEventListener('keydown', (e) => {
           if (this.app.currentView !== 'spelling') return;
           const key = e.key.toUpperCase();
@@ -2775,19 +3002,15 @@
         const lvl = this.app.spellingLevel || 1;
 
         if (lvl === 1) {
-          // Numbers 1 to 10
           min = 1; max = 10;
           this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         } else if (lvl === 2) {
-          // Numbers 11 to 20
           min = 11; max = 20;
           this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         } else if (lvl === 3) {
-          // Tens: 10, 20, 30, 40, 50, 60, 70, 80, 90
           const tensList = [10, 20, 30, 40, 50, 60, 70, 80, 90];
           this.currentNumber = tensList[Math.floor(Math.random() * tensList.length)];
         } else {
-          // Numbers 1 to 99
           min = 1; max = 99;
           this.currentNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         }
@@ -2807,14 +3030,12 @@
         }
       }
 
-      // Characters that child needs to type (excluding hyphens which are automatically placed)
       getTargetLetters() {
         return this.targetWord.replace(/[^A-Z]/g, '').split('');
       }
 
       renderSlots() {
         this.slotsContainer.innerHTML = '';
-        const targetClean = this.getTargetLetters();
         let letterIdx = 0;
 
         for (let i = 0; i < this.targetWord.length; i++) {
@@ -2957,7 +3178,384 @@
     }
 
     /* ==========================================================================
-       APP LAUNCH
+       GAME 3: COLOR MAGIC CONTROLLER (Match & Spelling)
+       ========================================================================== */
+    class ColorMagicController {
+      constructor(app) {
+        this.app = app;
+        this.mode = this.app.colorMode || 'match'; // 'match' | 'spell'
+        this.targetColor = null;
+        this.options = [];
+        this.enteredLetters = [];
+        this.isAnswerLocked = false;
+
+        this.initDOM();
+        this.attachEvents();
+      }
+
+      initDOM() {
+        this.mascotAvatar = document.getElementById('mascot-avatar-colors');
+        this.mascotBox = document.getElementById('mascot-box-colors');
+        this.btnReplay = document.getElementById('btn-replay-colors');
+        this.replayLabel = document.getElementById('replay-colors-label');
+        this.statusText = document.getElementById('status-text-colors');
+        this.solvedBadge = document.getElementById('solved-badge-colors');
+
+        // Mode buttons
+        this.btnModeMatch = document.getElementById('btn-colormode-match');
+        this.btnModeSpell = document.getElementById('btn-colormode-spell');
+        this.matchContainer = document.getElementById('colors-match-container');
+        this.spellingContainer = document.getElementById('colors-spelling-container');
+
+        // Mode 1: Match
+        this.optionsGrid = document.getElementById('color-options-grid');
+        this.btnNextMatch = document.getElementById('btn-next-colormatch');
+
+        // Mode 2: Spell
+        this.colorDisplay = document.getElementById('color-spelling-display');
+        this.slotsContainer = document.getElementById('color-word-slots');
+        this.alphabetKeypad = document.getElementById('color-alphabet-keypad');
+        this.btnCheckSpell = document.getElementById('btn-check-colorspell');
+        this.btnNextSpell = document.getElementById('btn-next-colorspell');
+        this.btnRetrySpell = document.getElementById('btn-retry-colorspell');
+      }
+
+      onEnter() {
+        this.setMode(this.mode, false);
+        this.generateNewQuestion(false);
+      }
+
+      setMode(newMode, generate = true) {
+        this.mode = newMode;
+        this.app.colorMode = newMode;
+        this.app.saveProgress();
+
+        if (newMode === 'match') {
+          this.btnModeMatch.classList.add('active');
+          this.btnModeSpell.classList.remove('active');
+          this.matchContainer.style.display = 'flex';
+          this.spellingContainer.style.display = 'none';
+          this.replayLabel.textContent = 'Listen to Color';
+        } else {
+          this.btnModeSpell.classList.add('active');
+          this.btnModeMatch.classList.remove('active');
+          this.spellingContainer.style.display = 'flex';
+          this.matchContainer.style.display = 'none';
+          this.replayLabel.textContent = 'Pronounce Color';
+        }
+
+        if (generate) {
+          this.generateNewQuestion();
+        }
+      }
+
+      attachEvents() {
+        this.btnModeMatch.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.setMode('match');
+        });
+
+        this.btnModeSpell.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.setMode('spell');
+        });
+
+        this.btnReplay.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakColor();
+        });
+
+        this.mascotBox.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.speakColor();
+        });
+
+        // Mode 1: Color Match Card click
+        this.optionsGrid.addEventListener('click', (e) => {
+          if (this.isAnswerLocked) return;
+          const card = e.target.closest('.color-choice-card');
+          if (!card) return;
+          const pickedName = card.dataset.colorName;
+          this.checkMatchPick(pickedName, card);
+        });
+
+        this.btnNextMatch.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.generateNewQuestion();
+        });
+
+        // Mode 2: Alphabet keypad click
+        this.alphabetKeypad.addEventListener('click', (e) => {
+          const keyBtn = e.target.closest('.alpha-key');
+          if (!keyBtn) return;
+          const char = keyBtn.dataset.char;
+          const action = keyBtn.dataset.action;
+
+          if (action === 'reset') {
+            this.app.sound.playTap();
+            this.retryQuestion();
+          } else if (action === 'del') {
+            this.handleDelete();
+          } else if (char) {
+            this.handleLetter(char);
+          }
+        });
+
+        // Physical Keyboard for Spelling Mode
+        window.addEventListener('keydown', (e) => {
+          if (this.app.currentView !== 'colors') return;
+          if (this.mode === 'spell') {
+            const key = e.key.toUpperCase();
+            if (key >= 'A' && key <= 'Z' && key.length === 1) {
+              this.handleLetter(key);
+            } else if (e.key === 'Backspace' || e.key === 'Delete') {
+              this.handleDelete();
+            } else if (e.key === 'r' || e.key === 'R') {
+              this.retryQuestion();
+            } else if (e.key === 'Enter') {
+              if (this.btnNextSpell.style.display === 'flex') {
+                this.btnNextSpell.click();
+              } else if (this.btnRetrySpell.style.display === 'flex') {
+                this.btnRetrySpell.click();
+              } else {
+                this.checkSpelling();
+              }
+            }
+          } else {
+            // In Match mode: Enter triggers Next if visible
+            if (e.key === 'Enter' && this.btnNextMatch.style.display === 'flex') {
+              this.btnNextMatch.click();
+            }
+          }
+        });
+
+        this.btnCheckSpell.addEventListener('click', () => this.checkSpelling());
+
+        this.btnNextSpell.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.generateNewQuestion();
+        });
+
+        this.btnRetrySpell.addEventListener('click', () => {
+          this.app.sound.playTap();
+          this.retryQuestion();
+        });
+      }
+
+      generateNewQuestion(shouldSpeak = true) {
+        // Pick target color randomly
+        const target = COLORS_PALETTE[Math.floor(Math.random() * COLORS_PALETTE.length)];
+        this.targetColor = target;
+        this.isAnswerLocked = false;
+        this.resetUI();
+
+        if (this.mode === 'match') {
+          // Select 3 other random distinct colors
+          const otherColors = COLORS_PALETTE.filter(c => c.name !== target.name);
+          const shuffledOthers = [...otherColors].sort(() => 0.5 - Math.random()).slice(0, 3);
+          const fourColors = [target, ...shuffledOthers].sort(() => 0.5 - Math.random());
+          this.options = fourColors;
+          this.renderMatchGrid();
+          this.statusText.textContent = `Find the color: ${target.name}! 🎨`;
+        } else {
+          // Spelling Mode
+          this.enteredLetters = [];
+          this.colorDisplay.style.background = target.hex;
+          this.colorDisplay.style.border = target.isWhite ? '6px solid #cbd5e1' : '6px solid white';
+          this.renderSpellingSlots();
+          this.statusText.textContent = `Spell this color in words! ✍️`;
+        }
+
+        if (shouldSpeak) {
+          setTimeout(() => this.speakColor(), 200);
+        }
+      }
+
+      renderMatchGrid() {
+        this.optionsGrid.innerHTML = '';
+        this.options.forEach(color => {
+          const card = document.createElement('div');
+          card.className = 'color-choice-card';
+          card.dataset.colorName = color.name;
+          card.style.background = color.hex;
+          if (color.border) card.style.border = color.border;
+
+          card.innerHTML = `
+            <span class="color-pick-check">✔️</span>
+          `;
+          this.optionsGrid.appendChild(card);
+        });
+      }
+
+      checkMatchPick(pickedName, card) {
+        if (pickedName === this.targetColor.name) {
+          this.isAnswerLocked = true;
+          card.classList.add('correct-pick');
+          const checkIcon = card.querySelector('.color-pick-check');
+          if (checkIcon) checkIcon.style.display = 'block';
+
+          this.app.sound.playFanfare();
+          this.app.confetti.fire();
+          this.app.addScore(1);
+
+          const fullSolved = `${this.targetColor.name} ${this.targetColor.emoji}`;
+          if (this.solvedBadge) {
+            this.solvedBadge.textContent = '🎯 ' + fullSolved + ' ✔️';
+            this.solvedBadge.style.display = 'inline-flex';
+          }
+
+          this.app.showFeedback('success', 'Genius! Correct Color! 🌟', fullSolved);
+          this.statusText.textContent = `Awesome! That is ${this.targetColor.name} 🏆`;
+          this.btnNextMatch.style.display = 'flex';
+        } else {
+          this.app.sound.playComicalWrong();
+          card.classList.add('wrong-pick');
+          setTimeout(() => {
+            card.classList.remove('wrong-pick');
+          }, 600);
+          this.statusText.textContent = `Oops! Try again to find ${this.targetColor.name} 💪`;
+        }
+      }
+
+      renderSpellingSlots() {
+        this.slotsContainer.innerHTML = '';
+        const targetLen = this.targetColor.name.length;
+
+        for (let i = 0; i < targetLen; i++) {
+          const slot = document.createElement('div');
+          slot.className = 'letter-slot';
+          const entered = this.enteredLetters[i];
+
+          if (entered) {
+            slot.textContent = entered;
+            slot.classList.add('filled');
+          } else {
+            slot.textContent = '';
+          }
+
+          if (!this.isAnswerLocked && i === this.enteredLetters.length) {
+            slot.classList.add('active-cursor');
+          }
+          this.slotsContainer.appendChild(slot);
+        }
+      }
+
+      handleLetter(char) {
+        if (this.isAnswerLocked) return;
+        if (this.enteredLetters.length < this.targetColor.name.length) {
+          this.app.sound.playTap();
+          this.enteredLetters.push(char);
+          this.renderSpellingSlots();
+        }
+      }
+
+      handleDelete() {
+        if (this.isAnswerLocked) return;
+        if (this.enteredLetters.length > 0) {
+          this.app.sound.playTap();
+          this.enteredLetters.pop();
+          this.renderSpellingSlots();
+        }
+      }
+
+      speakColor() {
+        const textToSay = this.mode === 'match' ? `Find ${this.targetColor.sound}` : this.targetColor.sound;
+        this.app.speak(
+          textToSay,
+          () => {
+            this.mascotAvatar.classList.add('speaking');
+            this.btnReplay.classList.add('speaking');
+            this.statusText.textContent = 'Listen carefully... 🎧';
+          },
+          () => {
+            this.mascotAvatar.classList.remove('speaking');
+            this.btnReplay.classList.remove('speaking');
+            this.statusText.textContent = this.mode === 'match' ? `Tap the ${this.targetColor.name} color! 🎨` : `Spell the color in letters below 👇`;
+          }
+        );
+      }
+
+      checkSpelling() {
+        const targetClean = this.targetColor.name;
+        const userClean = this.enteredLetters.join('');
+
+        if (userClean.length === 0) {
+          this.app.showFeedback('warning', 'Please type the letters first! ✍️');
+          return;
+        }
+
+        if (userClean.length < targetClean.length) {
+          this.app.showFeedback('warning', 'Type all the letters of the color! 🔤');
+          return;
+        }
+
+        if (userClean === targetClean) {
+          this.handleSpellingCorrect();
+        } else {
+          this.handleSpellingWrong();
+        }
+      }
+
+      handleSpellingCorrect() {
+        this.isAnswerLocked = true;
+        this.app.sound.playFanfare();
+        this.app.confetti.fire();
+        this.app.addScore(1);
+
+        const fullSolved = `${this.targetColor.name} ${this.targetColor.emoji}`;
+        if (this.solvedBadge) {
+          this.solvedBadge.textContent = '🎯 ' + fullSolved + ' ✔️';
+          this.solvedBadge.style.display = 'inline-flex';
+        }
+
+        this.app.showFeedback('success', 'Genius! Perfect Color Spelling! 🌟', fullSolved);
+        this.statusText.textContent = 'Awesome! Color spelled correctly 🏆';
+
+        this.renderSpellingSlots();
+        this.btnCheckSpell.style.display = 'none';
+        this.btnRetrySpell.style.display = 'none';
+        this.btnNextSpell.style.display = 'flex';
+      }
+
+      handleSpellingWrong() {
+        this.app.sound.playComicalWrong();
+
+        this.slotsContainer.classList.add('shake-error');
+        setTimeout(() => {
+          this.slotsContainer.classList.remove('shake-error');
+        }, 600);
+
+        this.app.showFeedback('error', 'Oops! Not quite right.. Try again, superstar!');
+        this.statusText.textContent = 'No worries, tap Try Again and fix the letters 💪';
+
+        this.btnCheckSpell.style.display = 'none';
+        this.btnRetrySpell.style.display = 'flex';
+        this.btnNextSpell.style.display = 'none';
+      }
+
+      retryQuestion() {
+        this.resetUI();
+        if (this.mode === 'spell') {
+          this.enteredLetters = [];
+          this.renderSpellingSlots();
+        }
+        this.speakColor();
+      }
+
+      resetUI() {
+        this.isAnswerLocked = false;
+        if (this.solvedBadge) this.solvedBadge.style.display = 'none';
+        this.app.hideFeedback();
+
+        this.btnNextMatch.style.display = 'none';
+        this.btnCheckSpell.style.display = 'flex';
+        this.btnNextSpell.style.display = 'none';
+        this.btnRetrySpell.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       APP INITIALIZATION
        ========================================================================== */
     window.addEventListener('DOMContentLoaded', () => {
       window.arenaApp = new KidsArenaApp();
